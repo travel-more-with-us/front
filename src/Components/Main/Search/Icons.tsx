@@ -13,15 +13,16 @@ width: 100%;
 gap: 20px;
 `;
 
-const Icon = styled.div`
+const Icon = styled.div<any>`
 width: 132px;
 height: 48px;
 background: #fff;
-border: 2px solid #29E3AB;
+border: ${props => props.active ? '4px solid #0E966D' : '2px solid #29E3AB'};
 border-radius: 8px;
 display: flex;
 justify-content: center;
 align-items: center;
+cursor: pointer;
 
 &:hover {
   background: #B4FDD3;
@@ -57,11 +58,18 @@ export const Icons = () => {
       name: 'Tours',
     },
   ];
+  const [activeIcon, setActiveIcon] = React.useState(icons[0].name);
 
   return (
     <StyledIcons>
       {icons.map(icon => (
-        <Icon key={icon.name}>
+        <Icon 
+          key={icon.name} 
+          active={activeIcon === icon.name}
+          onClick={() => {
+            setActiveIcon(icon.name);
+          }}
+        >
           <img
             src={icon.img}
             alt=""

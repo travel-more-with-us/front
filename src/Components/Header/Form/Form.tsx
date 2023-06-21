@@ -29,15 +29,36 @@ text-align: center;
 
 const ErrorMessage = styled.div`
 margin: 0 0 10px 0;
-color: red;
+color: ${props => props.theme.errorColor};
 `;
 
 interface Props {
   marginbottom: string;
+  error: string;
+  success: string;
 }
 
 const StyledMyInput = styled(MyInput)<Props>`
-margin-bottom: ${props => props.marginbottom || '10px'};
+  margin-bottom: ${props => props.marginbottom || '10px'};
+  background: ${props => {
+    if (props.error) {
+      return props.theme.errorbg;
+    } else if (props.success) {
+      return props.theme.successBg;
+    } else {
+      return 'inherit';
+    }
+  }};
+  border-color: ${props => {
+    if (props.error) {
+      return props.theme.errorColor;
+    } else if (props.success) {
+      return props.theme.success;
+    } else {
+      return 'inherit';
+    }
+  }};
+  border-width: 2px;
 `;
 
 export const Form = () => {
@@ -108,7 +129,7 @@ export const Form = () => {
 
   useEffect(() => {
     if (emailDirty && passwordDirty) {
-      if (emailError && passwordError) {
+      if (emailError || passwordError) {
         setButtonAvailable(false);
       } else {
         setButtonAvailable(true);
@@ -148,6 +169,8 @@ export const Form = () => {
         placeholder="Email"
         type="email"
         marginbottom="10px"
+        error={emailDirty ? emailError: ''}
+        success={emailDirty && emailError === '' ? 'true': ''}
       />
       {emailDirty && emailError && (
         <ErrorMessage>
@@ -161,6 +184,8 @@ export const Form = () => {
         placeholder="Password"
         type="password"
         marginbottom="8px"
+        error={passwordDirty ? passwordError : ''}
+        success={passwordDirty && passwordError === '' ? 'true': ''}
       />
       {passwordDirty && passwordError && (
         <ErrorMessage>

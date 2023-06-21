@@ -12,5 +12,12 @@
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"]
-  }
+  },
+  "extends": [
+    "react-app",
+    "react-app/jest"
+  ],
+  "plugins": [
+    "react"
+  ]
 }

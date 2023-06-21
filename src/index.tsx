@@ -15,6 +15,10 @@ const theme = {
   placeholderColor: '#A0A3BD',
   focusVisibleColor: '#6E7191',
   txtFormColor: '#4E4B66',
+  errorColor: '#ED2E7E',
+  errorbg: '#FFF3F8;',
+  success: '#00BA88',
+  successBg: '#F2FFFB'
 };
 
 ReactDOM.render(

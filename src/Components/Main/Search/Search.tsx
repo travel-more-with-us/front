@@ -4,6 +4,8 @@ import { SearchInput } from './SearchInput';
 import { Icons } from './Icons';
 import { Calendar } from './Calendar';
 import { Guests } from './Guests';
+import { Place } from '../../../types';
+import search from '../../../images/search.svg';
 
 const StyledSearch = styled.div`
 background: #FFFFFF;
@@ -31,15 +33,34 @@ gap: 20px;
 position: relative;
 `;
 
-export const Search = () => {
+const Button = styled.button`
+width: 80px;
+height: 64px;
+background: ${props => props.theme.primaryColor};
+border-radius: 8px;
+border: none;
+outline: none;
+`;
+
+interface Props {
+  places: Place[];
+}
+
+export const Search: React.FC <Props> = ({ places }) => {
   return (
     <StyledSearch>
       <Block>
         <Inputs>
-          <SearchInput />
+          <SearchInput places={places} />
           <Calendar />
           <Calendar />
           <Guests />
+          <Button>
+            <img 
+              src={search}
+              alt="search"
+            />
+          </Button>
         </Inputs>
         <Icons />
       </Block>

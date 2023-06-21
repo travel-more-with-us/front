@@ -81,7 +81,9 @@ export const MainBlock = () => {
 
   return (
     <StyledMain>
-      <Search />
+      <Search 
+        places={places}
+      />
       <Propositions
         places={places}
         header="Looking for the perfect stay?"

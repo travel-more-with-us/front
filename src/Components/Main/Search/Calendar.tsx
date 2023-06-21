@@ -23,6 +23,10 @@ const CalendarInput = styled.div`
       background: #FFFFFF;
       border: 2px solid #D9DBE9;
       border-radius: 8px;
+
+      &:placeholder {
+        color: ${props => props.theme.placeholderColor};
+      }
     }
   }
 `;

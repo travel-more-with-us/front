@@ -2,6 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import location from '../../../images/location.svg';
 import locationGreen from '../../../images/location-green.svg';
+import { Place } from '../../../types';
+
+const Block = styled.div`
+width: 364px;
+`;
 
 const StyledInput = styled.input`
   background: #FFFFFF;
@@ -13,6 +18,10 @@ const StyledInput = styled.input`
   height: 64px;
   box-sizing: border-box;
   width: 100%;
+
+  &:placeholder {
+    color: ${props => props.theme.placeholderColor};
+  }
 
   &::before {
     content: "";
@@ -58,17 +67,34 @@ const DropdownItem = styled.li`
   }
 `;
 
-const Block = styled.div`
-width: 364px;
+const City = styled.p`
+margin: 0 0 2px 0;
+color: #000;
+font-weight: 400;
+font-size: 16px;
 `;
 
-export const SearchInput = () => {
-  const [searchInput, setSearchInput] = React.useState('');
-  const options = ['Option 1', 'Option 2', 'Option 3'];
-  const [dropdownVisible, setDropdownVisible] = React.useState(true);
+const Country = styled.p`
+margin: 0;
+font-weight: 400;
+font-size: 16px;
+line-height: 100%;
+color: ${props => props.theme.placeholderColor};
+`;
 
-  const handleItemClick = (option: string) => {
-    setSearchInput(option);
+interface Props {
+  places: Place[];
+}
+
+export const SearchInput: React.FC <Props> = ({ places }) => {
+  const [searchInput, setSearchInput] = React.useState('');
+  const options = places;
+  const [dropdownVisible, setDropdownVisible] = React.useState(true);
+  const optionsToShowInDropdown = 5;
+
+  const handleItemClick = (option: any) => {
+    const valueToSet = option.city + ', ' + option.country;
+    setSearchInput(valueToSet);
     setDropdownVisible(false);
   };
 
@@ -82,15 +108,19 @@ export const SearchInput = () => {
       return [];
     }
 
-    const optionsFiltered = options.filter(
-      option => option.toLowerCase().includes(searchInput.toLowerCase()),
+    const optionsFiltered = options.filter(option =>
+      option.city.toLowerCase().includes(searchInput.toLowerCase()) ||
+      option.country.toLowerCase().includes(searchInput.toLowerCase())
     );
 
     if (searchInput !== '' && optionsFiltered.length === 0) {
-      return ['Places not found'];
+      return [{
+        city: 'City not found',
+        country: ''
+      }];
     }
 
-    return options.filter(option => option.toLowerCase().includes(searchInput.toLowerCase()));
+    return optionsFiltered;
   }, [searchInput]);
 
   const handleClickOutside = (e: any) => {
@@ -110,7 +140,7 @@ export const SearchInput = () => {
   return (
     <Block>
       <StyledInput
-        placeholder="Select an option"
+        placeholder="Going to"
         onChange={(e) => {
           handleSearch(e.target.value);
         }}
@@ -118,9 +148,14 @@ export const SearchInput = () => {
       />
       {dropdownVisible && (
         <DropdownList className="dropdown">
-          {searchedOptions.map((option) => (
-            <DropdownItem key={option} onClick={() => handleItemClick(option)}>
-              {option}
+          {searchedOptions.slice(0, optionsToShowInDropdown).map((option) => (
+            <DropdownItem key={option.city} onClick={() => handleItemClick(option)}>
+              <City>
+                {option.city}
+              </City>
+              <Country>
+                {option.country}
+              </Country>
             </DropdownItem>
           ))}
         </DropdownList>

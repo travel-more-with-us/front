@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Block = styled.div`
-width: 364px;
+width: 184px;
 position: relative;
 `;
 
@@ -18,17 +18,23 @@ const Input = styled.input`
   height: 64px;
   box-sizing: border-box;
   position: relative;
+
+  &::placeholder {
+    color: ${props => props.theme.placeholderColor};
+  }
 `;
 
 const Dropdown = styled.div`
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100%;
+  width: 273px;
   max-height: 200px;
-  overflow: auto;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 26px 24px;
+  box-sizing: border-box;
+  border: 2px solid #D9DBE9;
 `;
 
 const Option = styled.div`
@@ -41,13 +47,38 @@ const Option = styled.div`
 
 const Counter = styled.div`
   display: flex;
-  align-items: center;
+  justify-content: space-between;
 `;
 
 const Button = styled.button`
-  padding: 5px 10px;
+  width: 32px;
+  height: 32px;
   font-size: 16px;
   cursor: pointer;
+  background: #FFFFFF;
+  border: 2px solid ${props => props.theme.primaryColor};
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${props => props.theme.txtColor};
+`;
+
+const Buttons = styled.div`
+display: flex;
+gap: 5px;
+`;
+
+const Value = styled.span`
+  width: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 120%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: ${props => props.theme.txtColor};
 `;
 
 export const Guests = () => {
@@ -103,7 +134,7 @@ export const Guests = () => {
     <Block ref={blockRef}>
       <Input
         type="text"
-        value={`Adults: ${adults}, Children: ${children}, Rooms: ${rooms}`}
+        value={`${adults} Adults`}
         onClick={toggleDropdown}
       />
       {isOpen && (
@@ -111,25 +142,31 @@ export const Guests = () => {
           <Option>
             <Counter>
               <span>Adults</span>
-              <Button onClick={() => handleDecrement('adults')}>-</Button>
-              <span>{adults}</span>
-              <Button onClick={() => handleIncrement('adults')}>+</Button>
+              <Buttons>
+                <Button onClick={() => handleDecrement('adults')}>-</Button>
+                <Value>{adults}</Value>
+                <Button onClick={() => handleIncrement('adults')}>+</Button>
+              </Buttons>
             </Counter>
           </Option>
           <Option>
             <Counter>
               <span>Children</span>
-              <Button onClick={() => handleDecrement('children')}>-</Button>
-              <span>{children}</span>
-              <Button onClick={() => handleIncrement('children')}>+</Button>
+              <Buttons>
+                <Button onClick={() => handleDecrement('children')}>-</Button>
+                <Value>{children}</Value>
+                <Button onClick={() => handleIncrement('children')}>+</Button>
+              </Buttons>
             </Counter>
           </Option>
           <Option>
             <Counter>
               <span>Rooms</span>
-              <Button onClick={() => handleDecrement('rooms')}>-</Button>
-              <span>{rooms}</span>
-              <Button onClick={() => handleIncrement('rooms')}>+</Button>
+              <Buttons>
+                <Button onClick={() => handleDecrement('rooms')}>-</Button>
+                <Value>{rooms}</Value>
+                <Button onClick={() => handleIncrement('rooms')}>+</Button>
+              </Buttons>
             </Counter>
           </Option>
         </Dropdown>
