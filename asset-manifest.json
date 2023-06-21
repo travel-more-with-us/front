@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/front/static/css/main.b4477ef3.css",
-    "main.js": "/front/static/js/main.69a74651.js",
+    "main.js": "/front/static/js/main.620a329c.js",
     "static/media/Rio de Janeiro.png": "/front/static/media/Rio de Janeiro.486619878d8359dac0eb.png",
     "static/media/Bali.png": "/front/static/media/Bali.10c32fb15596faed7e94.png",
     "static/media/Antalya.png": "/front/static/media/Antalya.d5621db5369190bcc81d.png",
@@ -22,13 +22,14 @@
     "static/media/flight.svg": "/front/static/media/flight.67a31e82e795251aabf481f23980e748.svg",
     "static/media/location.svg": "/front/static/media/location.c669a872931d7b10626acd3b6b20bc01.svg",
     "static/media/location-green.svg": "/front/static/media/location-green.cb6c29a0d2e889de766814cef4621a0b.svg",
+    "static/media/search.svg": "/front/static/media/search.2e7bc5a3aa8b1d82de554c5ea2d86a75.svg",
     "index.html": "/front/index.html",
     "static/media/close.svg": "/front/static/media/close.cfb6527e85065884f7ddd8a0087816c1.svg",
     "main.b4477ef3.css.map": "/front/static/css/main.b4477ef3.css.map",
-    "main.69a74651.js.map": "/front/static/js/main.69a74651.js.map"
+    "main.620a329c.js.map": "/front/static/js/main.620a329c.js.map"
   },
   "entrypoints": [
     "static/css/main.b4477ef3.css",
-    "static/js/main.69a74651.js"
+    "static/js/main.620a329c.js"
   ]
 }
