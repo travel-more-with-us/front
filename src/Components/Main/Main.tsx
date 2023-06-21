@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Container } from '../Layout/Container';
 import mainBg from '../../images/main-bg.png';
-import { MainBlock } from '../Propositions/MainBlock';
+import { MainBlock } from './MainBlock';
 
 const StyledMain = styled.main`
 padding: 170px 0 180px;
