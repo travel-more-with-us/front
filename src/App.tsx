@@ -7,14 +7,17 @@ import { Results } from './pages/Results';
 export const App = () => {
   return (
     <>
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<Home />}>
         </Route>
         <Route path='/villa' element={<Villa />}>
         </Route>
         <Route path="/results" element={<Results />}>
         </Route>
-      </Routes>
+      </Routes> */}
+      <div>
+        test nahui
+      </div>
     </>
   );
 };
