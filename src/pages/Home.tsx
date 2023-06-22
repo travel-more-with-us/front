@@ -6,8 +6,8 @@ import { Footer } from '../Components/Footer/Footer';
 export const Home = () => {
   return (
     <>
-      <Header />
-      <Main />
+      {/* <Header />
+      <Main /> */}
       <Footer />
     </>
   );
