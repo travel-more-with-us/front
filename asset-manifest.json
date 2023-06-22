@@ -1,7 +1,10 @@
 {
   "files": {
     "main.css": "/front/static/css/main.b4477ef3.css",
-    "main.js": "/front/static/js/main.620a329c.js",
+    "main.js": "/front/static/js/main.77138901.js",
+    "static/media/villa4.png": "/front/static/media/villa4.1da341b70e9a2d1f7ece.png",
+    "static/media/villa3.png": "/front/static/media/villa3.4cfe4f54f384311fb741.png",
+    "static/media/villa5.png": "/front/static/media/villa5.f3eefc51c523f0cee895.png",
     "static/media/Rio de Janeiro.png": "/front/static/media/Rio de Janeiro.486619878d8359dac0eb.png",
     "static/media/Bali.png": "/front/static/media/Bali.10c32fb15596faed7e94.png",
     "static/media/Antalya.png": "/front/static/media/Antalya.d5621db5369190bcc81d.png",
@@ -9,12 +12,15 @@
     "static/media/Manchester.png": "/front/static/media/Manchester.dcf577de84e2017ef681.png",
     "static/media/main-bg.png": "/front/static/media/main-bg.2991e72b85ecaf2528dc.png",
     "static/media/Berlin.png": "/front/static/media/Berlin.18f1bf2fd7d94f80ae2f.png",
+    "static/media/villa2.png": "/front/static/media/villa2.e24c3e94713e92b84d9c.png",
     "static/media/Warsaw.png": "/front/static/media/Warsaw.338d1f0b550305b7cb65.png",
     "static/media/Bangkok.png": "/front/static/media/Bangkok.06ecd7e0b04bceebb92a.png",
+    "static/media/villa1.png": "/front/static/media/villa1.aa34146c54789a23d5ac.png",
     "static/media/car.svg": "/front/static/media/car.fa2cd0df6f4fb9df5865c38ae3acf322.svg",
     "static/media/earth.svg": "/front/static/media/earth.249a8e730da509ecd18b5dbf7a34771c.svg",
     "static/media/star-empty.svg": "/front/static/media/star-empty.b485979867a53e2dbbbf48c1133e0bec.svg",
     "static/media/star.svg": "/front/static/media/star.1efd4d26c87e70c20e4055d64e8db3d2.svg",
+    "static/media/wifi.svg": "/front/static/media/wifi.753ef0562ccf13d40991599496f1ceaa.svg",
     "static/media/city.svg": "/front/static/media/city.d7554708a17ff233bb94bda52f18a210.svg",
     "static/media/cruise.svg": "/front/static/media/cruise.91c7a6aacd280b7045c1fad0759a4900.svg",
     "static/media/tours.svg": "/front/static/media/tours.32f100a627f1723652217c1c279e400d.svg",
@@ -25,11 +31,12 @@
     "static/media/search.svg": "/front/static/media/search.2e7bc5a3aa8b1d82de554c5ea2d86a75.svg",
     "index.html": "/front/index.html",
     "static/media/close.svg": "/front/static/media/close.cfb6527e85065884f7ddd8a0087816c1.svg",
+    "static/media/backImg.svg": "/front/static/media/backImg.8db5eee5688040d60331f9b22f2653d7.svg",
     "main.b4477ef3.css.map": "/front/static/css/main.b4477ef3.css.map",
-    "main.620a329c.js.map": "/front/static/js/main.620a329c.js.map"
+    "main.77138901.js.map": "/front/static/js/main.77138901.js.map"
   },
   "entrypoints": [
     "static/css/main.b4477ef3.css",
-    "static/js/main.620a329c.js"
+    "static/js/main.77138901.js"
   ]
 }
