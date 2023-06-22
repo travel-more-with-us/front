@@ -58,7 +58,7 @@ export const Filter: React.FC <any> = ({ name, options, seeMore }) => {
     }
 
     return options;
-  }, [options, open]);
+  }, [options, open, seeMore]);
   
 
   function toggleList() {
