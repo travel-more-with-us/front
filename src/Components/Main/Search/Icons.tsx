@@ -26,7 +26,7 @@ cursor: pointer;
 
 &:hover {
   background: #B4FDD3;
-  border: 
+  border: '4px solid #0E966D';
 }
 
 `;

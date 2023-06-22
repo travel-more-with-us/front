@@ -121,7 +121,7 @@ export const SearchInput: React.FC <Props> = ({ places }) => {
     }
 
     return optionsFiltered;
-  }, [searchInput]);
+  }, [searchInput, options]);
 
   const handleClickOutside = (e: any) => {
     if (!e.target.closest('.dropdown')) {

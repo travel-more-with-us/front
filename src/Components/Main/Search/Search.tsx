@@ -6,6 +6,7 @@ import { Calendar } from './Calendar';
 import { Guests } from './Guests';
 import { Place } from '../../../types';
 import search from '../../../images/search.svg';
+import { Container } from '../../Layout/Container';
 
 const StyledSearch = styled.div`
 background: #FFFFFF;
@@ -14,7 +15,7 @@ box-shadow: 2px 2px 6px rgba(209, 209, 209, 0.1);
 border-radius: 16px;
 margin: 0 auto 72px;
 transform: translateY(-50%);
-width: 90%;
+width: 95%;
 height: 184px;
 padding: 24px;
 box-sizing: border-box;
@@ -40,6 +41,7 @@ background: ${props => props.theme.primaryColor};
 border-radius: 8px;
 border: none;
 outline: none;
+cursor: pointer;
 `;
 
 interface Props {
@@ -48,22 +50,24 @@ interface Props {
 
 export const Search: React.FC <Props> = ({ places }) => {
   return (
-    <StyledSearch>
-      <Block>
-        <Inputs>
-          <SearchInput places={places} />
-          <Calendar />
-          <Calendar />
-          <Guests />
-          <Button>
-            <img 
-              src={search}
-              alt="search"
-            />
-          </Button>
-        </Inputs>
-        <Icons />
-      </Block>
-    </StyledSearch>
+    <Container>
+      <StyledSearch>
+        <Block>
+          <Inputs>
+            <SearchInput places={places} />
+            <Calendar />
+            <Calendar />
+            <Guests />
+            <Button>
+              <img 
+                src={search}
+                alt="search"
+              />
+            </Button>
+          </Inputs>
+          <Icons />
+        </Block>
+      </StyledSearch>
+    </Container>
   );
 };

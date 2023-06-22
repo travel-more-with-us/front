@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 import './index.css';
 
@@ -24,9 +24,9 @@ const theme = {
 ReactDOM.render(
   <>
     <ThemeProvider theme={theme}>
-      <HashRouter>
+      <BrowserRouter>
         <App />
-      </HashRouter>
+      </BrowserRouter>
     </ThemeProvider>
   </>,
   document.getElementById('root'),
