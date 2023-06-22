@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Stars } from '../UI/Stars';
+import { Oval } from '../UI/Oval';
 
 const Header = styled.h1`
 font-weight: 700;
@@ -29,17 +30,6 @@ const Rewievs = styled.span`
 margin: 0 8px 0 8px;
 `;
 
-const Oval = styled.p`
-background: ${props => props.theme.txtFormColor};
-width: 6px;
-height: 6px;
-display: flex;
-justify-content: center;
-align-items: center;
-border-radius: 50%;
-margin: 0 8px 0 0;
-`;
-
 const Street = styled.span`
   margin: 0 2px 0 0;
 `;
@@ -64,8 +54,7 @@ export const MainInfo: React.FC <any> = ({ villa }) => {
           <Rewievs>
             {`${villa.rewievs} rewievs`}
           </Rewievs>
-          <Oval>
-          </Oval>
+          <Oval />
           <Street>
             {`${villa.street}, `}
           </Street>

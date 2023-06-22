@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SearchInput } from './SearchInput';
 import { Icons } from './Icons';
-import { Calendar } from './Calendar';
-import { Guests } from './Guests';
 import { Place } from '../../../types';
-import search from '../../../images/search.svg';
+
 import { Container } from '../../Layout/Container';
+import { Inputs } from './Inputs';
 
 const StyledSearch = styled.div`
 background: #FFFFFF;
@@ -27,23 +25,6 @@ flex-direction: column;
 gap: 24px;
 `;
 
-const Inputs = styled.div`
-display: flex;
-width: 100%;
-gap: 20px;
-position: relative;
-`;
-
-const Button = styled.button`
-width: 80px;
-height: 64px;
-background: ${props => props.theme.primaryColor};
-border-radius: 8px;
-border: none;
-outline: none;
-cursor: pointer;
-`;
-
 interface Props {
   places: Place[];
 }
@@ -53,18 +34,9 @@ export const Search: React.FC <Props> = ({ places }) => {
     <Container>
       <StyledSearch>
         <Block>
-          <Inputs>
-            <SearchInput places={places} />
-            <Calendar />
-            <Calendar />
-            <Guests />
-            <Button>
-              <img 
-                src={search}
-                alt="search"
-              />
-            </Button>
-          </Inputs>
+          <Inputs 
+            places={places}
+          />
           <Icons />
         </Block>
       </StyledSearch>
