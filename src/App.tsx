@@ -7,14 +7,19 @@ import { Home } from './pages/Home';
 export const App = () => {
   return (
     <>
-      {/* <Routes>
-        <Route path="/" element={<Home />}>
+      <Routes>
+        {/* <Route path="/" element={<Home />}>
         </Route>
         <Route path='/villa' element={<Villa />}>
         </Route>
         <Route path="/results" element={<Results />}>
+        </Route> */}
+        <Route path='/' element={<div>
+          asdfasdfasdfsdf 111111
+        </div>}>
+
         </Route>
-      </Routes> */}
+      </Routes>
       <div>
         dfgfxasdfxcx
       </div>
