@@ -12,8 +12,8 @@ export const App = () => {
         </Route>
         <Route path='/villa' element={<Villa />}>
         </Route>
-        {/* <Route path="/results" element={<Results />}>
-        </Route> */}
+        <Route path="/results" element={<Results />}>
+        </Route>
       </Routes>
     </>
   );
