@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
@@ -21,13 +21,15 @@ const theme = {
   successBg: '#F2FFFB'
 };
 
-ReactDOM.render(
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement as HTMLElement);
+
+root.render(
   <>
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </ThemeProvider>
-  </>,
-  document.getElementById('root'),
+  </>
 );
