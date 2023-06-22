@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/front/static/css/main.b4477ef3.css",
-    "main.js": "/front/static/js/main.1612627c.js",
+    "main.js": "/front/static/js/main.339f1f05.js",
     "static/media/villa4.png": "/front/static/media/villa4.1da341b70e9a2d1f7ece.png",
     "static/media/villa3.png": "/front/static/media/villa3.4cfe4f54f384311fb741.png",
     "static/media/villa5.png": "/front/static/media/villa5.f3eefc51c523f0cee895.png",
@@ -24,19 +24,22 @@
     "static/media/city.svg": "/front/static/media/city.d7554708a17ff233bb94bda52f18a210.svg",
     "static/media/cruise.svg": "/front/static/media/cruise.91c7a6aacd280b7045c1fad0759a4900.svg",
     "static/media/tours.svg": "/front/static/media/tours.32f100a627f1723652217c1c279e400d.svg",
+    "static/media/arrow-right.svg": "/front/static/media/arrow-right.367d3f75a2f0496e1b8e43fd735cfba2.svg",
     "static/media/jorney.svg": "/front/static/media/jorney.a289762db1b6e2a3937cb03331ea4d21.svg",
     "static/media/flight.svg": "/front/static/media/flight.67a31e82e795251aabf481f23980e748.svg",
     "static/media/location.svg": "/front/static/media/location.c669a872931d7b10626acd3b6b20bc01.svg",
+    "static/media/like.svg": "/front/static/media/like.fc79ecded49ef3fe26ab4e29c2b341f0.svg",
     "static/media/location-green.svg": "/front/static/media/location-green.cb6c29a0d2e889de766814cef4621a0b.svg",
+    "static/media/change.svg": "/front/static/media/change.5887adddd216117f2e6b163ccf5ced82.svg",
     "static/media/search.svg": "/front/static/media/search.2e7bc5a3aa8b1d82de554c5ea2d86a75.svg",
     "index.html": "/front/index.html",
     "static/media/close.svg": "/front/static/media/close.cfb6527e85065884f7ddd8a0087816c1.svg",
     "static/media/backImg.svg": "/front/static/media/backImg.8db5eee5688040d60331f9b22f2653d7.svg",
     "main.b4477ef3.css.map": "/front/static/css/main.b4477ef3.css.map",
-    "main.1612627c.js.map": "/front/static/js/main.1612627c.js.map"
+    "main.339f1f05.js.map": "/front/static/js/main.339f1f05.js.map"
   },
   "entrypoints": [
     "static/css/main.b4477ef3.css",
-    "static/js/main.1612627c.js"
+    "static/js/main.339f1f05.js"
   ]
 }
