@@ -6,12 +6,9 @@ import { Footer } from '../Components/Footer/Footer';
 export const Home = () => {
   return (
     <>
-      {/* <Header />
-      <Main /> */}
-      {/* <Footer /> */}
-      <div>
-        test
-      </div>
+      <Header />
+      <Main /> 
+      <Footer />
     </>
   );
 };
