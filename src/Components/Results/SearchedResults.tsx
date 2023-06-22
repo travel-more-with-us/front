@@ -24,6 +24,10 @@ display: flex;
 gap: 24px;
 `;
 
+const InputsContainer = styled.div`
+margin: 0 0 24px 0;
+`;
+
 export const SearchedResults = () => {
   const places = [
     {
@@ -87,11 +91,11 @@ export const SearchedResults = () => {
     <StyledResults>
       <Container>
         <ResultHeader />
-        <div>
+        <InputsContainer>
           <Inputs 
             places={places}
           />
-        </div>
+        </InputsContainer>
         <Block>
           <Filters />
           <VillasList />
