@@ -14,6 +14,7 @@ const StyledButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
+  font-family: Nunito;
 
   &:hover {
   background-color: ${props => props.theme.hoverColor};

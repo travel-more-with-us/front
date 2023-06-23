@@ -17,6 +17,11 @@ width: 95%;
 height: 184px;
 padding: 24px;
 box-sizing: border-box;
+
+@media screen and (max-width: 768px) {
+  height: auto;
+  transform: translateY(-10%);
+}
 `;
 
 const Block = styled.div`

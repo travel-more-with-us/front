@@ -7,16 +7,27 @@ const PriceContainer = styled.div`
 border: 1px solid #D9DBE9;
 border-radius: 8px;
 max-width: 496px;
-width: 100%;
+width: calc((100% - 24px) / 2);
 height: 290px;
 transform: translateY(-25%);
 padding: 24px;
+
+@media screen and (max-width: 768px) {
+  width: 100%;
+  transform: translateY(0);
+  max-width: unset;
+  height: auto;
+}
 `;
 
 const Price = styled.div`
 display: flex;
 justify-content: space-between;
 margin: 0 0 16px 0;
+
+@media screen and (max-width: 768px) {
+  flex-wrap: wrap;
+}
 `;
 
 const PriceTxtNormal = styled.p`

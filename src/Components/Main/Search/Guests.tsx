@@ -1,26 +1,38 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import guests from '../../../images/guests.svg';
 
 const Block = styled.div`
-width: 184px;
+max-width: 184px;
 position: relative;
+width: 16%;
+
+@media screen and (max-width: 768px) {
+  max-width: 364px;
+  width: 100%;
+}
 `;
 
 const Input = styled.input`
   width: 100%;
   padding: 10px;
+  background: #FFFFFF url(${guests}) no-repeat left 10px center;
   font-size: 16px;
-  background: #FFFFFF;
   border: 2px solid #D9DBE9;
   border-radius: 8px;
-  padding: 20px 0 20px 64px;
+  padding: 20px 0 20px 40px;
   height: 64px;
   box-sizing: border-box;
   position: relative;
 
   &::placeholder {
     color: ${props => props.theme.placeholderColor};
+  }
+
+  &:focus-visible {
+    outline: 3px solid #29E3AB;
+    outline-offset: -2px;
   }
 `;
 
@@ -35,6 +47,17 @@ const Dropdown = styled.div`
   padding: 26px 24px;
   box-sizing: border-box;
   border: 2px solid #D9DBE9;
+
+  @media screen and (max-width: 1024px) {
+    right: 0;
+    left: unset;
+  }
+
+  @media screen and (max-width: 768px) {
+    max-width: 364px;
+    width: 100%;
+    padding: 16px 14px;
+  }
 `;
 
 const Option = styled.div`
@@ -62,6 +85,11 @@ const Button = styled.button`
   justify-content: center;
   align-items: center;
   color: ${props => props.theme.txtColor};
+
+  @media screen and (max-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
 `;
 
 const Buttons = styled.div`
@@ -134,7 +162,7 @@ export const Guests = () => {
     <Block ref={blockRef}>
       <Input
         type="text"
-        value={`${adults} Adults`}
+        value={adults === 1 ? `${adults} Adult` : `${adults} Adults`}
         onClick={toggleDropdown}
       />
       {isOpen && (

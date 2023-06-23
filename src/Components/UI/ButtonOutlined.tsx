@@ -9,6 +9,7 @@ outline: none;
 cursor: pointer;
 padding: 12px 16px;
 border: 2px solid #29E3AB;
+font-family: Nunito;
 
 &:hover {
   border: 2px solid #0E966D;

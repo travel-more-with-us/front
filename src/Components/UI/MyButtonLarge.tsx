@@ -15,6 +15,7 @@ const StyledButton = styled.button<Props>`
   border: ${props => (props.outlined ? `4px solid ${props.theme.focusedColor}` : 'none')};
   outline: none;
   cursor: pointer;
+  font-family: Nunito;
 
   @media screen and (max-width: 425px) {
     height: 42px;

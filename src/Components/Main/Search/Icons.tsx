@@ -9,6 +9,7 @@ import tours from '../../../images/tours.svg';
 
 const StyledIcons = styled.div`
 display: flex;
+flex-wrap: wrap;
 width: 100%;
 gap: 20px;
 `;
@@ -23,6 +24,10 @@ display: flex;
 justify-content: center;
 align-items: center;
 cursor: pointer;
+
+@media screen and (max-width: 425px) {
+  width: 100%;
+}
 
 &:hover {
   background: #B4FDD3;

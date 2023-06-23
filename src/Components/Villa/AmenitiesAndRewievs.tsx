@@ -17,6 +17,11 @@ const Block = styled.div`
 display: flex;
 gap: 8px;
 margin: 40px;
+
+@media screen and (max-width: 768px) {
+  flex-wrap: wrap;
+  gap: 24px;
+}
 `;
 
 export const AmenitiesAndRewievs: React.FC <Props> = ({ villa }) => {

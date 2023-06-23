@@ -12,8 +12,12 @@ margin: 0 0 4px 0;
 `;
 
 const Block = styled.div`
-display: felx;
+display: flex;
 justify-content: space-between;
+
+@media screen and (max-width: 768px) {
+  flex-wrap: wrap;
+}
 `;
 
 const BlockEvaluations = styled.div`
@@ -24,6 +28,10 @@ font-weight: 600;
 font-size: 16px;
 line-height: 150%;
 color: ${props => props.theme.txtFormColor};
+
+@media screen and (max-width: 768px) {
+  flex-wrap: wrap;
+}
 `;
 
 const Rewievs = styled.span`

@@ -10,6 +10,7 @@ border-radius: 8px;
 padding: 20px 24px;
 box-sizing: border-box;
 outline: none;
+font-family: Nunito;
 
 @media screen and (max-width: 425px) {
   height: 42px;

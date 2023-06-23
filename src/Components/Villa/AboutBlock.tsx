@@ -4,7 +4,11 @@ import { VillaLink } from '../UI/VillaLink';
 
 const About = styled.div`
 max-width: 704px;
-width: 50%;
+width: calc((100% - 24px) / 2);
+
+@media screen and (max-width: 768px) {
+  width: 100%;
+}
 `;
 
 const Header = styled.h2`

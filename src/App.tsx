@@ -15,9 +15,6 @@ export const App = () => {
         <Route path="/results" element={<Results />}>
         </Route>
       </Routes>
-      <div>
-        dfgfxasdfxcx
-      </div>
     </>
   );
 };

@@ -5,6 +5,10 @@ const StyledContainer = styled.div`
 padding: 0 30px;
 margin: 0 auto;
 max-width: 1224px;
+
+@media screen and (max-width: 768px) {
+  padding: 0 15px;
+}
 `;
 
 interface Props {

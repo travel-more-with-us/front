@@ -7,19 +7,33 @@ import search from '../../../images/search.svg';
 
 const InputsContainer = styled.div`
 display: flex;
+flex-wrap: wrap;
 width: 100%;
-gap: 20px;
 position: relative;
+justify-content: space-between;
+
+@media screen and (max-width: 768px) {
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+}
 `;
 
 const Button = styled.button`
-width: 80px;
+max-width: 80px;
+width: 10%;
 height: 64px;
 background: ${props => props.theme.primaryColor};
 border-radius: 8px;
 border: none;
 outline: none;
 cursor: pointer;
+
+@media screen and (max-width: 768px) {
+  width: 100%;
+  max-width: 364px;
+}
 `;
 
 export const Inputs: React.FC <any> = ({ places }) => {

@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import location from '../../../images/location.svg';
 import locationGreen from '../../../images/location-green.svg';
 import { Place } from '../../../types';
 
 const Block = styled.div`
-width: 364px;
+max-width: 364px;
+width: 30%;
+
+@media screen and (max-width: 768px) {
+  width: 100%;
+}
 `;
 
-const StyledInput = styled.input`
-  background: #FFFFFF;
+const StyledInput = styled.input<any>`
+  background: #FFFFFF url(${props => props.iconIsGreen ? locationGreen : location}) no-repeat left 10px center;
   border: 2px solid #D9DBE9;
   border-radius: 8px;
   position: relative;
   padding: 20px 0 20px 64px;
-  position: relative;
   height: 64px;
   box-sizing: border-box;
   width: 100%;
@@ -23,23 +27,10 @@ const StyledInput = styled.input`
     color: ${props => props.theme.placeholderColor};
   }
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    width: 24px;
-    height: 24px;
-    background-image: url(${location});
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  &:focused-visible {
-    background-image: url(${locationGreen});
-    background-repeat: no-repeat;
-    border: 2px solid #B4FDD3;
+  &:focus-visible {
+    background: #FFFFFF url(${locationGreen}) no-repeat left 10px center;
+    outline: 3px solid #29E3AB;
+    outline-offset: -2px;
   }
 `;
 
@@ -56,6 +47,14 @@ const DropdownList = styled.ul`
   border-top: none;
   border-radius: 0 0 8px 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+
+  @media screen and (max-width: 768px) {
+    top: 0;
+    transform: translateY(64px);
+    width: 100%;
+    max-width: 364px;
+  }
 `;
 
 const DropdownItem = styled.li`
@@ -91,8 +90,21 @@ export const SearchInput: React.FC <Props> = ({ places }) => {
   const options = places;
   const [dropdownVisible, setDropdownVisible] = React.useState(true);
   const optionsToShowInDropdown = 5;
+  const [iconIsGreen, setIconIsGreen] = useState(false);
+
+  useEffect(() => {
+    if (searchInput !== '' && places.some(place => searchInput.toLowerCase().includes(place.city.toLowerCase()))) {
+      setIconIsGreen(true);
+    } else {
+      setIconIsGreen(false);
+    }
+  }, [searchInput]);
 
   const handleItemClick = (option: any) => {
+    if (option.city === 'City not found') {
+      return;
+    }
+
     const valueToSet = option.city + ', ' + option.country;
     setSearchInput(valueToSet);
     setDropdownVisible(false);
@@ -141,7 +153,8 @@ export const SearchInput: React.FC <Props> = ({ places }) => {
     <Block>
       <StyledInput
         placeholder="Going to"
-        onChange={(e) => {
+        iconIsGreen={iconIsGreen === true ? 'true' : ''}
+        onChange={(e: any) => {
           handleSearch(e.target.value);
         }}
         value={searchInput}

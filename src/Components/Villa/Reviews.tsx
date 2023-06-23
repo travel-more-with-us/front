@@ -6,12 +6,20 @@ import { ReviewsPeople } from './ReviewsPeople';
 
 const ReviewsContainer = styled.div`
 width: calc((100% - 16px) / 2);
+
+@media screen and (max-width: 768px) {
+  width: 100%;
+}
 `;
 
 const ReviewsBlock = styled.div`
 display: flex;
 justify-content: space-between;
 margin: 0 0 16px 0;
+
+@media screen and (max-width: 768px) {
+  flex-wrap: wrap;
+}
 `;
 
 const ListRarings = styled.div`
@@ -24,6 +32,10 @@ const ListRaringItem = styled.div`
 width: calc((100% - 24px)/2);
 display: flex;
 align-items: center;
+
+@media screen and (max-width: 768px) {
+  flex-wrap: wrap;
+}
 `;
 
 const RaringName = styled.p`
@@ -41,6 +53,7 @@ font-weight: 700;
 font-size: 32px;
 line-height: 120%;
 color: #14142A;
+margin: 0;
 `;
 
 export const Reviews: React.FC <any> = ({ villa }) => {

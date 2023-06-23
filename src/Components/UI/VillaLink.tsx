@@ -8,6 +8,7 @@ line-height: 22px;
 text-decoration-line: underline;
 color: #2149C1;
 cursor: pointer;
+font-family: Nunito;
 margin: ${props => (props.margin ? props.margin : '0')};
 `;
 

@@ -8,7 +8,8 @@ interface LinkProps {
 const Link = styled.a<LinkProps>`
   color: ${props => props.color};
   margin-left: 6px;
-  `;
+  font-family: Nunito;
+`;
 
 interface Props {
   children: React.ReactNode;

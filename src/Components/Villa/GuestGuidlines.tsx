@@ -17,10 +17,19 @@ margin: 0 0 16px 0;
 
 const Block = styled.div`
 display: flex;
+
+@media screen and (max-width: 768px) {
+  flex-wrap: wrap;
+  gap: 24px;
+}
 `;
 
 const Guide = styled.div`
 padding: 0 20px;
+
+@media screen and (max-width: 768px) {
+  width: 100%;
+}
 `;
 
 const Header = styled.div`
