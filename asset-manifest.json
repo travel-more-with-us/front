@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/front/static/css/main.b4477ef3.css",
-    "main.js": "/front/static/js/main.764a60d0.js",
+    "main.js": "/front/static/js/main.183cd08c.js",
     "static/media/villa4.png": "/front/static/media/villa4.1da341b70e9a2d1f7ece.png",
     "static/media/villa3.png": "/front/static/media/villa3.4cfe4f54f384311fb741.png",
     "static/media/villa5.png": "/front/static/media/villa5.f3eefc51c523f0cee895.png",
@@ -19,6 +19,8 @@
     "static/media/car.svg": "/front/static/media/car.fa2cd0df6f4fb9df5865c38ae3acf322.svg",
     "static/media/earth.svg": "/front/static/media/earth.249a8e730da509ecd18b5dbf7a34771c.svg",
     "static/media/star-empty.svg": "/front/static/media/star-empty.b485979867a53e2dbbbf48c1133e0bec.svg",
+    "static/media/calendar.svg": "/front/static/media/calendar.db6c7a90cc9bb92295b7b9d73e96e180.svg",
+    "static/media/guests.svg": "/front/static/media/guests.d340acc0e3145a41563af2a5cc96aa03.svg",
     "static/media/star.svg": "/front/static/media/star.1efd4d26c87e70c20e4055d64e8db3d2.svg",
     "static/media/wifi.svg": "/front/static/media/wifi.753ef0562ccf13d40991599496f1ceaa.svg",
     "static/media/city.svg": "/front/static/media/city.d7554708a17ff233bb94bda52f18a210.svg",
@@ -27,19 +29,19 @@
     "static/media/arrow-right.svg": "/front/static/media/arrow-right.367d3f75a2f0496e1b8e43fd735cfba2.svg",
     "static/media/jorney.svg": "/front/static/media/jorney.a289762db1b6e2a3937cb03331ea4d21.svg",
     "static/media/flight.svg": "/front/static/media/flight.67a31e82e795251aabf481f23980e748.svg",
-    "static/media/location.svg": "/front/static/media/location.c669a872931d7b10626acd3b6b20bc01.svg",
     "static/media/like.svg": "/front/static/media/like.fc79ecded49ef3fe26ab4e29c2b341f0.svg",
     "static/media/location-green.svg": "/front/static/media/location-green.cb6c29a0d2e889de766814cef4621a0b.svg",
+    "static/media/location.svg": "/front/static/media/location.057d752ae7bc7d42d8a5fb609cc4729c.svg",
     "index.html": "/front/index.html",
     "static/media/change.svg": "/front/static/media/change.5887adddd216117f2e6b163ccf5ced82.svg",
     "static/media/search.svg": "/front/static/media/search.2e7bc5a3aa8b1d82de554c5ea2d86a75.svg",
     "static/media/close.svg": "/front/static/media/close.cfb6527e85065884f7ddd8a0087816c1.svg",
     "static/media/backImg.svg": "/front/static/media/backImg.8db5eee5688040d60331f9b22f2653d7.svg",
     "main.b4477ef3.css.map": "/front/static/css/main.b4477ef3.css.map",
-    "main.764a60d0.js.map": "/front/static/js/main.764a60d0.js.map"
+    "main.183cd08c.js.map": "/front/static/js/main.183cd08c.js.map"
   },
   "entrypoints": [
     "static/css/main.b4477ef3.css",
-    "static/js/main.764a60d0.js"
+    "static/js/main.183cd08c.js"
   ]
 }
