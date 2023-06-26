@@ -8,6 +8,10 @@ import { VillaPriceBlock } from './VillaPriceBlock';
 
 const InfoBlock = styled.div`
 width: calc((100% - 24px) - ((100% - 24px) / 3));
+
+@media screen and (max-width: 768px) {
+  width: 100%;
+}
 `;
 
 const Name = styled.div`
@@ -25,6 +29,10 @@ const EvaluationBlock = styled.div`
 display: flex;
 gap: 16px;
 margin: 0 0 8px 0;
+
+@media screen and (max-width: 768px) {
+  justify-content: space-between;
+}
 `;
 
 const LocationBlock = styled.div`

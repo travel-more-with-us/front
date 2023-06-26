@@ -9,6 +9,11 @@ const StyledFilters = styled.div`
   width: calc((100% - 24px) / 4);
   margin: 32px 0 0 0;
   padding: 18px 0 0 0;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    max-width: unset;
+  }
 `;
 
 const HeaderBlock = styled.div`

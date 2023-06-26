@@ -5,6 +5,10 @@ import { MyButtonSmall } from '../UI/MyButtonSmall';
 const StyledVilla = styled.div`
 display: flex;
 gap: 14px;
+
+@media screen and (max-width: 768px) {
+  flex-direction: column;
+}
 `;
 
 const Room = styled.p`
@@ -22,10 +26,18 @@ color: #4E4B66;
 
 const RoomBlock = styled.div`
   width: calc((100% - 14px) * 0.7);
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const PriceBlock = styled.div`
 width: calc((100% - 14px) * 0.3);
+
+@media screen and (max-width: 768px) {
+  width: 100%;
+}
 `;
 
 const Price = styled.p`

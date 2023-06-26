@@ -13,6 +13,11 @@ import { Villa } from './Villa';
 const List = styled.div`
 padding: 10px;
 width: calc((100% - 24px) - ((100% - 24px) / 4));
+
+@media screen and (max-width: 768px) {
+  width: 100%;
+  max-width: unset;
+}
 `;
 
 const Villas = styled.div`
