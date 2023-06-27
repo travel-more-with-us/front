@@ -8,6 +8,8 @@ import { SeparatorHorizontal } from '../UI/SeparatorHorizontal';
 const StyledHeader = styled.header`
 padding: 12px 0;
 background: #fff;
+position: relative;
+z-index: 2;
 `;
 
 const Block = styled.div`

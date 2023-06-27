@@ -17,6 +17,9 @@ width: 95%;
 height: 184px;
 padding: 24px;
 box-sizing: border-box;
+position: relative;
+z-index: 2;
+
 
 @media screen and (max-width: 768px) {
   height: auto;
