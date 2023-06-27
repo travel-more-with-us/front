@@ -1,28 +1,47 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Container } from '../Layout/Container';
+import { Back } from '../UI/Back';
 import { useNavigate } from 'react-router-dom';
 import villa1 from '../../images/villa1.png';
 import villa2 from '../../images/villa2.png';
 import villa3 from '../../images/villa3.png';
 import villa4 from '../../images/villa4.png';
 import villa5 from '../../images/villa5.png';
-import { MainInfo } from './MainInfo';
-import { Images } from './Images';
-import { AboutAndPrice } from './AboutAndPrice';
-import { AmenitiesAndRewievs } from './AmenitiesAndRewievs';
 import wifi from '../../images/wifi.svg';
 import person from '../../images/person.png';
-import { GuestGuidlines } from './GuestGuidlines';
-import { Back } from '../UI/Back';
+import { InfoBlock } from './InfoBlock';
+import { SeparatorHorizontal } from '../UI/SeparatorHorizontal';
+import { TravelExtras } from './TravelExtras';
+import { Payment } from './Payment';
 
-const StyledMain = styled.main`
-padding: 32px 0 80px;
-background: #fff;
+const StyledBooking = styled.main`
+  padding: 24px 0 56px;
 `;
 
-export const MainVilla = () => {
+const MainBlock = styled.div`
+display: flex;
+gap: 24px;
+margin: 0 0 56px 0;
+`;
+
+const ImgBlock = styled.div`
+width: calc((100% - 24px) / 2);
+`;
+
+const Image = styled.img`
+width: 100%;
+border-radius: 8px;
+height: 100%;
+`;
+
+export const MainBooking = () => {
   const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1);
+  };
+
   const villa = {
     name: 'Villa Antica',
     city: 'Split',
@@ -149,32 +168,29 @@ export const MainVilla = () => {
     ]
   };
 
-  const goBack = () => {
-    navigate(-1);
-  };
   return (
-    <StyledMain>
+    <StyledBooking>
       <Container>
         <Back 
-          name="Back to listing"
           goBack={goBack}
+          name="Back to Villa Antica"
         />
-        <MainInfo 
-          villa={villa}
-        />
-        <Images 
-          villa={villa} 
-        />
-        <AboutAndPrice 
-          villa={villa}
-        />
-        <AmenitiesAndRewievs 
-          villa={villa}
-        />
-        <GuestGuidlines 
-          villa={villa}
-        />
+        <MainBlock>
+          <ImgBlock>
+            <Image 
+              src={villa.images[0]}
+              alt="villa"
+            />
+          </ImgBlock>
+          <InfoBlock 
+            villa={villa}
+          />
+        </MainBlock>
+        <SeparatorHorizontal />
+        <TravelExtras />
+        <SeparatorHorizontal />
+        <Payment />
       </Container>
-    </StyledMain>
+    </StyledBooking>
   );
 };

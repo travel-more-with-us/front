@@ -5,7 +5,7 @@ import { MyInput } from '../../UI/MyInput';
 import { MyButtonLarge } from '../../UI/MyButtonLarge';
 import { PrivacyPolice } from './PrivacyPolice';
 import { ForgotPassword } from './ForgotPassword';
-import { Separator } from './Separator';
+import { FormSeparator } from '../../UI/FormSeparator';
 import { ContinueWith } from './ContinueWith';
 
 const StyledForm = styled.form`
@@ -197,7 +197,7 @@ export const Form = () => {
         Continue
       </MyButtonLarge>
       <ForgotPassword />
-      <Separator />
+      <FormSeparator />
       <ContinueWith />
     </StyledForm>
   );

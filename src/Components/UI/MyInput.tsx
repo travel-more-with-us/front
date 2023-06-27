@@ -30,7 +30,7 @@ interface Props {
   onChange: (e: string) => void;
   onBlur: (e: any) => void;
   placeholder: string;
-  type: string;
+  type?: string;
 }
 
 export const MyInput: React.FC <Props> = ({ onChange, onBlur, ...props }) => {

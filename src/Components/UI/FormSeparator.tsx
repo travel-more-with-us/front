@@ -18,7 +18,7 @@ const OrText = styled.span`
   margin: 0 10px;
 `;
 
-export const Separator = () => {
+export const FormSeparator = () => {
   return (
     <StyledBlock>
       <BlackLine />
