@@ -78,13 +78,13 @@ const Button = styled.button`
   height: 32px;
   font-size: 16px;
   cursor: pointer;
-  background: #FFFFFF;
-  border: 2px solid ${props => props.theme.primaryColor};
   border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: ${props => props.theme.txtColor};
+  border: ${props => props.disabled ? 'none' : '2px solid ' + props.theme.primaryColor};
+  background: ${props => props.disabled ? '#D9DBE9' : '#fff'};
 
   @media screen and (max-width: 768px) {
     width: 24px;
@@ -181,7 +181,7 @@ export const Guests = () => {
             <Counter>
               <span>Children</span>
               <Buttons>
-                <Button onClick={() => handleDecrement('children')}>-</Button>
+                <Button onClick={() => handleDecrement('children')} disabled={children === 0}>-</Button>
                 <Value>{children}</Value>
                 <Button onClick={() => handleIncrement('children')}>+</Button>
               </Buttons>

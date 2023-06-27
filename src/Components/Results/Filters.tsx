@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { VillaLink } from '../UI/VillaLink';
 import { Filter } from './Filter';
 import { SeparatorHorizontal } from '../UI/SeparatorHorizontal';
+import { FilterWithRange } from './FilterWithRange';
 
 const StyledFilters = styled.div`
   max-width: 288px;
@@ -91,6 +92,14 @@ export const Filters = () => {
     'Girls for relaxing',
   ];
 
+  const prices = [
+    '0 - 50',
+    '50-100',
+    '100-150',
+    '150-200',
+    '200+',
+  ];
+
   return (
     <StyledFilters>
       <HeaderBlock>
@@ -103,6 +112,10 @@ export const Filters = () => {
       </HeaderBlock>
       <SeparatorHorizontal />
       <div>
+        <FilterWithRange 
+          name="Your budget"
+          options={prices}
+        />
         <Filter 
           name="Popular filters"
           options={popularFiltersOptions}

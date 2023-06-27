@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Logo } from './Logo';
 import { Container } from '../Layout/Container';
 import { Auth } from './Auth';
+import { SeparatorHorizontal } from '../UI/SeparatorHorizontal';
 
 const StyledHeader = styled.header`
 padding: 12px 0;
@@ -22,13 +23,16 @@ align-items: center;
 
 export const Header = () => {
   return (
-    <StyledHeader>
-      <Container>
-        <Block>
-          <Logo />
-          <Auth />
-        </Block>
-      </Container>
-    </StyledHeader>
+    <>
+      <StyledHeader>
+        <Container>
+          <Block>
+            <Logo />
+            <Auth />
+          </Block>
+        </Container>
+      </StyledHeader>
+      <SeparatorHorizontal />
+    </>
   );
 };

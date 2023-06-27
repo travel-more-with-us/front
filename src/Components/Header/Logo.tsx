@@ -3,6 +3,12 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logo.png';
 import { MySelect } from '../UI/MySelect';
+import stays from '../../images/city.svg';
+import flights from '../../images/flight.svg';
+import cars from '../../images/car.svg';
+import cruises from '../../images/cruise.svg';
+import journey from '../../images/jorney.svg';
+import tours from '../../images/tours.svg';
 
 const StyledLogo = styled.div`
 display: flex;
@@ -34,11 +40,19 @@ line-height: 120%;
 color: #14142A;
 `;
 
+const SelectBlock = styled.div`
+display: flex;
+align-items: center;
+`;
+
 export const Logo = () => {
   const options = [
-    'Discover',
-    'And',
-    'etc',
+    { label: 'Stays', icon: stays },
+    { label: 'Flights', icon: flights },
+    { label: 'Cars', icon: cars },
+    { label: 'Cruises', icon: cruises },
+    { label: 'Journey', icon: journey },
+    { label: 'Tours', icon: tours },
   ];
 
   return (
@@ -49,9 +63,13 @@ export const Logo = () => {
           Travel More
         </Text>
       </LogoBlock>
-      <MySelect
-        options={options}
-      />
+      <SelectBlock>
+        <MySelect
+          options={options}
+          defaultField="Discover"
+          arrow={true}
+        />
+      </SelectBlock>
     </StyledLogo>
   );
 };

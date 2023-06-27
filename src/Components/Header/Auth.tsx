@@ -18,9 +18,10 @@ align-items: center;
 `;
 
 export const Auth = () => {
-  const languages = [
-    'English',
-    'Ukrainian',
+  const currencies = [
+    { label: 'English ● $ USD' },
+    { label: 'English ● € EUR' },
+    { label: 'Ukrainian ● ₴ UAH' },
   ];
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -37,7 +38,9 @@ export const Auth = () => {
       <Languages>
         <img src={earth} alt="" />
         <MySelect
-          options={languages}
+          options={currencies}
+          defaultField="English"
+          arrow={false}
         />
       </Languages>
       <p>

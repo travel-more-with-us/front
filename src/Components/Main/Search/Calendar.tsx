@@ -14,59 +14,91 @@ const CalendarInput = styled.div`
     max-width: 364px;
   }
 
-  .react-datepicker-wrapper {
-    max-width: 184px;
-
-    @media screen and (max-width: 768px) {
-      max-width: 364px;
-      width: 100%;
-    }
-  }
-
   .react-datepicker {
     font-family: Nunito, sans-serif;
-  }
 
-
-
-  .react-datepicker__day {
-    border-radius: 8px;
-    border: 1px solid #D9DBE9;
-    background: #FFF;
-
-    &:hover {
-      border: 0.2px solid #B4FDD3;
-      background: #B4FDD3;
+    &__header {
+      background: #fff;
     }
 
-    &--selected {
-      background-color: #29E3AB;
-      color: white;
+    &-wrapper {
+      max-width: 184px;
+
+      @media screen and (max-width: 768px) {
+        max-width: 364px;
+        width: 100%;
+      }
     }
-  }
 
-  .react-datepicker__input-container {
-    position: relative;
-
-    input {
-      width: 100%;
-      height: 64px;
-      box-sizing: border-box;
-      padding: 10px;
-      font-size: 16px;
-      background: #FFFFFF;
-      border: 2px solid #D9DBE9;
+    &__day {
       border-radius: 8px;
-      background: #FFFFFF url(${calendar}) no-repeat left 5px center;
-      padding: 0 0 0 40px;
+      border: 1px solid #D9DBE9;
+      background: #FFF;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      font-size: 16px;
+      font-weight: 600;
 
-      &:focus-visible {
-        outline: 3px solid #29E3AB;
-        outline-offset: -2px;
+      @media screen and (max-width: 768px) {
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
       }
 
-      &:placeholder {
-        color: ${props => props.theme.placeholderColor};
+      &--selected {
+        background-color: #29E3AB;
+        color: white;
+      }
+
+      &:hover {
+        border: 0.2px solid #B4FDD3;
+        background: #B4FDD3;
+      }
+
+      &-names {
+        color: #888;
+        background: #ffffff;
+      }
+
+      &-name {
+        color: #888;
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+
+    &__current-month {
+      color: #14142A;
+      background: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 24px 0;
+    }
+
+    &__input-container {
+      position: relative;
+
+      input {
+        width: 100%;
+        height: 64px;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+        background: #FFFFFF;
+        border: 2px solid #D9DBE9;
+        border-radius: 8px;
+        background: #FFFFFF url(${calendar}) no-repeat left 5px center;
+        padding: 0 0 0 40px;
+  
+        &:focus-visible {
+          outline: 3px solid #29E3AB;
+          outline-offset: -2px;
+        }
+  
+        &:placeholder {
+          color: ${props => props.theme.placeholderColor};
+        }
       }
     }
   }

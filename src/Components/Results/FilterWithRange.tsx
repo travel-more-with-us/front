@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { VillaLink } from '../UI/VillaLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { RangeBlock } from './RangeBlock';
 
 const StyledFilter = styled.div`
 padding: 24px;
@@ -70,7 +71,7 @@ font-family: Nunito;
 line-height: 150%;
 `;
 
-export const Filter: React.FC <any> = ({ name, options, seeMore }) => {
+export const FilterWithRange: React.FC <any> = ({ name, options, seeMore }) => {
   const [open, setOpen] = React.useState(false);
 
   const appliedOptions = React.useMemo(() => {
@@ -91,6 +92,7 @@ export const Filter: React.FC <any> = ({ name, options, seeMore }) => {
       <FilterName>
         {name}
       </FilterName>
+      <RangeBlock />
       <FiltersBlock>
         {appliedOptions.map((option: any) => (
           <FilterBlock>
