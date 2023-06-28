@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/front/static/css/main.b4477ef3.css",
-    "main.js": "/front/static/js/main.cdc4bcaa.js",
+    "main.js": "/front/static/js/main.0ad20315.js",
     "static/media/video-travel-more.mp4": "/front/static/media/video-travel-more.f46fd6577cccfe628105.mp4",
     "static/media/villa4.png": "/front/static/media/villa4.1da341b70e9a2d1f7ece.png",
     "static/media/villa3.png": "/front/static/media/villa3.4cfe4f54f384311fb741.png",
@@ -25,10 +25,13 @@
     "static/media/guests.svg": "/front/static/media/guests.d340acc0e3145a41563af2a5cc96aa03.svg",
     "static/media/star.svg": "/front/static/media/star.1efd4d26c87e70c20e4055d64e8db3d2.svg",
     "static/media/wifi.svg": "/front/static/media/wifi.753ef0562ccf13d40991599496f1ceaa.svg",
+    "static/media/apple.svg": "/front/static/media/apple.23ffaa99833770e31da0e20ffd40c376.svg",
     "static/media/city.svg": "/front/static/media/city.d7554708a17ff233bb94bda52f18a210.svg",
     "static/media/cruise.svg": "/front/static/media/cruise.91c7a6aacd280b7045c1fad0759a4900.svg",
     "static/media/tours.svg": "/front/static/media/tours.32f100a627f1723652217c1c279e400d.svg",
+    "static/media/google.svg": "/front/static/media/google.1e1493a35776df4beaf1da009d36d1de.svg",
     "static/media/arrow-right.svg": "/front/static/media/arrow-right.367d3f75a2f0496e1b8e43fd735cfba2.svg",
+    "static/media/facebook.svg": "/front/static/media/facebook.46962e6a8999ef359ae45bccc4f888e0.svg",
     "static/media/jorney.svg": "/front/static/media/jorney.a289762db1b6e2a3937cb03331ea4d21.svg",
     "static/media/flight.svg": "/front/static/media/flight.67a31e82e795251aabf481f23980e748.svg",
     "static/media/like.svg": "/front/static/media/like.fc79ecded49ef3fe26ab4e29c2b341f0.svg",
@@ -41,10 +44,10 @@
     "static/media/down.svg": "/front/static/media/down.7bb795f636304b7ffc445974a60c2766.svg",
     "static/media/backImg.svg": "/front/static/media/backImg.8db5eee5688040d60331f9b22f2653d7.svg",
     "main.b4477ef3.css.map": "/front/static/css/main.b4477ef3.css.map",
-    "main.cdc4bcaa.js.map": "/front/static/js/main.cdc4bcaa.js.map"
+    "main.0ad20315.js.map": "/front/static/js/main.0ad20315.js.map"
   },
   "entrypoints": [
     "static/css/main.b4477ef3.css",
-    "static/js/main.cdc4bcaa.js"
+    "static/js/main.0ad20315.js"
   ]
 }
