@@ -4,22 +4,12 @@ import down from '../../images/down.svg';
 
 const DropdownContainer = styled.div`
   position: relative;
-  width: 184px;
+  width: 124px;
   font-size: 16px;
   font-weight: 600;
   line-height: 150%;
   display: flex;
   align-items: center;
-
-  &:before {
-    position: absolute;
-    content: '';
-    top: 0;
-    right: 10px;
-    background-image: url(${down});
-    width: 24px;
-    height: 24px;
-  }
 `;
 
 const DropdownButton = styled.button`
@@ -33,13 +23,23 @@ const DropdownButton = styled.button`
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
+
+  &:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 10px;
+    background-image: url(${down});
+    width: 24px;
+    height: 24px;
+  }
 `;
 
 const DropdownList = styled.ul`
   position: absolute;
   top: 100%;
-  left: 0;
-  width: 100%;
+  left: -25%;
+  width: 184px; 
   max-height: 250px;
   padding: 0;
   margin-top: 14px;

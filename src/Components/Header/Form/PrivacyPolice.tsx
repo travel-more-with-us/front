@@ -18,7 +18,6 @@ export const PrivacyPolice = () => {
         Standard message and data rates apply.
       </Span>
       <FormLink
-        href="/privacy"
         color="#14142A"
       >
         Privacy Policy.

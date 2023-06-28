@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { MySelect } from '../UI/MySelect';
 import earth from '../../images/earth.svg';
 import { MyButtonMedium } from '../UI/MyButtonMedium';
-import { Popup } from './Popup';
+import { PopupSignUp } from './PopupSignUp';
+import { PopupSignIn } from './PopupSignIn';
 
 const StyledAuth = styled.div`
 display: flex;
@@ -24,6 +25,7 @@ export const Auth = () => {
     { label: 'Ukrainian ● ₴ UAH' },
   ];
   const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpenSignIn, setOpenSignIn] = React.useState(false);
 
   function openPopup() {
     setIsOpen(true);
@@ -31,6 +33,14 @@ export const Auth = () => {
 
   function closePopup() {
     setIsOpen(false);
+  }
+
+  function openPopupSignIn() {
+    setOpenSignIn(true);
+  }
+
+  function closePopupSignIn() {
+    setOpenSignIn(false);
   }
 
   return (
@@ -46,12 +56,21 @@ export const Auth = () => {
       <p>
         List your property
       </p>
-      <MyButtonMedium onClick={openPopup}>
+      <MyButtonMedium onClick={openPopupSignIn}>
         Sign in
       </MyButtonMedium>
+      <MyButtonMedium onClick={openPopup}>
+        Sign up
+      </MyButtonMedium>
       {isOpen && (
-        <Popup
+        <PopupSignUp
           closePopup={closePopup}
+        />
+      )}
+      {isOpenSignIn && (
+        <PopupSignIn 
+          closePopup={closePopupSignIn}
+          openSignUp={openPopup}
         />
       )}
     </StyledAuth>

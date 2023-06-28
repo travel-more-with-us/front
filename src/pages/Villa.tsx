@@ -1,7 +1,7 @@
 import React from 'react';
 import { MainVilla } from '../Components/Villa/MainVilla';
 import { LayoutContainer } from '../Components/Layout/LayoutContainer';
-import { useScrollTop } from '../helpers/useScrollTop';
+import { useScrollTop } from '../hooks/useScrollTop';
 
 export const Villa = () => {
   useScrollTop();

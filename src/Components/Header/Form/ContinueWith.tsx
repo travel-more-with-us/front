@@ -1,38 +1,83 @@
 /* eslint-disable react/jsx-boolean-value */
 import React from 'react';
 import styled from 'styled-components';
-import { MyButtonLarge } from '../../UI/MyButtonLarge';
+import apple from '../../../images/apple.svg';
+import google from '../../../images/google.svg';
+import facebook from '../../../images/facebook.svg';
 
 const StyledBlock = styled.div`
 display: flex;
-flex-direction: column;
-gap: 16px;
+justify-content: space-between;
+`;
+
+const Button = styled.button`
+outline: none;
+width: 149px;
+height: 49px;
+border-radius: 8px;
+border: 2px solid #D9DBE9;
+display: flex;
+width: 149px;
+height: 48px;
+padding: 10px 16px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+cursor: pointer;
+
+&:hover {
+  border: 2px solid ${props => props.theme.primaryColor};
+}
+`;
+
+const Icon = styled.img`
+width: 24px;
+height: 24px;
+`;
+
+const Txt = styled.span`
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 150%;
 `;
 
 export const ContinueWith = () => {
   return (
     <StyledBlock>
-      <MyButtonLarge
-        outlined="true"
-        disabled={false}
+      <Button
         onClick={() => {}}
       >
-        Continue with Facebook
-      </MyButtonLarge>
-      <MyButtonLarge
-        outlined="true"
-        disabled={false}
+        <Icon 
+          src={apple}
+          alt='aplle'
+        />
+        <Txt>
+          Apple
+        </Txt>
+      </Button>
+      <Button
         onClick={() => {}}
       >
-        Continue with Google
-      </MyButtonLarge>
-      <MyButtonLarge
-        outlined="true"
-        disabled={false}
+        <Icon 
+          src={google}
+          alt="Google"
+        />
+        <Txt>
+          Google
+        </Txt>
+      </Button>
+      <Button
         onClick={() => {}}
       >
-        Continue with Apple
-      </MyButtonLarge>
+        <Icon 
+          src={facebook}
+          alt='Facebook'
+        />
+        <Txt>
+          Facebook
+        </Txt>
+      </Button>
     </StyledBlock>
   );
 };

@@ -38,7 +38,7 @@ const Input = styled.input`
 
 const Dropdown = styled.div`
   position: absolute;
-  top: 100%;
+  top: 110%;
   left: 0;
   width: 273px;
   max-height: 200px;

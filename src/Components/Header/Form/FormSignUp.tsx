@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { MyInput } from '../../UI/MyInput';
 import { MyButtonLarge } from '../../UI/MyButtonLarge';
 import { PrivacyPolice } from './PrivacyPolice';
-import { ForgotPassword } from './ForgotPassword';
 import { FormSeparator } from '../../UI/FormSeparator';
 import { ContinueWith } from './ContinueWith';
 
@@ -64,9 +63,14 @@ const StyledMyInput = styled(MyInput)<Props>`
   border-width: 2px;
 `;
 
+const MarginSeparator = styled.div`
+margin: 35px 35px 0;
+`;
+
 export const Form = () => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [confirmPassword, setConfirmPassword] = React.useState('');
   const [emailError, setEmailError] = React.useState('');
   const [passwordError, setPasswordError] = React.useState('');
   const [emailDirty, setEmailDirty] = React.useState(false);
@@ -128,6 +132,10 @@ export const Form = () => {
 
   function passwordHandler(str: string) {
     setPassword(str);
+  }
+
+  function confirmPasswordHandler(str: string) {
+    setConfirmPassword(str);
   }
 
   useEffect(() => {
@@ -195,12 +203,28 @@ export const Form = () => {
           {passwordError}
         </ErrorMessage>
       )}
+      <StyledMyInput
+        value={confirmPassword}
+        onChange={confirmPasswordHandler}
+        onBlur={() => {}}
+        placeholder="Confirm password"
+        type="password"
+        marginbottom="8px"
+        error={passwordDirty ? passwordError : ''}
+        success={passwordDirty && passwordError === '' ? 'true': ''}
+      />
+      {passwordDirty && passwordError && (
+        <ErrorMessage>
+          {passwordError}
+        </ErrorMessage>
+      )}
       <PrivacyPolice />
       <MyButtonLarge onClick={() => {}} disabled={!buttonAvailable}>
         Continue
       </MyButtonLarge>
-      <ForgotPassword />
-      <FormSeparator />
+      <MarginSeparator>
+        <FormSeparator />
+      </MarginSeparator>
       <ContinueWith />
     </StyledForm>
   );

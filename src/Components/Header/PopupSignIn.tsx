@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import styled from 'styled-components';
-import { Form } from './Form/Form';
 import close from '../../images/close.svg';
+import { FormSignIn } from './Form/FormSignIn';
 
 const StyledPopup = styled.div`
 position: absolute;
 width: 648px;
-height: 805px;
+height: 685px;
 left: 50%;
 top: 124px;
 transform: translate(-50%, 0);
@@ -57,9 +57,10 @@ const Overlay = styled.div`
 
 interface Props {
   closePopup: () => void;
+  openSignUp: () => void;
 }
 
-export const Popup: React.FC <Props> = ({ closePopup }) => {
+export const PopupSignIn: React.FC <Props> = ({ closePopup, openSignUp }) => {
   const popupRef = React.useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -81,7 +82,7 @@ export const Popup: React.FC <Props> = ({ closePopup }) => {
       <Overlay />
       <StyledPopup ref={popupRef}>
         <Header>
-          Sign in or Sign up
+          Sign in
         </Header>
         <Close onClick={closePopup}>
           <img
@@ -89,7 +90,10 @@ export const Popup: React.FC <Props> = ({ closePopup }) => {
             alt=""
           />
         </Close>
-        <Form />
+        <FormSignIn 
+          openSignUp={openSignUp}
+          closePopup={closePopup}
+        />
       </StyledPopup>
     </>
   );
