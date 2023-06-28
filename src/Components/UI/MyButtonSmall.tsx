@@ -26,7 +26,12 @@ const StyledButton = styled.button`
   }
 `;
 
-export const MyButtonSmall: React.FC <any> = ({ children }) => {
+interface Props {
+  children: React.ReactNode;
+  onClick: () => void;
+}
+
+export const MyButtonSmall: React.FC <Props> = ({ children }) => {
   return (
     <StyledButton>
       {children}

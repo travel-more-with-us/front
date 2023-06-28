@@ -24,7 +24,12 @@ text-align: center;
 color: ${props => props.theme.txtColor};
 `;
 
-export const Back: React.FC <any> = ({ goBack, name}) => {
+interface Props {
+  goBack: () => void;
+  name: string;
+}
+
+export const Back: React.FC <Props> = ({ goBack, name}) => {
   return (
     <StyledBack>
       <GoBack onClick={goBack}>

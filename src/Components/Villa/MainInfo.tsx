@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Stars } from '../UI/Stars';
 import { Oval } from '../UI/Oval';
+import { VillaInterface } from '../../types';
 
 const Header = styled.h1`
 font-weight: 700;
@@ -50,7 +51,11 @@ const Info = styled.div`
   margin: 0 0 20px 0;
 `;
 
-export const MainInfo: React.FC <any> = ({ villa }) => {
+interface Props {
+  villa: VillaInterface;
+}
+
+export const MainInfo: React.FC <Props> = ({ villa }) => {
   return (
     <Info>
       <Header>
@@ -60,7 +65,7 @@ export const MainInfo: React.FC <any> = ({ villa }) => {
         <BlockEvaluations>
           <Stars count={villa.rating} />
           <Rewievs>
-            {`${villa.rewievs} rewievs`}
+            {`${villa.reviews} rewievs`}
           </Rewievs>
           <Oval />
           <Street>

@@ -5,6 +5,7 @@ import { Stars } from '../UI/Stars';
 import like from '../../images/like.svg';
 import { Oval } from '../UI/Oval';
 import { VillaPriceBlock } from './VillaPriceBlock';
+import { VillaInterface } from '../../types';
 
 const InfoBlock = styled.div`
 width: calc((100% - 24px) - ((100% - 24px) / 3));
@@ -54,7 +55,11 @@ line-height: 150%;
 margin: 0 8px 0 0;
 `;
 
-export const VillaInfoBlock: React.FC <any> = ({ villa }) => {
+interface Props {
+  villa: VillaInterface;
+}
+
+export const VillaInfoBlock: React.FC <Props> = ({ villa }) => {
   return (
     <InfoBlock>
       <NameBlock>
@@ -70,7 +75,7 @@ export const VillaInfoBlock: React.FC <any> = ({ villa }) => {
         <Stars 
           count={villa.rating}
         />
-        <VillaLink>
+        <VillaLink click={() => {}}>
           See all {villa.reviewsList.length} reviews
         </VillaLink>
       </EvaluationBlock>

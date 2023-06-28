@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { VillaLink } from '../UI/VillaLink';
+import { ReviewListItemInterface } from '../../types';
 
 const CommentBlock = styled.p`
 margin: 0;
@@ -10,7 +11,11 @@ font-weight: 400;
 color: #4E4B66;
 `;
 
-export const Comment: React.FC <any> = ({ listItem }) => {
+interface Props {
+  listItem: ReviewListItemInterface;
+}
+
+export const Comment: React.FC <Props> = ({ listItem }) => {
   const [showAll, setShowAll] = React.useState(false);
   
   function showMore() {

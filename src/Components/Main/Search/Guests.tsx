@@ -114,13 +114,13 @@ export const Guests = () => {
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
   const [rooms, setRooms] = useState(1);
-  const blockRef = React.useRef<any>(null);
+  const blockRef = React.useRef<HTMLDivElement | null>(null);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleIncrement = (field: any) => {
+  const handleIncrement = (field: string) => {
     if (field === 'adults') {
       setAdults(adults + 1);
     } else if (field === 'children') {
@@ -130,7 +130,7 @@ export const Guests = () => {
     }
   };
 
-  const handleDecrement = (field: any) => {
+  const handleDecrement = (field: string) => {
     if (field === 'adults' && adults > 1) {
       setAdults(adults - 1);
     } else if (field === 'children' && children > 0) {

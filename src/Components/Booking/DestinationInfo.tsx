@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Stars } from '../UI/Stars';
+import { VillaInterface } from '../../types';
 
 const Rewievs = styled.span`
 margin: 0 8px 0 8px;
@@ -43,7 +44,11 @@ gap: 16px;
 margin: 0 0 16px 0;
 `;
 
-export const DestinationInfo: React.FC <any> = ({ villa }) => {
+interface Props {
+  villa: VillaInterface;
+}
+
+export const DestinationInfo: React.FC <Props> = ({ villa }) => {
   return (
     <>
       <H1>
@@ -69,7 +74,7 @@ export const DestinationInfo: React.FC <any> = ({ villa }) => {
       <RatingBlock>
         <Stars count={villa.rating} />
         <Rewievs>
-          {`${villa.rewievs} rewievs`}
+          {`${villa.reviews} rewievs`}
         </Rewievs>
       </RatingBlock>
     </>

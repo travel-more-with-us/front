@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Comment } from './Comment';
+import { ReviewListItemInterface, VillaInterface } from '../../types';
 
 const ReviewsPeopleBlock = styled.div`
 display: flex;
@@ -37,10 +38,14 @@ color: #6E7191;
 margin: 0;
 `;
 
-export const ReviewsPeople: React.FC <any> = ({ villa }) => {
+interface Props {
+  villa: VillaInterface;
+}
+
+export const ReviewsPeople: React.FC <Props> = ({ villa }) => {
   return (
     <ReviewsPeopleBlock>
-      {villa.reviewsList.map((listItem: any) => (
+      {villa.reviewsList.map((listItem: ReviewListItemInterface) => (
         <Person key={listItem.text}>
           <PersonBlock>
             <PersonImage 

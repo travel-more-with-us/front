@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledLink = styled.p<any>`
+interface LinkInterface {
+  margin?: string;
+}
+
+const StyledLink = styled.p<LinkInterface>`
 font-weight: 400;
 font-size: 16px;
 line-height: 22px;
@@ -12,9 +16,15 @@ font-family: Nunito;
 margin: ${props => (props.margin ? props.margin : '0')};
 `;
 
-export const VillaLink: React.FC <any> = ({ children, click, margin }) => {
+interface Props {
+  children: React.ReactNode;
+  click: () => void;
+  margin?: string;
+}
+
+export const VillaLink: React.FC <Props> = ({ children, click, margin }) => {
   return (
-    <StyledLink margin={margin} onClick={(e: any) => {
+    <StyledLink margin={margin} onClick={() => {
       click();
     }}>
       {children}

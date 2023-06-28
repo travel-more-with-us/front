@@ -1,14 +1,15 @@
 import React from 'react';
-import { Header } from '../Components/Header/Header';
-import { Footer } from '../Components/Footer/Footer';
 import { MainVilla } from '../Components/Villa/MainVilla';
+import { LayoutContainer } from '../Components/Layout/LayoutContainer';
+import { useScrollTop } from '../helpers/useScrollTop';
 
 export const Villa = () => {
+  useScrollTop();
   return (
-    <>
-      <Header />
-      <MainVilla />
-      <Footer />
+    <> 
+      <LayoutContainer>
+        <MainVilla />
+      </LayoutContainer>
     </>
   );
 };

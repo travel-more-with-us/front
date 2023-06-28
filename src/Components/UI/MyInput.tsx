@@ -28,7 +28,7 @@ font-family: Nunito;
 interface Props {
   value: string;
   onChange: (e: string) => void;
-  onBlur: (e: any) => void;
+  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
   placeholder: string;
   type?: string;
 }

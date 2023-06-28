@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { AboutBlock } from './AboutBlock';
 import { PriceBlock } from './PriceBlock';
+import { VillaInterface } from '../../types';
 
 const StyledAbout = styled.div`
 padding: 40px 0 0 0;
@@ -24,7 +25,7 @@ gap: 24px;
 
 
 interface Props {
-  villa: any;
+  villa: VillaInterface;
 }
 
 export const AboutAndPrice: React.FC <Props> = ({ villa }) => {

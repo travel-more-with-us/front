@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { VillaLink } from '../UI/VillaLink';
 import { Separator } from '../UI/Separator';
+import { Guideline, VillaInterface } from '../../types';
 
 const StyledGuideLines = styled.div`
 padding: 60px 0 0 0;
@@ -53,14 +54,18 @@ font-family: Nunito;
 line-height: 150%;
 `;
 
-export const GuestGuidlines: React.FC <any> = ({ villa }) => {
+interface Props {
+  villa: VillaInterface;
+}
+
+export const GuestGuidlines: React.FC <Props> = ({ villa }) => {
   return (
     <StyledGuideLines>
       <H3>
         Guest guidelines
       </H3>
       <Block>
-        {villa.guidelines.map((guide: any, index: number) => (
+        {villa.guidelines.map((guide: Guideline, index: number) => (
           <>
             <Guide>
               <Header>

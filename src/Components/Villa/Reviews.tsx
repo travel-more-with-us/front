@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { VillaLink } from '../UI/VillaLink';
 import { Rating } from './Rating';
 import { ReviewsPeople } from './ReviewsPeople';
+import { RatingInterface, VillaInterface } from '../../types';
 
 const ReviewsContainer = styled.div`
 width: calc((100% - 16px) / 2);
@@ -56,7 +57,11 @@ color: #14142A;
 margin: 0;
 `;
 
-export const Reviews: React.FC <any> = ({ villa }) => {
+interface Props {
+  villa: VillaInterface;
+}
+
+export const Reviews: React.FC <Props> = ({ villa }) => {
   return (
     <ReviewsContainer>
       <ReviewsBlock>
@@ -68,16 +73,16 @@ export const Reviews: React.FC <any> = ({ villa }) => {
         </VillaLink>
       </ReviewsBlock>
       <ListRarings>
-        {villa.rarings.map((raring: any) => (
-          <ListRaringItem key={raring.name}>
+        {villa.ratings.map((rating: RatingInterface) => (
+          <ListRaringItem key={rating.name}>
             <RaringName>
-              {raring.name}
+              {rating.name}
             </RaringName>
             <Rating 
-              rating={raring.rating}
+              rating={rating.rating}
             />
             <RaringValue>
-              {raring.rating}
+              {rating.rating}
             </RaringValue>
           </ListRaringItem>
         ))}

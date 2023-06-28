@@ -71,7 +71,13 @@ font-family: Nunito;
 line-height: 150%;
 `;
 
-export const FilterWithRange: React.FC <any> = ({ name, options, seeMore }) => {
+interface Props {
+  name: string;
+  options: string[];
+  seeMore?: boolean;
+}
+
+export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore }) => {
   const [open, setOpen] = React.useState(false);
 
   const appliedOptions = React.useMemo(() => {
@@ -94,7 +100,7 @@ export const FilterWithRange: React.FC <any> = ({ name, options, seeMore }) => {
       </FilterName>
       <RangeBlock />
       <FiltersBlock>
-        {appliedOptions.map((option: any) => (
+        {appliedOptions.map((option: string) => (
           <FilterBlock>
             <CheckboxBlock>
               <CheckBox type='checkbox' id={option}/>

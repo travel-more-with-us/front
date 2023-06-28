@@ -28,7 +28,7 @@ export const MainVilla = () => {
     city: 'Split',
     country: 'Croatia',
     rating: 5,
-    rewievs: 87,
+    reviews: 87,
     street: 'Ul.Mihovilova Sirina 1',
     images: [
       villa1,
@@ -93,7 +93,7 @@ export const MainVilla = () => {
         img: wifi
       }
     ],
-    rarings: [
+    ratings: [
       {
         name: 'Cleanliness',
         rating: 5,

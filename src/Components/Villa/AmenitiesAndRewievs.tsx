@@ -3,10 +3,7 @@ import styled from 'styled-components';
 import { Amenities } from './Amenities';
 import { Reviews } from './Reviews';
 import { Separator } from '../UI/Separator';
-
-interface Props {
-  villa: any;
-}
+import { VillaInterface } from '../../types';
 
 const StyledAmenitiesAndRewievs = styled.div`
 padding: 56px 0;
@@ -23,6 +20,10 @@ margin: 40px;
   gap: 24px;
 }
 `;
+
+interface Props {
+  villa: VillaInterface;
+}
 
 export const AmenitiesAndRewievs: React.FC <Props> = ({ villa }) => {
   return (

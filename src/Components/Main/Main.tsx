@@ -25,7 +25,7 @@ const VideoBackground = styled.video`
   width: 100%;
   height: 50%;
   object-fit: cover;
-  z-index: 1;
+  z-index: 0;
 
   @media screen and (max-width: 768px) {
     display: none;

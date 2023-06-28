@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import styled from 'styled-components';
 import { Form } from './Form/Form';
@@ -14,7 +15,7 @@ background: #FFFFFF;
 border-radius: 16px;
 padding: 20px 0;
 color: #000000;
-z-index: 2;
+z-index: 4;
 
 @media screen and (max-width: 768px) {
   width: 90%;
@@ -51,7 +52,7 @@ const Overlay = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(30, 30, 30, 0.4);
-  z-index: 1;
+  z-index: 4;
 `;
 
 interface Props {

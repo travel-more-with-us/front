@@ -1,14 +1,13 @@
 import React from 'react';
-import { Header } from '../Components/Header/Header';
 import { Main } from '../Components/Main/Main';
-import { Footer } from '../Components/Footer/Footer';
+import { LayoutContainer } from '../Components/Layout/LayoutContainer';
 
 export const Home = () => {
   return (
     <>
-      <Header />
-      <Main /> 
-      <Footer />
+      <LayoutContainer>
+        <Main />
+      </LayoutContainer>
     </>
   );
 };

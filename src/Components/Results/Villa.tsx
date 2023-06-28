@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { VillaInfoBlock } from './VillaInfoBlock';
+import { VillaInterface } from '../../types';
 
 const StyledVilla = styled.div`
 border-radius: 16px;
@@ -36,7 +37,11 @@ width: calc((100% - 24px) / 3);
 }
 `;
 
-export const Villa: React.FC <any> = ({ villa }) => {
+interface Props {
+  villa: VillaInterface;
+}
+
+export const Villa: React.FC <Props> = ({ villa }) => {
   return (
     <StyledVilla>
       <ImageBlock>

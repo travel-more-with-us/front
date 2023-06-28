@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { VillaLink } from '../UI/VillaLink';
+import { AmenityInterface, VillaInterface } from '../../types';
 
 const AmenitiesContainer = styled.div`
 width: calc((100% - 16px) / 2);
@@ -46,7 +47,11 @@ word-wrap: break-word;
 display: block;
 `;
 
-export const Amenities: React.FC <any> = ({ villa }) => {
+interface Props {
+  villa: VillaInterface;
+}
+
+export const Amenities: React.FC <Props> = ({ villa }) => {
   return (
     <AmenitiesContainer>
       <AmenitiesBlock>
@@ -58,7 +63,7 @@ export const Amenities: React.FC <any> = ({ villa }) => {
         </VillaLink>
       </AmenitiesBlock>
       <List>
-        {villa.amenities.map((amenity: any) => (
+        {villa.amenities.map((amenity: AmenityInterface) => (
           <ListItem key={amenity.name}>
             <img 
               src={amenity.img}

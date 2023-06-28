@@ -1,23 +1,11 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { Home } from './pages/Home';
-import { Villa } from './pages/Villa';
-import { Results } from './pages/Results';
-import { Booking } from './pages/Booking';
+import { HashRouter } from 'react-router-dom';
+import { AppRouter } from './routes/appRouter';
 
 export const App = () => {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<Home />}>
-        </Route>
-        <Route path='/villa' element={<Villa />}>
-        </Route>
-        <Route path="/results" element={<Results />}>
-        </Route>
-        <Route path="/booking" element={<Booking />}>
-        </Route>
-      </Routes>
-    </>
+    <HashRouter>
+      <AppRouter />
+    </HashRouter>
   );
 };

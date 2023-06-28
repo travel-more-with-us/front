@@ -1,14 +1,16 @@
 import React from 'react';
-import { Header } from '../Components/Header/Header';
-import { Footer } from '../Components/Footer/Footer';
 import { SearchedResults } from '../Components/Results/SearchedResults';
+import { LayoutContainer } from '../Components/Layout/LayoutContainer';
+import { useScrollTop } from '../helpers/useScrollTop';
+
 
 export const Results = () => {
+  useScrollTop();
   return (
     <>
-      <Header />
-      <SearchedResults />
-      <Footer />
+      <LayoutContainer>
+        <SearchedResults />
+      </LayoutContainer>
     </>
   );
 };

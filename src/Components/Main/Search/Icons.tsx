@@ -14,7 +14,7 @@ width: 100%;
 gap: 20px;
 `;
 
-const Icon = styled.div<any>`
+const Icon = styled.div<IconProps>`
 width: 132px;
 height: 48px;
 background: #fff;
@@ -35,6 +35,10 @@ cursor: pointer;
 }
 
 `;
+
+interface IconProps {
+  active: boolean;
+}
 
 export const Icons = () => {
   const icons = [

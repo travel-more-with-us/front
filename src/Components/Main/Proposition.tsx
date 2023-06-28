@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Evaluation } from './Evaluation';
 import { Place as PlaceType } from '../../types';
+import { Link } from 'react-router-dom';
 
 const Place = styled.div`
   width: 288px;
@@ -15,11 +16,13 @@ border-radius: 8px;
 margin: 0 0 6px 0;
 `;
 
-const City = styled.h3`
+const City = styled(Link)`
 font-weight: 700;
 font-size: 24px;
 line-height: 120%;
 margin: 0 0 2px 0;
+color: ${props => props.theme.txtColor};
+text-decoration: none;
 `;
 
 const Country = styled.p`
@@ -37,8 +40,10 @@ interface Props {
 export const Proposition: React.FC <Props> = ({ place }) => {
   return (
     <Place>
-      <Image src={place.img} />
-      <City>
+      <Link to="/results">
+        <Image src={place.img} />
+      </Link>
+      <City to="/results">
         {place.city}
       </City>
       <Country>

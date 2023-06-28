@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
@@ -12,6 +13,8 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   padding: 0 76px;
+  position: relative;
+  z-index: 9999;
 
   @media screen and (max-width: 768px) {
     padding: 0 26px;
@@ -137,7 +140,7 @@ export const Form = () => {
     }
   }, [email, password, emailError, passwordError, passwordDirty, emailDirty]);
 
-  function blurHandler(e: any) {
+  function blurHandler(e: React.FocusEvent<HTMLInputElement>) {
     switch (e.target.type) {
     case 'email':
       setEmailDirty(true);

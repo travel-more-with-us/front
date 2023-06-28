@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent } from 'react';
 import styled from 'styled-components';
 import Slider from '@mui/material/Slider';
 import { styled as styledMui } from '@mui/material/styles';
@@ -47,11 +47,7 @@ export const RangeBlock = () => {
     setValue(newValue as number[]);
   };
   
-  // const handleRangeChange = (values: any) => {
-  //   setRangeValues(values);
-  // };
-  
-  const handleMinInputChange = (event: any) => {
+  const handleMinInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const min = parseFloat(event.target.value);
     setValue((prevState) => {
       prevState[0] = min;
@@ -59,7 +55,7 @@ export const RangeBlock = () => {
     });
   };
   
-  const handleMaxInputChange = (event: any) => {
+  const handleMaxInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const max = parseFloat(event.target.value);
     setValue((prevState) => {
       prevState[1] = max;

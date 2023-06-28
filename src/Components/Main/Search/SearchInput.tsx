@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import location from '../../../images/location.svg';
 import locationGreen from '../../../images/location-green.svg';
-import { Place } from '../../../types';
+import { Place, SearchOption } from '../../../types';
 
 const Block = styled.div`
 max-width: 364px;
@@ -13,7 +13,11 @@ width: 30%;
 }
 `;
 
-const StyledInput = styled.input<any>`
+interface InputProps {
+  iconIsGreen: string;
+}
+
+const StyledInput = styled.input<InputProps>`
   background: #FFFFFF url(${props => props.iconIsGreen ? locationGreen : location}) no-repeat left 10px center;
   border: 2px solid #D9DBE9;
   border-radius: 8px;
@@ -98,9 +102,9 @@ export const SearchInput: React.FC <Props> = ({ places }) => {
     } else {
       setIconIsGreen(false);
     }
-  }, [searchInput]);
+  }, [searchInput, places]);
 
-  const handleItemClick = (option: any) => {
+  const handleItemClick = (option: SearchOption) => {
     if (option.city === 'City not found') {
       return;
     }
@@ -110,8 +114,8 @@ export const SearchInput: React.FC <Props> = ({ places }) => {
     setDropdownVisible(false);
   };
 
-  function handleSearch(e: any) {
-    setSearchInput(e);
+  function handleSearch(str: string) {
+    setSearchInput(str);
     setDropdownVisible(true);
   }
 
@@ -154,7 +158,7 @@ export const SearchInput: React.FC <Props> = ({ places }) => {
       <StyledInput
         placeholder="Going to"
         iconIsGreen={iconIsGreen === true ? 'true' : ''}
-        onChange={(e: any) => {
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
           handleSearch(e.target.value);
         }}
         value={searchInput}

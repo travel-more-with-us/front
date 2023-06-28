@@ -11,14 +11,18 @@ const RatingBar = styled.div`
   border-radius: 2px;
 `;
 
-const FilledBar = styled.div<any>`
+interface FilledBarInterface {
+  rating: number;
+}
+
+const FilledBar = styled.div<FilledBarInterface>`
   height: 100%;
   background-color: #29E3AB;
   border-radius: 2px;
   width: ${props => (props.rating / 5) * 100}%;
 `;
 
-export const Rating: React.FC <any> = ({ rating }) => {
+export const Rating: React.FC <FilledBarInterface> = ({ rating }) => {
   return (
     <RatingBar>
       <FilledBar rating={rating} />

@@ -105,9 +105,9 @@ const CalendarInput = styled.div`
 `;
 
 export const Calendar = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
-  const handleDateChange = (date: any) => {
+  const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
   };
 

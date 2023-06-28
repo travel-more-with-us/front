@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { VillaLink } from '../UI/VillaLink';
+import { VillaInterface } from '../../types';
 
 const About = styled.div`
 max-width: 704px;
@@ -27,7 +28,11 @@ color: #4E4B66;
 margin: 0;
 `;
 
-export const AboutBlock: React.FC <any> = ({ villa }) => {
+interface Props {
+  villa: VillaInterface
+}
+
+export const AboutBlock: React.FC <Props> = ({ villa }) => {
   const [showAll, setShowAll] = React.useState(false);
   function showMore() {
     setShowAll(!showAll);

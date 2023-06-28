@@ -1,7 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
-import { HashRouter } from 'react-router-dom';
 import { App } from './App';
 import './index.css';
 
@@ -27,9 +26,7 @@ const root = createRoot(rootElement as HTMLElement);
 root.render(
   <>
     <ThemeProvider theme={theme}>
-      <HashRouter>
-        <App />
-      </HashRouter>
+      <App />
     </ThemeProvider>
   </>
 );

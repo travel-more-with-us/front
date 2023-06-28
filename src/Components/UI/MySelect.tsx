@@ -64,11 +64,18 @@ const OptionLabel = styled.span`
   margin-left: 8px;
 `;
 
-const OptionIcon = styled.img`
-  
-`;
+interface Props {
+  options: OptionSelect[];
+  defaultField: string;
+  arrow: boolean;
+}
 
-export const MySelect: React.FC<any> = ({ options, defaultField, arrow }) => {
+interface OptionSelect {
+  icon?: string;
+  label: string;
+}
+
+export const MySelect: React.FC<Props> = ({ options, defaultField, arrow }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
 
@@ -76,7 +83,7 @@ export const MySelect: React.FC<any> = ({ options, defaultField, arrow }) => {
     setIsOpen(!isOpen);
   };
 
-  const handleOptionSelect = (option: any) => {
+  const handleOptionSelect = (option: OptionSelect) => {
     setSelectedOption(option.label.split(' ')[0]);
     setIsOpen(false);
   };
@@ -102,10 +109,15 @@ export const MySelect: React.FC<any> = ({ options, defaultField, arrow }) => {
       </DropdownButton>
       {isOpen && (
         <DropdownList>
-          {options.map((option: any) => (
-            <DropdownListItem key={option.label} onClick={() => handleOptionSelect(option)}>
-              {option.icon && <OptionIcon src={option.icon} /> }
-              <OptionLabel>{option.label}</OptionLabel>
+          {options.map((option: OptionSelect) => (
+            <DropdownListItem 
+              key={option.label} 
+              onClick={() => handleOptionSelect(option)}
+            >
+              {option.icon && <img src={option.icon} alt=""/> }
+              <OptionLabel>
+                {option.label}
+              </OptionLabel>
             </DropdownListItem>
           ))}
         </DropdownList>

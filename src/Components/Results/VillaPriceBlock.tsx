@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MyButtonSmall } from '../UI/MyButtonSmall';
+import { Link } from 'react-router-dom';
 
 const StyledVilla = styled.div`
 display: flex;
@@ -53,6 +54,11 @@ line-height: 150%;
 margin: 0 0 16px 0;
 `;
 
+const StyledLink = styled(Link)`
+text-decoration: none;
+color: ${props => props.theme.txtColor};
+`;
+
 export const VillaPriceBlock = () => {
   return (
     <StyledVilla>
@@ -81,7 +87,9 @@ export const VillaPriceBlock = () => {
         </PerNight>
         <div>
           <MyButtonSmall onClick={() => {}}>
-            View Deal
+            <StyledLink to="/villa">
+              View Deal
+            </StyledLink>
           </MyButtonSmall>
         </div>
       </PriceBlock>

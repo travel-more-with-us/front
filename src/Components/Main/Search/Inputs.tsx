@@ -4,6 +4,7 @@ import { SearchInput } from './SearchInput';
 import { Calendar } from './Calendar';
 import { Guests } from './Guests';
 import search from '../../../images/search.svg';
+import { Place } from '../../../types';
 
 const InputsContainer = styled.div`
 display: flex;
@@ -36,7 +37,11 @@ cursor: pointer;
 }
 `;
 
-export const Inputs: React.FC <any> = ({ places }) => {
+interface Props {
+  places: Place[];
+}
+
+export const Inputs: React.FC <Props> = ({ places }) => {
   return (
     <InputsContainer>
       <SearchInput places={places} />
