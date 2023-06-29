@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { VillaInfoBlock } from './VillaInfoBlock';
-import { VillaInterface } from '../../types';
+import { StayInfoBlock } from './StayInfoBlock';
+import { StayInterface } from '../../types';
 
 const StyledVilla = styled.div`
 border-radius: 16px;
-border: 1px solid #D9DBE9;
+border: 1px solid ${props => props.theme.disabledColor};
 background: #FFF;
 padding: 24px;
 box-sizing: border-box;
@@ -38,20 +38,20 @@ width: calc((100% - 24px) / 3);
 `;
 
 interface Props {
-  villa: VillaInterface;
+  stay: StayInterface;
 }
 
-export const Villa: React.FC <Props> = ({ villa }) => {
+export const Stay: React.FC <Props> = ({ stay }) => {
   return (
     <StyledVilla>
       <ImageBlock>
         <Image 
-          src={villa.images[0]}
+          src={stay.images[0]}
           alt="villa"
         />
       </ImageBlock>
-      <VillaInfoBlock 
-        villa={villa}
+      <StayInfoBlock 
+        stay={stay}
       />
     </StyledVilla>
   );

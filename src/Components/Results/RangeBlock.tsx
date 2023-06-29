@@ -19,7 +19,7 @@ height: 32px;
 padding: 5px 8px;
 gap: 8px;
 border-radius: 4px;
-border: 1px solid #D9DBE9;
+border: 1px solid ${props => props.theme.disabledColor};
 background: #FCFCFC;
 box-sizing: border-box;
 `;
@@ -73,7 +73,7 @@ export const RangeBlock = () => {
         <StyledSlider
           value={value}
           onChange={handleChange}
-          valueLabelDisplay="none"
+          valueLabelDisplay="off"
           min={0}
           max={1000}
           disableSwap

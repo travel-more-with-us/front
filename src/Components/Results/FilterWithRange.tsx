@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { VillaLink } from '../UI/VillaLink';
+import { StayLink } from '../UI/StayLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { RangeBlock } from './RangeBlock';
@@ -31,20 +31,20 @@ const Count = styled.p`
 margin: 0;
 font-size: 16px;
 font-weight: 600;
-color: #A0A3BD;
+color: ${props => props.theme.placeholderColor};
 `;
 
 const CheckBox = styled.input`
   width: 24px;
   height: 24px;
   appearance: none;
-  border: 2px solid #A0A3BD;
+  border: 2px solid ${props => props.theme.placeholderColor};
   border-radius: 4px;
   outline: none;
   cursor: pointer;
 
   &:checked {
-    background: #29E3AB;
+    background: ${props => props.theme.primaryColor};
   }
 `;
 
@@ -101,7 +101,7 @@ export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore }) =>
       <RangeBlock />
       <FiltersBlock>
         {appliedOptions.map((option: string) => (
-          <FilterBlock>
+          <FilterBlock key={option}>
             <CheckboxBlock>
               <CheckBox type='checkbox' id={option}/>
               <StyledCheckmarkIcon icon={faCheck} />
@@ -115,9 +115,9 @@ export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore }) =>
           </FilterBlock>
         ))}
         {seeMore !== undefined && (
-          <VillaLink click={toggleList}>
+          <StayLink click={toggleList}>
             {open ? 'Hide' : 'See more'}
-          </VillaLink>
+          </StayLink>
         )}
       </FiltersBlock>
     </StyledFilter>

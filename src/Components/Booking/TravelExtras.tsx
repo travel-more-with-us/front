@@ -15,7 +15,7 @@ margin: 0 0 24px 0;
 `;
 
 const ExtrasHeader = styled.h2`
-color: #14142A;
+color: ${props => props.theme.txtColor};
 font-size: 32px;
 font-weight: 700;
 line-height: 120%;
@@ -23,7 +23,7 @@ margin: 0;
 `;
 
 const Description = styled.p`
-color: #4E4B66;
+color: ${props => props.theme.txtFormColor};
 font-size: 16px;
 line-height: 150%;
 margin: 0;
@@ -50,7 +50,7 @@ margin: 0;
 `;
 
 const OptionDescription = styled.p`
-color: #4E4B66;
+color: ${props => props.theme.txtFormColor};
 font-size: 16px;
 line-height: 150%;
 margin: 0;
@@ -108,7 +108,7 @@ export const TravelExtras = () => {
         </ExtrasBlock>
         <Options>
           {options.map(option => (
-            <OptionBlock>
+            <OptionBlock key={option.header}>
               <div>
                 <OptionHeader>
                   {option.header}

@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { Amenities } from './Amenities';
 import { Reviews } from './Reviews';
 import { Separator } from '../UI/Separator';
-import { VillaInterface } from '../../types';
+import { StayInterface } from '../../types';
 
 const StyledAmenitiesAndRewievs = styled.div`
 padding: 56px 0;
-border-bottom: 1px solid #D9DBE9;
+border-bottom: 1px solid ${props => props.theme.disabledColor};
 `;
 
 const Block = styled.div`
@@ -22,19 +22,19 @@ margin: 40px;
 `;
 
 interface Props {
-  villa: VillaInterface;
+  stay: StayInterface;
 }
 
-export const AmenitiesAndRewievs: React.FC <Props> = ({ villa }) => {
+export const AmenitiesAndRewievs: React.FC <Props> = ({ stay }) => {
   return (
     <StyledAmenitiesAndRewievs>
       <Block>
         <Amenities 
-          villa={villa}
+          stay={stay}
         />
         <Separator />
         <Reviews 
-          villa={villa}
+          stay={stay}
         />
       </Block>
     </StyledAmenitiesAndRewievs>

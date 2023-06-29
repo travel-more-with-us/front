@@ -6,7 +6,7 @@ padding: 12px 0;
 `;
 
 const PriceDetails = styled.p`
-color: #14142A;
+color: ${props => props.theme.txtColor};
 font-size: 18px;
 font-weight: 600;
 line-height: 150%;
@@ -24,40 +24,40 @@ margin: 0 0 4px 0;
 `;
 
 const PerNightTxt = styled.span`
-color: #14142A;
+color: ${props => props.theme.txtColor};
 font-size: 16px;
 line-height: 150%;
 `;
 
 const PricePerNight = styled.span`
-color: #14142A;
+color: ${props => props.theme.txtColor};
 font-size: 18px;
 font-weight: 600;
 line-height: 150%;
 `;
 
 const TaxesAndFees = styled.span`
-color: #6E7191;
+color: ${props => props.theme.txtColorSecondary};
 font-size: 16px;
 line-height: 150%;
 `;
 
 const TaxesPrice = styled.span`
-color: #6E7191;
+color: ${props => props.theme.txtColorSecondary};
 font-size: 18px;
 font-weight: 600;
 line-height: 150%;
 `;
 
 const TotalCostTxt = styled.span`
-color: #14142A;
+color: ${props => props.theme.txtColor};
 font-size: 20px;
 font-weight: 700;
 line-height: 150%;
 `;
 
 const TotalCost = styled.span`
-color: #14142A;
+color: ${props => props.theme.txtColor};
 font-size: 32px;
 font-weight: 700;
 line-height: 120%;

@@ -8,7 +8,7 @@ import villa5 from '../../images/villa5.png';
 import wifi from '../../images/wifi.svg';
 import person from '../../images/person.png';
 import { ListHeader } from './ListHeader';
-import { Villa } from './Villa';
+import { Stay } from './Stay';
 
 const List = styled.div`
 padding: 10px;
@@ -20,14 +20,14 @@ width: calc((100% - 24px) - ((100% - 24px) / 4));
 }
 `;
 
-const Villas = styled.div`
+const Stays = styled.div`
 display: flex;
 flex-direction: column;
 gap: 24px;
 `;
 
-export const VillasList = () => {
-  const villas = [
+export const StaysList = () => {
+  const stays = [
     {
       name: 'Villa Antica',
       city: 'Split',
@@ -177,7 +177,6 @@ export const VillasList = () => {
           name: 'Fitness Center',
           img: wifi
         }
-        // Добавьте дополнительные удобства здесь
       ],
       ratings: [
         {
@@ -218,7 +217,6 @@ export const VillasList = () => {
           date: 'May 2023',
           img: person,
         }
-        // Добавьте дополнительные отзывы здесь
       ],
       guidelines: [
         {
@@ -233,7 +231,6 @@ export const VillasList = () => {
           name: 'Cancellation Policy',
           description: 'Cancellation terms - Free cancellation up to 7 days before arrival - 50% refund for cancellations less than 7 days before arrival Changes and modifications - Changes to reservations are subject to availability and host approval - Additional charges may apply'
         }
-        // Добавьте дополнительные правила здесь
       ]
     },
     {
@@ -355,14 +352,14 @@ export const VillasList = () => {
   return (
     <List>
       <ListHeader />
-      <Villas>
-        {villas.map(villa => (
-          <Villa 
-            villa={villa}
-            key={villa.city}
+      <Stays>
+        {stays.map(stay => (
+          <Stay 
+            stay={stay}
+            key={stay.city}
           />
         ))}
-      </Villas>
+      </Stays>
     </List>
   );
 };

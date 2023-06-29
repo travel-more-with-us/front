@@ -45,7 +45,7 @@ const DropdownList = styled.ul`
   margin-top: 14px;
   list-style-type: none;
   border-radius: 8px;
-  border: 1px solid #D9DBE9;
+  border: 1px solid ${props => props.theme.disabledColor};
   background: #FCFCFC;
 `;
 

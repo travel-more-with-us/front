@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Comment } from './Comment';
-import { ReviewListItemInterface, VillaInterface } from '../../types';
+import { ReviewListItemInterface, StayInterface } from '../../types';
 
 const ReviewsPeopleBlock = styled.div`
 display: flex;
@@ -34,18 +34,18 @@ font-size: 18px;
 `;
 
 const Date = styled.p`
-color: #6E7191;
+color: ${props => props.theme.txtColorSecondary};
 margin: 0;
 `;
 
 interface Props {
-  villa: VillaInterface;
+  stay: StayInterface;
 }
 
-export const ReviewsPeople: React.FC <Props> = ({ villa }) => {
+export const ReviewsPeople: React.FC <Props> = ({ stay }) => {
   return (
     <ReviewsPeopleBlock>
-      {villa.reviewsList.map((listItem: ReviewListItemInterface) => (
+      {stay.reviewsList.map((listItem: ReviewListItemInterface) => (
         <Person key={listItem.text}>
           <PersonBlock>
             <PersonImage 

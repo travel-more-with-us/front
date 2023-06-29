@@ -12,7 +12,6 @@ const theme = {
   txtColor: '#14142A',
   txtColorSecondary: '#6E7191',
   placeholderColor: '#A0A3BD',
-  focusVisibleColor: '#6E7191',
   txtFormColor: '#4E4B66',
   errorColor: '#ED2E7E',
   errorbg: '#FFF3F8;',

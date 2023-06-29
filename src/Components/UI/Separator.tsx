@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledSeparator = styled.div`
 width: 1px;
-background-color: #D9DBE9;
+background-color: ${props => props.theme.disabledColor};
 
 @media screen and (max-width: 768px) {
   display: none;

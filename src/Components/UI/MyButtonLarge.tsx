@@ -30,8 +30,8 @@ const StyledButton = styled.button<Props>`
   }
 
   &:disabled {
-  background: #D9DBE9;
-  color: #A0A3BD;
+  background: ${props => props.theme.disabledColor};
+  color: ${props => props.theme.placeholderColor};
   }
 `;
 

@@ -7,7 +7,7 @@ const RatingBar = styled.div`
   height: 6px;
   position: relative;
   margin: 0 8px 0 0;
-  background-color: #D9DBE9;
+  background-color: ${props => props.theme.disabledColor};
   border-radius: 2px;
 `;
 
@@ -17,7 +17,7 @@ interface FilledBarInterface {
 
 const FilledBar = styled.div<FilledBarInterface>`
   height: 100%;
-  background-color: #29E3AB;
+  background-color: ${props => props.theme.primaryColor};
   border-radius: 2px;
   width: ${props => (props.rating / 5) * 100}%;
 `;

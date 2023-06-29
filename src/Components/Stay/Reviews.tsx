@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { VillaLink } from '../UI/VillaLink';
+import { StayLink } from '../UI/StayLink';
 import { Rating } from './Rating';
 import { ReviewsPeople } from './ReviewsPeople';
-import { RatingInterface, VillaInterface } from '../../types';
+import { RatingInterface, StayInterface } from '../../types';
 
 const ReviewsContainer = styled.div`
 width: calc((100% - 16px) / 2);
@@ -53,27 +53,27 @@ const H3 = styled.h3`
 font-weight: 700;
 font-size: 32px;
 line-height: 120%;
-color: #14142A;
+color: ${props => props.theme.txtColor};
 margin: 0;
 `;
 
 interface Props {
-  villa: VillaInterface;
+  stay: StayInterface;
 }
 
-export const Reviews: React.FC <Props> = ({ villa }) => {
+export const Reviews: React.FC <Props> = ({ stay }) => {
   return (
     <ReviewsContainer>
       <ReviewsBlock>
         <H3>
           Rarings&Reviews
         </H3>
-        <VillaLink click={() => {}}>
+        <StayLink click={() => {}}>
           Show more
-        </VillaLink>
+        </StayLink>
       </ReviewsBlock>
       <ListRarings>
-        {villa.ratings.map((rating: RatingInterface) => (
+        {stay.ratings.map((rating: RatingInterface) => (
           <ListRaringItem key={rating.name}>
             <RaringName>
               {rating.name}
@@ -88,7 +88,7 @@ export const Reviews: React.FC <Props> = ({ villa }) => {
         ))}
       </ListRarings>
       <ReviewsPeople 
-        villa={villa}
+        stay={stay}
       />
     </ReviewsContainer>
   );

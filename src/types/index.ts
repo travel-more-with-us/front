@@ -6,7 +6,7 @@ export interface Place {
   rewievs: number,
 }
 
-export interface VillaInterface {
+export interface StayInterface {
   name: string;
   city: string;
   country: string;

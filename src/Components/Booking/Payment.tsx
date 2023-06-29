@@ -4,6 +4,7 @@ import { Separator } from '../UI/Separator';
 import { MyInput } from '../UI/MyInput';
 import { MyButtonLarge } from '../UI/MyButtonLarge';
 import { FormSeparator } from '../UI/FormSeparator';
+import { useInput } from '../../hooks/useInput';
 
 const StyledPayment = styled.form`
 padding: 56px 0;
@@ -18,51 +19,50 @@ const Column = styled.div`
   gap: 16px;
 `;
 
-
-export const Payment = () => {
-  const [fullname, setFullname] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [phone, setPhone] = React.useState('');
-  const [street, setStreet] = React.useState('');
-  const [zip, setZip] = React.useState('');
-  const [country, setCountry] = React.useState('');
-  const [cardHolderName, setCardHolderName] = React.useState('');
-  const [cardNumber, setCardNumber] = React.useState('');
-  const [expiration, setExpiration] = React.useState('');
-  const [cvv, setCvv] = React.useState('');
-
-  const H3 = styled.h3`
+const H3 = styled.h3`
   font-size: 32px;
   font-weight: 700;
   line-height: 120%;
   margin: 0 0 8px 0;
   `;
 
-  const InlineInputs = styled.div`
-  display: flex;
-  gap: 16px;
-  `;
+const InlineInputs = styled.div`
+display: flex;
+gap: 16px;
+`;
 
-  const InlineInput = styled(MyInput)`
-  width: calc((100% - 16px) / 2);
-  `;
+const InlineInput = styled(MyInput)`
+width: calc((100% - 16px) / 2);
+`;
 
-  const StyledTextArea = styled.textarea`
-  height: 140px;
-  padding: 24px;
-  border: 1px solid #D9DBE9;
-  `;
+const StyledTextArea = styled.textarea`
+height: 140px;
+padding: 24px;
+border: 1px solid ${props => props.theme.disabledColor};
+`;
 
-  const BookWith = styled.div`
-  margin: 0 0 24px 0;
-  display: flex;
-  gap: 16px;
-  flex-direction: column;
-  `;
+const BookWith = styled.div`
+margin: 0 0 24px 0;
+display: flex;
+gap: 16px;
+flex-direction: column;
+`;
 
-  const StyledSeparator = styled(FormSeparator)`
-  margin: 0 0 24px 0;
-  `;
+const StyledSeparator = styled(FormSeparator)`
+margin: 0 0 24px 0;
+`;
+
+export const Payment = () => {
+  const fullname = useInput('');
+  const email = useInput('');
+  const phone = useInput('');
+  const street = useInput('');
+  const zip = useInput('');
+  const country = useInput('');
+  const cardHolderName = useInput('');
+  const cardNumber = useInput('');
+  const expiration = useInput('');
+  const cvv = useInput('');
 
   return (
     <StyledPayment>
@@ -71,44 +71,44 @@ export const Payment = () => {
           Customer Information
         </H3>
         <MyInput 
-          value={fullname} 
-          onChange={setFullname} 
+          value={fullname.value} 
+          onChange={fullname.onChange} 
           placeholder='Enter fullname' 
           onBlur={() => {}} 
           type='text'
         />
         <MyInput 
-          value={email} 
-          onChange={setEmail} 
+          value={email.value} 
+          onChange={email.onChange} 
           placeholder='Enter email address' 
           onBlur={() => {}}
           type='email' 
         />
         <MyInput 
-          value={phone} 
-          onChange={setPhone} 
+          value={phone.value} 
+          onChange={phone.onChange} 
           placeholder='+380 000000000' 
           onBlur={() => {}}
           type='phone' 
         />
         <MyInput 
-          value={street} 
-          onChange={setStreet} 
+          value={street.value} 
+          onChange={street.onChange} 
           placeholder='Enter street' 
           onBlur={() => {}}
           type='text' 
         />
         <InlineInputs>
           <InlineInput 
-            value={zip} 
-            onChange={setZip} 
+            value={zip.value} 
+            onChange={zip.onChange} 
             placeholder='Enter ZIP' 
             onBlur={() => {}}
             type='number' 
           />
           <InlineInput 
-            value={country} 
-            onChange={setCountry} 
+            value={country.value} 
+            onChange={country.onChange} 
             placeholder='Enter Country' 
             onBlur={() => {}}
             type='text' 
@@ -146,30 +146,30 @@ export const Payment = () => {
         </BookWith>
         <StyledSeparator />
         <MyInput 
-          value={cardHolderName} 
-          onChange={setCardHolderName} 
+          value={cardHolderName.value} 
+          onChange={cardHolderName.onChange} 
           placeholder='Cardholders name' 
           onBlur={() => {}} 
           type='text'
         />
         <MyInput 
-          value={cardNumber} 
-          onChange={setCardNumber} 
+          value={cardNumber.value} 
+          onChange={cardNumber.onChange} 
           placeholder='Card number' 
           onBlur={() => {}}
           type='number' 
         />
         <InlineInputs>
           <InlineInput 
-            value={expiration} 
-            onChange={setExpiration} 
+            value={expiration.value} 
+            onChange={expiration.onChange} 
             placeholder='Expiration day' 
             onBlur={() => {}}
             type='text' 
           />
           <InlineInput 
-            value={cvv} 
-            onChange={setCvv} 
+            value={cvv.value} 
+            onChange={cvv.onChange} 
             placeholder='CVV' 
             onBlur={() => {}}
             type='text' 

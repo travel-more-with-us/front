@@ -32,7 +32,7 @@ const CalendarInput = styled.div`
 
     &__day {
       border-radius: 8px;
-      border: 1px solid #D9DBE9;
+      border: 1px solid ${props => props.theme.disabledColor};
       background: #FFF;
       width: 50px;
       height: 50px;
@@ -47,13 +47,13 @@ const CalendarInput = styled.div`
       }
 
       &--selected {
-        background-color: #29E3AB;
+        background-color: ${props => props.theme.primaryColor};
         color: white;
       }
 
       &:hover {
-        border: 0.2px solid #B4FDD3;
-        background: #B4FDD3;
+        border: 0.2px solid ${props => props.theme.hoverColor};
+        background: ${props => props.theme.hoverColor};
       }
 
       &-names {
@@ -69,7 +69,7 @@ const CalendarInput = styled.div`
     }
 
     &__current-month {
-      color: #14142A;
+      color: ${props => props.theme.txtColor};
       background: #fff;
       font-size: 18px;
       font-weight: 600;
@@ -86,13 +86,13 @@ const CalendarInput = styled.div`
         padding: 10px;
         font-size: 16px;
         background: #FFFFFF;
-        border: 2px solid #D9DBE9;
+        border: 2px solid ${props => props.theme.disabledColor};
         border-radius: 8px;
         background: #FFFFFF url(${calendar}) no-repeat left 5px center;
         padding: 0 0 0 40px;
   
         &:focus-visible {
-          outline: 3px solid #29E3AB;
+          outline: 3px solid ${props => props.theme.primaryColor};
           outline-offset: -2px;
         }
   

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { VillaLink } from '../UI/VillaLink';
+import { StayLink } from '../UI/StayLink';
 import { Separator } from '../UI/Separator';
-import { Guideline, VillaInterface } from '../../types';
+import { Guideline, StayInterface } from '../../types';
 
 const StyledGuideLines = styled.div`
 padding: 60px 0 0 0;
@@ -55,33 +55,33 @@ line-height: 150%;
 `;
 
 interface Props {
-  villa: VillaInterface;
+  stay: StayInterface;
 }
 
-export const GuestGuidlines: React.FC <Props> = ({ villa }) => {
+export const GuestGuidlines: React.FC <Props> = ({ stay }) => {
   return (
     <StyledGuideLines>
       <H3>
         Guest guidelines
       </H3>
       <Block>
-        {villa.guidelines.map((guide: Guideline, index: number) => (
-          <>
+        {stay.guidelines.map((guide: Guideline, index: number) => (
+          <React.Fragment key={guide.name}>
             <Guide>
               <Header>
                 <Name>
                   {guide.name}
                 </Name>
-                <VillaLink click={() => {}}>
+                <StayLink click={() => {}}>
                   Show more
-                </VillaLink>
+                </StayLink>
               </Header>
               <Description>
                 {guide.description}
               </Description>
             </Guide>
-            {index !== villa.guidelines.length - 1 && <Separator />}
-          </>
+            {index !== stay.guidelines.length - 1 && <Separator />}
+          </React.Fragment>
         ))}
       </Block>
     </StyledGuideLines>

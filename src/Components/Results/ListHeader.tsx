@@ -11,7 +11,7 @@ margin: 0;
 `;
 
 const CountOfVillas = styled.p`
-color: #A0A3BD;
+color: ${props => props.theme.placeholderColor};
 font-size: 16px;
 line-height: 150%;
 margin: 0;

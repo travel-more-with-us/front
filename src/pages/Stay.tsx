@@ -1,14 +1,14 @@
 import React from 'react';
-import { MainVilla } from '../Components/Villa/MainVilla';
+import { MainStay } from '../Components/Stay/MainStay';
 import { LayoutContainer } from '../Components/Layout/LayoutContainer';
 import { useScrollTop } from '../hooks/useScrollTop';
 
-export const Villa = () => {
+export const Stay = () => {
   useScrollTop();
   return (
     <> 
       <LayoutContainer>
-        <MainVilla />
+        <MainStay />
       </LayoutContainer>
     </>
   );

@@ -22,7 +22,7 @@ interface Props {
   margin?: string;
 }
 
-export const VillaLink: React.FC <Props> = ({ children, click, margin }) => {
+export const StayLink: React.FC <Props> = ({ children, click, margin }) => {
   return (
     <StyledLink margin={margin} onClick={() => {
       click();

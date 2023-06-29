@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { VillaLink } from '../UI/VillaLink';
-import { AmenityInterface, VillaInterface } from '../../types';
+import { StayLink } from '../UI/StayLink';
+import { AmenityInterface, StayInterface } from '../../types';
 
 const AmenitiesContainer = styled.div`
 width: calc((100% - 16px) / 2);
@@ -38,7 +38,7 @@ const H3 = styled.h3`
 font-weight: 700;
 font-size: 32px;
 line-height: 120%;
-color: #14142A;
+color: ${props => props.theme.txtColor};
 margin: 0;
 `;
 
@@ -48,22 +48,22 @@ display: block;
 `;
 
 interface Props {
-  villa: VillaInterface;
+  stay: StayInterface;
 }
 
-export const Amenities: React.FC <Props> = ({ villa }) => {
+export const Amenities: React.FC <Props> = ({ stay }) => {
   return (
     <AmenitiesContainer>
       <AmenitiesBlock>
         <H3>
           Top amenities
         </H3>
-        <VillaLink click={() => {}}>
+        <StayLink click={() => {}}>
           Show more
-        </VillaLink>
+        </StayLink>
       </AmenitiesBlock>
       <List>
-        {villa.amenities.map((amenity: AmenityInterface) => (
+        {stay.amenities.map((amenity: AmenityInterface) => (
           <ListItem key={amenity.name}>
             <img 
               src={amenity.img}

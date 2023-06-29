@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from '../Layout/Container';
 import bali from '../../images/Bali.png';
 import warshaw from '../../images/Warsaw.png';
 import bangkok from '../../images/Bangkok.png';
@@ -9,30 +8,18 @@ import manchester from '../../images/Manchester.png';
 import dubrovnik from '../../images/Dubrovnik.png';
 import rio from '../../images/Rio de Janeiro.png';
 import antalya from '../../images/Antalya.png';
-import { Inputs } from '../Main/Search/Inputs';
-import { Filters } from './Filters';
-import { ResultHeader } from './ResultHeader';
-import { VillasList } from './VillasList';
+import { Propositions } from './Propositions';
+import { Search } from './Search/Search';
 
-const StyledResults = styled.main`
-padding: 32px 0 80px;
-background: #fff;
-`;
-
-const Block = styled.div`
-display: flex;
-gap: 24px;
+const StyledMain = styled.div`
+padding: 0px 0 60px;
 
 @media screen and (max-width: 768px) {
-  flex-direction: column;
+  padding: 100px 0 40px;
 }
 `;
 
-const InputsContainer = styled.div`
-margin: 0 0 24px 0;
-`;
-
-export const SearchedResults = () => {
+export const PropositionsBlock = () => {
   const places = [
     {
       img: antalya,
@@ -91,20 +78,22 @@ export const SearchedResults = () => {
       rating: 5,
     },
   ];
+
   return (
-    <StyledResults>
-      <Container>
-        <ResultHeader />
-        <InputsContainer>
-          <Inputs 
-            places={places}
-          />
-        </InputsContainer>
-        <Block>
-          <Filters />
-          <VillasList />
-        </Block>
-      </Container>
-    </StyledResults>
+    <StyledMain>
+      <Search 
+        places={places}
+      />
+      <Propositions
+        places={places}
+        header="Looking for the perfect stay?"
+        description="Pick a vibe and explore the top destinations"
+      />
+      <Propositions
+        places={places}
+        header="Journey to the waves and palm trees"
+        description="Pick a vibe and explore the top destinations"
+      />
+    </StyledMain>
   );
 };

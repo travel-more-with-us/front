@@ -8,7 +8,7 @@ import { Inputs } from './Inputs';
 
 const StyledSearch = styled.div`
 background: #FFFFFF;
-border: 1px solid #D9DBE9;
+border: 1px solid ${props => props.theme.disabledColor};
 box-shadow: 2px 2px 6px rgba(209, 209, 209, 0.1);
 border-radius: 16px;
 margin: 0 auto 72px;

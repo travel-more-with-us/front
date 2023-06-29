@@ -21,9 +21,9 @@ padding: 32px 0 80px;
 background: #fff;
 `;
 
-export const MainVilla = () => {
+export const MainStay = () => {
   const navigate = useNavigate();
-  const villa = {
+  const stay = {
     name: 'Villa Antica',
     city: 'Split',
     country: 'Croatia',
@@ -160,19 +160,19 @@ export const MainVilla = () => {
           goBack={goBack}
         />
         <MainInfo 
-          villa={villa}
+          stay={stay}
         />
         <Images 
-          villa={villa} 
+          stay={stay} 
         />
         <AboutAndPrice 
-          villa={villa}
+          stay={stay}
         />
         <AmenitiesAndRewievs 
-          villa={villa}
+          stay={stay}
         />
         <GuestGuidlines 
-          villa={villa}
+          stay={stay}
         />
       </Container>
     </StyledMain>

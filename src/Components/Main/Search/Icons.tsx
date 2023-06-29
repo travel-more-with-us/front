@@ -18,7 +18,7 @@ const Icon = styled.div<IconProps>`
 width: 132px;
 height: 48px;
 background: #fff;
-border: ${props => props.active ? '4px solid #0E966D' : '2px solid #29E3AB'};
+border: ${props => props.active ? '4px solid #0E966D' : `2px solid ${props.theme.primaryColor}`};
 border-radius: 8px;
 display: flex;
 justify-content: center;
@@ -30,7 +30,7 @@ cursor: pointer;
 }
 
 &:hover {
-  background: #B4FDD3;
+  background: ${props => props.theme.hoverColor};
   border: '4px solid #0E966D';
 }
 

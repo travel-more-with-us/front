@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { DestinationInfo } from './DestinationInfo';
 import { AboutGuests } from './AboutGuests';
 import { AboutPrice } from './AboutPrice';
-import { VillaInterface } from '../../types';
+import { StayInterface } from '../../types';
 
 const StyledInfoBlock = styled.div`
  margin: 0;
@@ -11,14 +11,14 @@ const StyledInfoBlock = styled.div`
 `;
 
 interface Props {
-  villa: VillaInterface;
+  stay: StayInterface;
 }
 
-export const InfoBlock: React.FC <Props> = ({ villa }) => {
+export const InfoBlock: React.FC <Props> = ({ stay }) => {
   return (
     <StyledInfoBlock>
       <DestinationInfo 
-        villa={villa}
+        stay={stay}
       />
       <AboutGuests />
       <AboutPrice />

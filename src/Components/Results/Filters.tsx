@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { VillaLink } from '../UI/VillaLink';
+import { StayLink } from '../UI/StayLink';
 import { Filter } from './Filter';
 import { SeparatorHorizontal } from '../UI/SeparatorHorizontal';
 import { FilterWithRange } from './FilterWithRange';
@@ -106,9 +106,9 @@ export const Filters = () => {
         <H3>
           Filters
         </H3>
-        <VillaLink click={() => {}}>
+        <StayLink click={() => {}}>
           Reset all
-        </VillaLink>
+        </StayLink>
       </HeaderBlock>
       <SeparatorHorizontal />
       <div>

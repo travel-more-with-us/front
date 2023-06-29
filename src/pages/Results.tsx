@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchedResults } from '../Components/Results/SearchedResults';
+import { ResultsMain } from '../Components/Results/ResultsMain';
 import { LayoutContainer } from '../Components/Layout/LayoutContainer';
 import { useScrollTop } from '../hooks/useScrollTop';
 
@@ -9,7 +9,7 @@ export const Results = () => {
   return (
     <>
       <LayoutContainer>
-        <SearchedResults />
+        <ResultsMain />
       </LayoutContainer>
     </>
   );

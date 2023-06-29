@@ -13,7 +13,6 @@ import tours from '../../images/tours.svg';
 const StyledLogo = styled.div`
 display: flex;
 gap: 40px;
-
 `;
 
 const LogoBlock = styled(Link)`
@@ -37,7 +36,7 @@ margin: 0;
 font-weight: 700;
 font-size: 24px;
 line-height: 120%;
-color: #14142A;
+color: ${props => props.theme.txtColor};
 `;
 
 const SelectBlock = styled.div`

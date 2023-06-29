@@ -2,7 +2,7 @@ import React from 'react';
 import { Home } from '../pages/Home';
 import { Results } from '../pages/Results';
 import { Booking } from '../pages/Booking';
-import { Villa } from '../pages/Villa';
+import { Stay } from '../pages/Stay';
 import { Route, Routes } from 'react-router-dom';
 
 export const AppRouter = () => {
@@ -20,14 +20,14 @@ export const AppRouter = () => {
       element: <Booking />
     },
     {
-      path: '/villa',
-      element: <Villa />,
+      path: '/stay',
+      element: <Stay />,
     }
   ];
   return (
     <Routes>
       {routes.map(route => (
-        <Route path={route.path} element={route.element}>
+        <Route path={route.path} element={route.element} key={route.path}>
         </Route>
       ))}
     </Routes>

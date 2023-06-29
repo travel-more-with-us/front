@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Stars } from '../UI/Stars';
-import { VillaInterface } from '../../types';
+import { StayInterface } from '../../types';
 
 const Rewievs = styled.span`
 margin: 0 8px 0 8px;
 `;
 
 const H1 = styled.h1`
-color: #14142A;
+color: ${props => props.theme.txtColor};
 font-size: 32px;
 font-weight: 700;
 line-height: 120%;
@@ -16,7 +16,7 @@ margin: 0 0 16px 0;
 `;
 
 const BookingId = styled.p`
-color: #14142A;
+color: ${props => props.theme.txtColor};
 font-size: 18px;
 font-weight: 600;
 line-height: 150%;
@@ -24,7 +24,7 @@ margin: 0 0 8px 0;
 `;
 
 const StayName = styled.p`
-color: #14142A;
+color: ${props => props.theme.txtColor};
 font-size: 18px;
 font-weight: 600;
 line-height: 150%;
@@ -32,7 +32,7 @@ margin: 0;
 `;
 
 const Address = styled.p`
-color: #4E4B66;
+color: ${props => props.theme.txtFormColor};
 font-size: 16px;
 line-height: 150%;
 margin: 0 0 4px 0;
@@ -45,10 +45,10 @@ margin: 0 0 16px 0;
 `;
 
 interface Props {
-  villa: VillaInterface;
+  stay: StayInterface;
 }
 
-export const DestinationInfo: React.FC <Props> = ({ villa }) => {
+export const DestinationInfo: React.FC <Props> = ({ stay }) => {
   return (
     <>
       <H1>
@@ -58,23 +58,23 @@ export const DestinationInfo: React.FC <Props> = ({ villa }) => {
         Booking ID #1245609 from 06/20/2023
       </BookingId>
       <StayName>
-        {villa.name}
+        {stay.name}
       </StayName>
       <Address>
         <span>
-          {villa.street}
+          {stay.street}
         </span>
         <span>
-          {villa.city}
+          {stay.city}
         </span>
         <span>
-          {villa.country}
+          {stay.country}
         </span>
       </Address>
       <RatingBlock>
-        <Stars count={villa.rating} />
+        <Stars count={stay.rating} />
         <Rewievs>
-          {`${villa.reviews} rewievs`}
+          {`${stay.reviews} rewievs`}
         </Rewievs>
       </RatingBlock>
     </>

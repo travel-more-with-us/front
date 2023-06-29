@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { VillaLink } from '../UI/VillaLink';
+import { StayLink } from '../UI/StayLink';
 import { ReviewListItemInterface } from '../../types';
 
 const CommentBlock = styled.p`
@@ -8,7 +8,7 @@ margin: 0;
 font-size: 16px;
 line-height: 24px;
 font-weight: 400;
-color: #4E4B66;
+color: ${props => props.theme.txtFormColor};
 `;
 
 interface Props {
@@ -27,9 +27,9 @@ export const Comment: React.FC <Props> = ({ listItem }) => {
         {showAll ? listItem.text  : listItem.text.length < 80 ? listItem.text : listItem.text.slice(0, 80) + ' ...'}
       </CommentBlock>
       {listItem.text.length > 80 && (
-        <VillaLink click={showMore}>
+        <StayLink click={showMore}>
           {!showAll ? 'Show more' : 'Hide text'}
-        </VillaLink>
+        </StayLink>
       )}
     </div>
   );

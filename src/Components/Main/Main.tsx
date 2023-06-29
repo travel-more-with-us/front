@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Container } from '../Layout/Container';
 import mainBg from '../../images/main-bg.png';
-import { MainBlock } from './MainBlock';
+import { PropositionsBlock } from './PropositionsBlock';
 import videoSource from '../../images/video-travel-more.mp4';
 
 const StyledMain = styled.main`
@@ -74,7 +74,7 @@ export const Main = () => {
           </VideoBackground>
         </Container>
       </StyledMain>
-      <MainBlock />
+      <PropositionsBlock />
     </>
   );
 };

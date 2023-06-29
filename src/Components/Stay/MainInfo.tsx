@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Stars } from '../UI/Stars';
 import { Oval } from '../UI/Oval';
-import { VillaInterface } from '../../types';
+import { StayInterface } from '../../types';
 
 const Header = styled.h1`
 font-weight: 700;
@@ -52,30 +52,30 @@ const Info = styled.div`
 `;
 
 interface Props {
-  villa: VillaInterface;
+  stay: StayInterface;
 }
 
-export const MainInfo: React.FC <Props> = ({ villa }) => {
+export const MainInfo: React.FC <Props> = ({ stay }) => {
   return (
     <Info>
       <Header>
-        {villa.name}
+        {stay.name}
       </Header>
       <Block>
         <BlockEvaluations>
-          <Stars count={villa.rating} />
+          <Stars count={stay.rating} />
           <Rewievs>
-            {`${villa.reviews} rewievs`}
+            {`${stay.reviews} rewievs`}
           </Rewievs>
           <Oval />
           <Street>
-            {`${villa.street}, `}
+            {`${stay.street}, `}
           </Street>
           <City>
-            {`${villa.city}, `}
+            {`${stay.city}, `}
           </City>
           <span>
-            {`${villa.country}.`}
+            {`${stay.country}.`}
           </span>
         </BlockEvaluations>
         <div>

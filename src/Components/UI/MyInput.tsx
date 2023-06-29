@@ -5,7 +5,7 @@ const StyledInput = styled.input`
 height: 64px;
 width: 100%;
 background: #FFFFFF;
-border: 1px solid #D9DBE9;
+border: 1px solid ${props => props.theme.disabledColor};
 border-radius: 8px;
 padding: 20px 24px;
 box-sizing: border-box;
@@ -21,27 +21,24 @@ font-family: Nunito;
 }
 
 &:focus-visible {
-  border: 2px solid ${props => props.theme.focusVisibleColor};
+  border: 2px solid ${props => props.theme.txtColorSecondary};
 }
 `;
 
 interface Props {
   value: string;
-  onChange: (e: string) => void;
-  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   placeholder: string;
   type?: string;
+  name?: string;
 }
 
 export const MyInput: React.FC <Props> = ({ onChange, onBlur, ...props }) => {
   return (
     <StyledInput
-      onChange={(e: ChangeEvent<HTMLInputElement>) => {
-        onChange(e.target.value);
-      }}
-      onBlur={(e) => {
-        onBlur(e);
-      }}
+      onChange={onChange}
+      onBlur={onBlur}
       {...props}
     />
   );

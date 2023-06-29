@@ -19,7 +19,7 @@ const Input = styled.input`
   padding: 10px;
   background: #FFFFFF url(${guests}) no-repeat left 10px center;
   font-size: 16px;
-  border: 2px solid #D9DBE9;
+  border: 2px solid ${props => props.theme.disabledColor};
   border-radius: 8px;
   padding: 20px 0 20px 40px;
   height: 64px;
@@ -31,7 +31,7 @@ const Input = styled.input`
   }
 
   &:focus-visible {
-    outline: 3px solid #29E3AB;
+    outline: 3px solid ${props => props.theme.primaryColor};
     outline-offset: -2px;
   }
 `;
@@ -46,7 +46,7 @@ const Dropdown = styled.div`
   border-radius: 8px;
   padding: 26px 24px;
   box-sizing: border-box;
-  border: 2px solid #D9DBE9;
+  border: 2px solid ${props => props.theme.disabledColor};
 
   @media screen and (max-width: 1024px) {
     right: 0;
@@ -84,7 +84,7 @@ const Button = styled.button`
   align-items: center;
   color: ${props => props.theme.txtColor};
   border: ${props => props.disabled ? 'none' : '2px solid ' + props.theme.primaryColor};
-  background: ${props => props.disabled ? '#D9DBE9' : '#fff'};
+  background: ${props => props.disabled ? `${props.theme.disabledColor}` : '#fff'};
 
   @media screen and (max-width: 768px) {
     width: 24px;
@@ -140,9 +140,9 @@ export const Guests = () => {
     }
   };
 
-  const handleClickOutside = (e: any) => {
+  const handleClickOutside = (e: MouseEvent) => {
     if (blockRef.current) {
-      if (!blockRef.current.contains(e.target)) {
+      if (!blockRef.current.contains(e.target as Node)) {
         setIsOpen(false);
       }
     } else {
@@ -164,6 +164,7 @@ export const Guests = () => {
         type="text"
         value={adults === 1 ? `${adults} Adult` : `${adults} Adults`}
         onClick={toggleDropdown}
+        readOnly
       />
       {isOpen && (
         <Dropdown>

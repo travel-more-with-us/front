@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import close from '../../images/close.svg';
 import { FormSignIn } from './Form/FormSignIn';
+import { PopupConext } from './Auth';
 
 const StyledPopup = styled.div`
 position: absolute;
@@ -55,17 +56,13 @@ const Overlay = styled.div`
   z-index: 4;
 `;
 
-interface Props {
-  closePopup: () => void;
-  openSignUp: () => void;
-}
-
-export const PopupSignIn: React.FC <Props> = ({ closePopup, openSignUp }) => {
+export const PopupSignIn = () => {
   const popupRef = React.useRef<HTMLDivElement>(null);
+  const { closePopupSignIn } = React.useContext(PopupConext);
 
   const handleClickOutside = (event: MouseEvent) => {
     if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
-      closePopup();
+      closePopupSignIn();
     }
   };
 
@@ -84,16 +81,13 @@ export const PopupSignIn: React.FC <Props> = ({ closePopup, openSignUp }) => {
         <Header>
           Sign in
         </Header>
-        <Close onClick={closePopup}>
+        <Close onClick={closePopupSignIn}>
           <img
             src={close}
             alt=""
           />
         </Close>
-        <FormSignIn 
-          openSignUp={openSignUp}
-          closePopup={closePopup}
-        />
+        <FormSignIn />
       </StyledPopup>
     </>
   );

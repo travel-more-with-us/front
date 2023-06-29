@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { VillaLink } from '../UI/VillaLink';
+import { StayLink } from '../UI/StayLink';
 import { Stars } from '../UI/Stars';
 import like from '../../images/like.svg';
 import { Oval } from '../UI/Oval';
-import { VillaPriceBlock } from './VillaPriceBlock';
-import { VillaInterface } from '../../types';
+import { StayPriceBlock } from './StayPriceBlock';
+import { StayInterface } from '../../types';
 
 const InfoBlock = styled.div`
 width: calc((100% - 24px) - ((100% - 24px) / 3));
@@ -56,15 +56,15 @@ margin: 0 8px 0 0;
 `;
 
 interface Props {
-  villa: VillaInterface;
+  stay: StayInterface;
 }
 
-export const VillaInfoBlock: React.FC <Props> = ({ villa }) => {
+export const StayInfoBlock: React.FC <Props> = ({ stay }) => {
   return (
     <InfoBlock>
       <NameBlock>
         <Name>
-          {villa.name}
+          {stay.name}
         </Name>
         <img 
           src={like}
@@ -73,11 +73,11 @@ export const VillaInfoBlock: React.FC <Props> = ({ villa }) => {
       </NameBlock>
       <EvaluationBlock>
         <Stars 
-          count={villa.rating}
+          count={stay.rating}
         />
-        <VillaLink click={() => {}}>
-          See all {villa.reviewsList.length} reviews
-        </VillaLink>
+        <StayLink click={() => {}}>
+          See all {stay.reviewsList.length} reviews
+        </StayLink>
       </EvaluationBlock>
       <LocationBlock>
         <ShowMap>
@@ -92,7 +92,7 @@ export const VillaInfoBlock: React.FC <Props> = ({ villa }) => {
           beach nearby
         </span>
       </LocationBlock>
-      <VillaPriceBlock 
+      <StayPriceBlock 
       />
     </InfoBlock>
   );

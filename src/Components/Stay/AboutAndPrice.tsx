@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { AboutBlock } from './AboutBlock';
 import { PriceBlock } from './PriceBlock';
-import { VillaInterface } from '../../types';
+import { StayInterface } from '../../types';
 
 const StyledAbout = styled.div`
 padding: 40px 0 0 0;
@@ -25,16 +25,16 @@ gap: 24px;
 
 
 interface Props {
-  villa: VillaInterface;
+  stay: StayInterface;
 }
 
-export const AboutAndPrice: React.FC <Props> = ({ villa }) => {
+export const AboutAndPrice: React.FC <Props> = ({ stay }) => {
   
   return (
     <StyledAbout>
       <Block>
         <AboutBlock 
-          villa={villa}
+          stay={stay}
         />
         <PriceBlock />
       </Block>

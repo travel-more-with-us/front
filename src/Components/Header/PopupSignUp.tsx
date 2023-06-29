@@ -3,11 +3,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { Form } from './Form/FormSignUp';
 import close from '../../images/close.svg';
+import { PopupConext } from './Auth';
 
 const StyledPopup = styled.div`
 position: absolute;
 width: 648px;
-height: 685px;
+height: auto;
 left: 50%;
 top: 124px;
 transform: translate(-50%, 0);
@@ -55,16 +56,13 @@ const Overlay = styled.div`
   z-index: 4;
 `;
 
-interface Props {
-  closePopup: () => void;
-}
-
-export const PopupSignUp: React.FC <Props> = ({ closePopup }) => {
+export const PopupSignUp = () => {
   const popupRef = React.useRef<HTMLDivElement>(null);
+  const { closePopupSignUp } = React.useContext(PopupConext);
 
   const handleClickOutside = (event: MouseEvent) => {
     if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
-      closePopup();
+      closePopupSignUp();
     }
   };
 
@@ -83,7 +81,7 @@ export const PopupSignUp: React.FC <Props> = ({ closePopup }) => {
         <Header>
           Sign up
         </Header>
-        <Close onClick={closePopup}>
+        <Close onClick={closePopupSignUp}>
           <img
             src={close}
             alt=""

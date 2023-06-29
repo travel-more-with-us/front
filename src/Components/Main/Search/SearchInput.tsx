@@ -1,8 +1,9 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent } from 'react';
 import styled from 'styled-components';
 import location from '../../../images/location.svg';
 import locationGreen from '../../../images/location-green.svg';
-import { Place, SearchOption } from '../../../types';
+import { Place } from '../../../types';
+import { useSearch } from '../../../hooks/useSearch';
 
 const Block = styled.div`
 max-width: 364px;
@@ -19,7 +20,7 @@ interface InputProps {
 
 const StyledInput = styled.input<InputProps>`
   background: #FFFFFF url(${props => props.iconIsGreen ? locationGreen : location}) no-repeat left 10px center;
-  border: 2px solid #D9DBE9;
+  border: 2px solid ${props => props.theme.disabledColor};
   border-radius: 8px;
   position: relative;
   padding: 20px 0 20px 64px;
@@ -33,7 +34,7 @@ const StyledInput = styled.input<InputProps>`
 
   &:focus-visible {
     background: #FFFFFF url(${locationGreen}) no-repeat left 10px center;
-    outline: 3px solid #29E3AB;
+    outline: 3px solid ${props => props.theme.primaryColor};
     outline-offset: -2px;
   }
 `;
@@ -47,7 +48,7 @@ const DropdownList = styled.ul`
   padding: 0;
   margin: 0;
   background-color: #ffffff;
-  border: 1px solid #d9dbe9;
+  border: 1px solid ${props => props.theme.disabledColor};
   border-top: none;
   border-radius: 0 0 8px 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -90,54 +91,9 @@ interface Props {
 }
 
 export const SearchInput: React.FC <Props> = ({ places }) => {
-  const [searchInput, setSearchInput] = React.useState('');
-  const options = places;
   const [dropdownVisible, setDropdownVisible] = React.useState(true);
+  const { searchedOptions, iconIsGreen, handleItemClick, handleSearch, searchInput } = useSearch(places, setDropdownVisible);
   const optionsToShowInDropdown = 5;
-  const [iconIsGreen, setIconIsGreen] = useState(false);
-
-  useEffect(() => {
-    if (searchInput !== '' && places.some(place => searchInput.toLowerCase().includes(place.city.toLowerCase()))) {
-      setIconIsGreen(true);
-    } else {
-      setIconIsGreen(false);
-    }
-  }, [searchInput, places]);
-
-  const handleItemClick = (option: SearchOption) => {
-    if (option.city === 'City not found') {
-      return;
-    }
-
-    const valueToSet = option.city + ', ' + option.country;
-    setSearchInput(valueToSet);
-    setDropdownVisible(false);
-  };
-
-  function handleSearch(str: string) {
-    setSearchInput(str);
-    setDropdownVisible(true);
-  }
-
-  const searchedOptions = React.useMemo(() => {
-    if (searchInput === '') {
-      return [];
-    }
-
-    const optionsFiltered = options.filter(option =>
-      option.city.toLowerCase().includes(searchInput.toLowerCase()) ||
-      option.country.toLowerCase().includes(searchInput.toLowerCase())
-    );
-
-    if (searchInput !== '' && optionsFiltered.length === 0) {
-      return [{
-        city: 'City not found',
-        country: ''
-      }];
-    }
-
-    return optionsFiltered;
-  }, [searchInput, options]);
 
   const handleClickOutside = (e: any) => {
     if (!e.target.closest('.dropdown')) {

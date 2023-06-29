@@ -8,12 +8,12 @@ border: none;
 outline: none;
 cursor: pointer;
 padding: 12px 16px;
-border: 2px solid #29E3AB;
+border: 2px solid ${props => props.theme.primaryColor};
 font-family: Nunito;
 
 &:hover {
-  border: 2px solid #0E966D;
-  background: #B4FDD3;
+  border: 2px solid ${props => props.theme.focusedColor};
+  background: ${props => props.theme.hoverColor};
 }
 `;
 

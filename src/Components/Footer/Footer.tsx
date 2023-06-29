@@ -4,7 +4,7 @@ import { Container } from '../Layout/Container';
 
 const StyledFooter = styled.footer`
 padding: 24px 0;
-border-top: 1px solid #D9DBE9;
+border-top: 1px solid ${props => props.theme.disabledColor};
 `;
 
 const List = styled.ul`

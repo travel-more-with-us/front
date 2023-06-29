@@ -22,7 +22,7 @@ const List = styled.ul`
 list-style: disc;
 margin: 0;
 padding: 0 16px;
-color: #4E4B66;
+color: ${props => props.theme.txtFormColor};
 `;
 
 const RoomBlock = styled.div`
@@ -59,7 +59,7 @@ text-decoration: none;
 color: ${props => props.theme.txtColor};
 `;
 
-export const VillaPriceBlock = () => {
+export const StayPriceBlock = () => {
   return (
     <StyledVilla>
       <RoomBlock>
@@ -87,7 +87,7 @@ export const VillaPriceBlock = () => {
         </PerNight>
         <div>
           <MyButtonSmall onClick={() => {}}>
-            <StyledLink to="/villa">
+            <StyledLink to="/stay">
               View Deal
             </StyledLink>
           </MyButtonSmall>

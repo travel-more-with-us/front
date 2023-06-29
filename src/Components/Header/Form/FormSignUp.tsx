@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-console */
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { MyInput } from '../../UI/MyInput';
 import { MyButtonLarge } from '../../UI/MyButtonLarge';
 import { PrivacyPolice } from './PrivacyPolice';
 import { FormSeparator } from '../../UI/FormSeparator';
 import { ContinueWith } from './ContinueWith';
+import { useSignUp } from '../../../hooks/useSignUp';
 
 const StyledForm = styled.form`
   display: flex;
@@ -68,97 +69,20 @@ margin: 35px 35px 0;
 `;
 
 export const Form = () => {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [confirmPassword, setConfirmPassword] = React.useState('');
-  const [emailError, setEmailError] = React.useState('');
-  const [passwordError, setPasswordError] = React.useState('');
-  const [emailDirty, setEmailDirty] = React.useState(false);
-  const [passwordDirty, setPasswordDirty] = React.useState(false);
-  const [buttonAvailable, setButtonAvailable] = React.useState(false);
-  const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+  const {
+    email,
+    password,
+    confirmPassword,
+    passwordDirty,
+    passwordError,
+    confirmPasswordDirty,
+    confirmPasswordError,
+    emailDirty,
+    emailError,
+    blurHandler,
+    buttonAvailable
 
-  const isValidEmail = (str: string) => {
-    return emailRegex.test(str);
-  };
-
-  function validatePassword(str: string) {
-    const minLength = 6;
-    const maxLength = 20;
-    const hasUppercase = /[A-Z]/.test(str);
-    const hasLowercase = /[a-z]/.test(str);
-    const hasNumber = /[0-9]/.test(str);
-    const hasSpecialChar = /[!@#$%^&*()]/.test(str);
-    const forbiddenValues = ['password', '123456', 'qwerty'];
-
-    if (str.length < minLength || str.length > maxLength) {
-      return 'Password must be between 6 and 20 characters long';
-    }
-
-    if (!hasUppercase || !hasLowercase || !hasNumber || !hasSpecialChar) {
-      return 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character';
-    }
-
-    if (forbiddenValues.includes(str)) {
-      return 'Password is not allowed';
-    }
-
-    return '';
-  }
-
-  React.useEffect(() => {
-    const isValid = isValidEmail(email);
-
-    if (!isValid) {
-      setEmailError('Email is not valid, try again');
-    } else {
-      setEmailError('');
-    }
-  }, [email]);
-
-  React.useEffect(() => {
-    const error = validatePassword(password);
-
-    if (error) {
-      setPasswordError(error);
-    } else {
-      setPasswordError('');
-    }
-  }, [password]);
-
-  function emailHandler(str: string) {
-    setEmail(str);
-  }
-
-  function passwordHandler(str: string) {
-    setPassword(str);
-  }
-
-  function confirmPasswordHandler(str: string) {
-    setConfirmPassword(str);
-  }
-
-  useEffect(() => {
-    if (emailDirty && passwordDirty) {
-      if (emailError || passwordError) {
-        setButtonAvailable(false);
-      } else {
-        setButtonAvailable(true);
-      }
-    }
-  }, [email, password, emailError, passwordError, passwordDirty, emailDirty]);
-
-  function blurHandler(e: React.FocusEvent<HTMLInputElement>) {
-    switch (e.target.type) {
-    case 'email':
-      setEmailDirty(true);
-      break;
-    case 'password':
-      setPasswordDirty(true);
-      break;
-    default: break;
-    }
-  }
+  } = useSignUp();
 
   function submitForm() {
     console.log('submit form');
@@ -174,9 +98,10 @@ export const Form = () => {
         Welcome to TravelMore!
       </Welcome>
       <StyledMyInput
-        value={email}
-        onChange={emailHandler}
+        value={email.value}
+        onChange={email.onChange}
         onBlur={blurHandler}
+        name="email"
         placeholder="Email"
         type="email"
         marginbottom="10px"
@@ -189,10 +114,11 @@ export const Form = () => {
         </ErrorMessage>
       )}
       <StyledMyInput
-        value={password}
-        onChange={passwordHandler}
+        value={password.value}
+        onChange={password.onChange}
         onBlur={blurHandler}
         placeholder="Password"
+        name="password"
         type="password"
         marginbottom="8px"
         error={passwordDirty ? passwordError : ''}
@@ -204,18 +130,19 @@ export const Form = () => {
         </ErrorMessage>
       )}
       <StyledMyInput
-        value={confirmPassword}
-        onChange={confirmPasswordHandler}
-        onBlur={() => {}}
+        value={confirmPassword.value}
+        onChange={confirmPassword.onChange}
+        name="confirm"
+        onBlur={blurHandler}
         placeholder="Confirm password"
         type="password"
         marginbottom="8px"
-        error={passwordDirty ? passwordError : ''}
-        success={passwordDirty && passwordError === '' ? 'true': ''}
+        error={confirmPasswordDirty ? confirmPasswordError : ''}
+        success={confirmPasswordDirty && confirmPasswordError === '' ? 'true': ''}
       />
-      {passwordDirty && passwordError && (
+      {confirmPasswordDirty && confirmPasswordError && (
         <ErrorMessage>
-          {passwordError}
+          {confirmPasswordError}
         </ErrorMessage>
       )}
       <PrivacyPolice />

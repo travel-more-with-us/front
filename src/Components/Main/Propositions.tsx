@@ -21,7 +21,7 @@ margin: 0 0 24px 0;
 font-weight: 400;
 font-size: 16px;
 line-height: 150%;
-color: #4E4B66;
+color: ${props => props.theme.txtFormColor};
 `;
 
 const Block = styled.div`

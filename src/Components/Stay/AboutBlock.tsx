@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { VillaLink } from '../UI/VillaLink';
-import { VillaInterface } from '../../types';
+import { StayLink } from '../UI/StayLink';
+import { StayInterface } from '../../types';
 
 const About = styled.div`
 max-width: 704px;
@@ -24,15 +24,15 @@ const Text = styled.p`
 font-weight: 400;
 font-size: 16px;
 line-height: 150%;
-color: #4E4B66;
+color: ${props => props.theme.txtFormColor};
 margin: 0;
 `;
 
 interface Props {
-  villa: VillaInterface
+  stay: StayInterface
 }
 
-export const AboutBlock: React.FC <Props> = ({ villa }) => {
+export const AboutBlock: React.FC <Props> = ({ stay }) => {
   const [showAll, setShowAll] = React.useState(false);
   function showMore() {
     setShowAll(!showAll);
@@ -43,11 +43,11 @@ export const AboutBlock: React.FC <Props> = ({ villa }) => {
         About this space
       </Header>
       <Text>
-        {showAll ? villa.about : villa.about.slice(0, 450) + ' ...'}
+        {showAll ? stay.about : stay.about.slice(0, 450) + ' ...'}
       </Text>
-      <VillaLink click={showMore} margin="8px 0 0 0">
+      <StayLink click={showMore} margin="8px 0 0 0">
         {!showAll ? 'Show more' : 'Hide text'}
-      </VillaLink>
+      </StayLink>
     </About>
   );
 };

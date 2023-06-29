@@ -15,7 +15,7 @@ outline: none;
 width: 149px;
 height: 49px;
 border-radius: 8px;
-border: 2px solid #D9DBE9;
+border: 2px solid ${props => props.theme.disabledColor};
 display: flex;
 width: 149px;
 height: 48px;

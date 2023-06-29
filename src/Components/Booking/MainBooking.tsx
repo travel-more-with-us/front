@@ -42,7 +42,7 @@ export const MainBooking = () => {
     navigate(-1);
   };
 
-  const villa = {
+  const stay = {
     name: 'Villa Antica',
     city: 'Split',
     country: 'Croatia',
@@ -178,12 +178,12 @@ export const MainBooking = () => {
         <MainBlock>
           <ImgBlock>
             <Image 
-              src={villa.images[0]}
+              src={stay.images[0]}
               alt="villa"
             />
           </ImgBlock>
           <InfoBlock 
-            villa={villa}
+            stay={stay}
           />
         </MainBlock>
         <SeparatorHorizontal />

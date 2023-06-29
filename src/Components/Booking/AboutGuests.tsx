@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { VillaLink } from '../UI/VillaLink';
+import { StayLink } from '../UI/StayLink';
 
 const StyledAboutGuests = styled.div`
-border-top: 1px solid #D9DBE9;
-border-bottom: 1px solid #D9DBE9;
+border-top: 1px solid ${props => props.theme.disabledColor};
+border-bottom: 1px solid ${props => props.theme.disabledColor};
 padding: 16px 0;
 display: flex;
 flex-direction: column;
@@ -17,7 +17,7 @@ justify-content: space-between;
 `;
 
 const Title = styled.p`
-color: #14142A;
+color: ${props => props.theme.txtColor};
 font-size: 18px;
 font-family: Nunito;
 font-weight: 600;
@@ -32,7 +32,7 @@ gap: 2px;
 `;
 
 const TxtValue = styled.p`
-color: #4E4B66;
+color: ${props => props.theme.txtFormColor};
 font-size: 16px;
 line-height: 150%;
 margin: 0;
@@ -50,9 +50,9 @@ export const AboutGuests = () => {
             June 20 - 21
           </TxtValue>
         </TitleBlock>
-        <VillaLink click={() => {}}>
+        <StayLink click={() => {}}>
           Edit
-        </VillaLink>
+        </StayLink>
       </Block>
 
       <Block>
@@ -64,9 +64,9 @@ export const AboutGuests = () => {
             3:00 - 5:00
           </TxtValue>
         </TitleBlock>
-        <VillaLink click={() => {}}>
+        <StayLink click={() => {}}>
           Edit
-        </VillaLink>
+        </StayLink>
       </Block>
 
       <Block>
@@ -78,9 +78,9 @@ export const AboutGuests = () => {
             2
           </TxtValue>
         </TitleBlock>
-        <VillaLink click={() => {}}>
+        <StayLink click={() => {}}>
           Edit
-        </VillaLink>
+        </StayLink>
       </Block>
     </StyledAboutGuests>
   );

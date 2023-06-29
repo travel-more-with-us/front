@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FormLink } from '../../UI/FormLink';
+import { PopupConext } from '../Auth';
 
 const Forgot = styled.p`
 text-align: left;
@@ -10,18 +11,14 @@ color: #2149C1;
 font-weight: 600;
 `;
 
-const CreateAccount = styled.p`
-color: #4E4B66;
+const CreateAccount = styled.div`
+color: ${props => props.theme.txtFormColor};
 margin: 0 0 35px 0;
 display: flex;
 `;
 
-interface Props {
-  openSignUp: () => void;
-  closePopup: () => void;
-}
-
-export const ForgotPassword: React.FC <Props> = ({ openSignUp, closePopup }) => {
+export const ForgotPassword = () => {
+  const { openPopupSignUp, closePopupSignIn } = React.useContext(PopupConext);
   return (
     <>
       <Forgot>
@@ -32,8 +29,8 @@ export const ForgotPassword: React.FC <Props> = ({ openSignUp, closePopup }) => 
         <FormLink
           color="#2149C1"
           onClick={() => {
-            openSignUp();
-            closePopup();
+            openPopupSignUp();
+            closePopupSignIn();
           }}
         >
           Create account

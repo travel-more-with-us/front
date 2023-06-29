@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-console */
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { MyInput } from '../../UI/MyInput';
 import { MyButtonLarge } from '../../UI/MyButtonLarge';
@@ -8,6 +8,7 @@ import { PrivacyPolice } from './PrivacyPolice';
 import { ForgotPassword } from './ForgotPassword';
 import { FormSeparator } from '../../UI/FormSeparator';
 import { ContinueWith } from './ContinueWith';
+import { useInput } from '../../../hooks/useInput';
 
 const StyledForm = styled.form`
   display: flex;
@@ -64,86 +65,37 @@ const StyledMyInput = styled(MyInput)<MyInputProps>`
   border-width: 2px;
 `;
 
-interface Props {
-  openSignUp: () => void;
-  closePopup: () => void;
-}
-
-export const FormSignIn: React.FC <Props> = ({ openSignUp, closePopup }) => {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+export const FormSignIn = () => {
   const [emailError, setEmailError] = React.useState('');
   const [passwordError, setPasswordError] = React.useState('');
   const [emailDirty, setEmailDirty] = React.useState(false);
   const [passwordDirty, setPasswordDirty] = React.useState(false);
   const [buttonAvailable, setButtonAvailable] = React.useState(false);
   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+  const email = useInput('');
+  const password = useInput('');
 
   const isValidEmail = (str: string) => {
     return emailRegex.test(str);
   };
 
-  function validatePassword(str: string) {
-    const minLength = 6;
-    const maxLength = 20;
-    const hasUppercase = /[A-Z]/.test(str);
-    const hasLowercase = /[a-z]/.test(str);
-    const hasNumber = /[0-9]/.test(str);
-    const hasSpecialChar = /[!@#$%^&*()]/.test(str);
-    const forbiddenValues = ['password', '123456', 'qwerty'];
-
-    if (str.length < minLength || str.length > maxLength) {
-      return 'Password must be between 6 and 20 characters long';
-    }
-
-    if (!hasUppercase || !hasLowercase || !hasNumber || !hasSpecialChar) {
-      return 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character';
-    }
-
-    if (forbiddenValues.includes(str)) {
-      return 'Password is not allowed';
-    }
-
-    return '';
-  }
-
   React.useEffect(() => {
-    const isValid = isValidEmail(email);
+    const isValid = isValidEmail(email.value);
 
     if (!isValid) {
       setEmailError('Email is not valid, try again');
     } else {
       setEmailError('');
     }
-  }, [email]);
+  }, [email.value]);
 
   React.useEffect(() => {
-    const error = validatePassword(password);
-
-    if (error) {
-      setPasswordError(error);
+    if (emailDirty && emailError) {
+      setButtonAvailable(false);
     } else {
-      setPasswordError('');
+      setButtonAvailable(true);
     }
-  }, [password]);
-
-  function emailHandler(str: string) {
-    setEmail(str);
-  }
-
-  function passwordHandler(str: string) {
-    setPassword(str);
-  }
-
-  useEffect(() => {
-    if (emailDirty && passwordDirty) {
-      if (emailError || passwordError) {
-        setButtonAvailable(false);
-      } else {
-        setButtonAvailable(true);
-      }
-    }
-  }, [email, password, emailError, passwordError, passwordDirty, emailDirty]);
+  }, [email.value, password.value, emailError, passwordError, passwordDirty, emailDirty]);
 
   function blurHandler(e: React.FocusEvent<HTMLInputElement>) {
     switch (e.target.type) {
@@ -171,8 +123,8 @@ export const FormSignIn: React.FC <Props> = ({ openSignUp, closePopup }) => {
         Welcome to TravelMore!
       </Welcome>
       <StyledMyInput
-        value={email}
-        onChange={emailHandler}
+        value={email.value}
+        onChange={email.onChange}
         onBlur={blurHandler}
         placeholder="Email"
         type="email"
@@ -186,8 +138,8 @@ export const FormSignIn: React.FC <Props> = ({ openSignUp, closePopup }) => {
         </ErrorMessage>
       )}
       <StyledMyInput
-        value={password}
-        onChange={passwordHandler}
+        value={password.value}
+        onChange={password.onChange}
         onBlur={blurHandler}
         placeholder="Password"
         type="password"
@@ -204,10 +156,7 @@ export const FormSignIn: React.FC <Props> = ({ openSignUp, closePopup }) => {
       <MyButtonLarge onClick={() => {}} disabled={!buttonAvailable}>
         Continue
       </MyButtonLarge>
-      <ForgotPassword 
-        openSignUp={openSignUp}
-        closePopup={closePopup}
-      />
+      <ForgotPassword />
       <FormSeparator />
       <ContinueWith />
     </StyledForm>
