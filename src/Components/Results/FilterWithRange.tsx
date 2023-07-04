@@ -32,6 +32,7 @@ margin: 0;
 font-size: 16px;
 font-weight: 600;
 color: ${props => props.theme.placeholderColor};
+width: 40px;
 `;
 
 const CheckBox = styled.input`
@@ -45,6 +46,7 @@ const CheckBox = styled.input`
 
   &:checked {
     background: ${props => props.theme.primaryColor};
+    border: none;
   }
 `;
 

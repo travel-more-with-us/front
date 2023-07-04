@@ -6,9 +6,9 @@ import { PropositionsBlock } from './PropositionsBlock';
 import videoSource from '../../images/video-travel-more.mp4';
 
 const StyledMain = styled.main`
-padding: 170px 0 0;
+padding: 135px 0 0;
 background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
-margin: 0 0 160px 0;
+margin: 0 0 185px 0;
 
 @media screen and (max-width: 768px) {
   padding: 130px 0 140px;
@@ -23,7 +23,7 @@ const VideoBackground = styled.video`
   top: 80px;
   left: 0;
   width: 100%;
-  height: 50%;
+  height: 60%;
   object-fit: cover;
   z-index: 0;
 
@@ -36,7 +36,7 @@ const Header = styled.h1`
 font-weight: 700;
 font-size: 56px;
 line-height: 120%;
-color: #FFFFFF;
+color: #FCFCFC;
 margin: 0;
 position: relative;
 z-index: 2;
@@ -62,7 +62,7 @@ export const Main = () => {
       <StyledMain>
         <Container>
           <Header>
-            Discover. Compare. Travel More!
+            Discover. Compare. <br /> Travel More!
           </Header>
           <Description>
             Streamline your travel planning with our

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Icons } from './Icons';
 import { Place } from '../../../types';
-
 import { Container } from '../../Layout/Container';
 import { Inputs } from './Inputs';
 

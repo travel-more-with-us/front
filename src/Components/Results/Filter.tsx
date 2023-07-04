@@ -30,6 +30,7 @@ const Count = styled.p`
 margin: 0;
 font-size: 16px;
 font-weight: 600;
+width: 40px;
 color: ${props => props.theme.placeholderColor};
 `;
 
@@ -44,6 +45,7 @@ const CheckBox = styled.input`
 
   &:checked {
     background: ${props => props.theme.primaryColor};
+    border: none;
   }
 `;
 

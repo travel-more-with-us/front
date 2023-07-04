@@ -16,13 +16,13 @@ const CalendarInput = styled.div`
 
   .react-datepicker {
     font-family: Nunito, sans-serif;
+    width: 100%;
 
     &__header {
       background: #fff;
     }
 
     &-wrapper {
-      max-width: 184px;
 
       @media screen and (max-width: 768px) {
         max-width: 364px;

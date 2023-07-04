@@ -13,6 +13,8 @@ import { Inputs } from '../Main/Search/Inputs';
 import { Filters } from './Filters';
 import { ResultHeader } from './ResultHeader';
 import { StaysList } from './StaysList';
+import { Back } from '../UI/Back';
+import { useNavigate } from 'react-router-dom';
 
 const StyledResults = styled.main`
 padding: 32px 0 80px;
@@ -91,10 +93,20 @@ export const ResultsMain = () => {
       rating: 5,
     },
   ];
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <StyledResults>
       <Container>
-        <ResultHeader />
+        {/* <ResultHeader /> */}
+        <Back 
+          name="Back to Home"
+          goBack={goBack}
+        />
         <InputsContainer>
           <Inputs 
             places={places}

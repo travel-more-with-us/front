@@ -26,7 +26,10 @@ color: ${props => props.theme.txtFormColor};
 `;
 
 const RoomBlock = styled.div`
-  width: calc((100% - 14px) * 0.7);
+  width: calc((100% - 14px) * 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 
   @media screen and (max-width: 768px) {
     width: 100%;
@@ -34,7 +37,11 @@ const RoomBlock = styled.div`
 `;
 
 const PriceBlock = styled.div`
-width: calc((100% - 14px) * 0.3);
+width: calc((100% - 14px) * 0.4);
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: flex-end;
 
 @media screen and (max-width: 768px) {
   width: 100%;
@@ -42,7 +49,7 @@ width: calc((100% - 14px) * 0.3);
 `;
 
 const Price = styled.p`
-font-size: 56px;
+font-size: 32px;
 font-weight: 700;
 line-height: 120%;
 margin: 0;
@@ -59,7 +66,11 @@ text-decoration: none;
 color: ${props => props.theme.txtColor};
 `;
 
-export const StayPriceBlock = () => {
+interface Props {
+  price: number;
+}
+
+export const StayPriceBlock: React.FC <Props> = ({ price }) => {
   return (
     <StyledVilla>
       <RoomBlock>
@@ -80,7 +91,7 @@ export const StayPriceBlock = () => {
       </RoomBlock>
       <PriceBlock>
         <Price>
-          € 600 
+          € {price} 
         </Price>
         <PerNight>
           /Per night, 2 adults

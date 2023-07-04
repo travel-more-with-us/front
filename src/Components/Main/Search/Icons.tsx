@@ -18,12 +18,13 @@ const Icon = styled.div<IconProps>`
 width: 132px;
 height: 48px;
 background: #fff;
-border: ${props => props.active ? '4px solid #0E966D' : `2px solid ${props.theme.primaryColor}`};
+border: ${props => props.active ? '2px solid #0E966D' : `2px solid ${props.theme.disabledColor}`};
 border-radius: 8px;
 display: flex;
 justify-content: center;
 align-items: center;
 cursor: pointer;
+gap: 8px;
 
 @media screen and (max-width: 425px) {
   width: 100%;
@@ -31,9 +32,12 @@ cursor: pointer;
 
 &:hover {
   background: ${props => props.theme.hoverColor};
-  border: '4px solid #0E966D';
+  border: 2px solid #0E966D;
 }
+`;
 
+const IconName = styled.p`
+margin: 0;
 `;
 
 interface IconProps {
@@ -83,9 +87,9 @@ export const Icons = () => {
             src={icon.img}
             alt=""
           />
-          <p>
+          <IconName>
             {icon.name}
-          </p>
+          </IconName>
         </Icon>
       ))}
     </StyledIcons>

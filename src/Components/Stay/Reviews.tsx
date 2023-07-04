@@ -39,12 +39,12 @@ align-items: center;
 }
 `;
 
-const RaringName = styled.p`
+const RatingName = styled.p`
 width: 130px;
 margin: 0;
 `;
 
-const RaringValue = styled.p`
+const RatingValue = styled.p`
 margin: 0;
 width: 20px;
 `;
@@ -62,11 +62,12 @@ interface Props {
 }
 
 export const Reviews: React.FC <Props> = ({ stay }) => {
+  console.log(stay.ratings);
   return (
     <ReviewsContainer>
       <ReviewsBlock>
         <H3>
-          Rarings&Reviews
+          Ratings&Reviews
         </H3>
         <StayLink click={() => {}}>
           Show more
@@ -75,15 +76,15 @@ export const Reviews: React.FC <Props> = ({ stay }) => {
       <ListRarings>
         {stay.ratings.map((rating: RatingInterface) => (
           <ListRaringItem key={rating.name}>
-            <RaringName>
+            <RatingName>
               {rating.name}
-            </RaringName>
+            </RatingName>
             <Rating 
               rating={rating.rating}
             />
-            <RaringValue>
-              {rating.rating}
-            </RaringValue>
+            <RatingValue>
+              {rating.rating.toFixed(1)}
+            </RatingValue>
           </ListRaringItem>
         ))}
       </ListRarings>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import logo from '../../images/logo.png';
+import logo from '../../images/logo.svg';
 import { MySelect } from '../UI/MySelect';
 import stays from '../../images/city.svg';
 import flights from '../../images/flight.svg';
@@ -20,10 +20,11 @@ display: flex;
 gap: 8px;
 align-items: center;
 justify-content: center;
-font-weight: 700;
-font-size: 24px;
-line-height: 120%;
 text-decoration: none;
+font-size: 18px;
+font-family: Nunito;
+font-style: normal;
+font-weight: 600;
 `;
 
 const Image = styled.img`

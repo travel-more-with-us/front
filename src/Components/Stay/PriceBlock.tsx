@@ -98,7 +98,7 @@ export const PriceBlock = () => {
           Price per night
         </PriceTxtNormal>
         <PriceCurrencyNormal>
-          euro 600
+          € 600
         </PriceCurrencyNormal>
       </Price>
       <Price>
@@ -106,7 +106,7 @@ export const PriceBlock = () => {
           Taxes and fees
         </PriceTxtGray>
         <PriceCurrencyGray>
-          euro 11.86
+          € 11.86
         </PriceCurrencyGray>
       </Price>
       <Price>
@@ -114,7 +114,7 @@ export const PriceBlock = () => {
           Total cost
         </PriceTxtBold>
         <PriceCurrencyBold>
-          euro 612
+          € 612
         </PriceCurrencyBold>
       </Price>
       <ButtonContainer>

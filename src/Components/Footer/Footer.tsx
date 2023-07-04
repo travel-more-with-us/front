@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Container } from '../Layout/Container';
+import down from '../../images/down.svg';
 
 const StyledFooter = styled.footer`
 padding: 24px 0;
@@ -23,6 +24,18 @@ justify-content: space-between;
 
 const Text = styled.p`
 margin: 0;
+position: relative;
+
+&:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  right: -30px;
+  background-image: url(${down});
+  transform: rotate(180deg);
+  width: 24px;
+  height: 24px;
+}
 `;
 
 export const Footer = () => {

@@ -92,7 +92,8 @@ export const StayInfoBlock: React.FC <Props> = ({ stay }) => {
           beach nearby
         </span>
       </LocationBlock>
-      <StayPriceBlock 
+      <StayPriceBlock
+        price={stay.price}
       />
     </InfoBlock>
   );

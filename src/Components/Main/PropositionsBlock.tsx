@@ -77,6 +77,13 @@ export const PropositionsBlock = () => {
       rewievs: 143,
       rating: 5,
     },
+    {
+      img: rio,
+      country: 'Croatia',
+      city: 'Split',
+      rewievs: 143,
+      rating: 5,
+    },
   ];
 
   return (

@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import guests from '../../../images/guests.svg';
+import { useSelector, useDispatch } from 'react-redux';
+import { decrementGuest, incrementGuest } from '../../../store/actions';
 
 const Block = styled.div`
 max-width: 184px;
@@ -38,7 +40,8 @@ const Input = styled.input`
 
 const Dropdown = styled.div`
   position: absolute;
-  top: 110%;
+  top: 100%;
+  margin: 8px 0 0 0;
   left: 0;
   width: 273px;
   max-height: 200px;
@@ -111,33 +114,21 @@ const Value = styled.span`
 
 export const Guests = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [adults, setAdults] = useState(1);
-  const [children, setChildren] = useState(0);
-  const [rooms, setRooms] = useState(1);
   const blockRef = React.useRef<HTMLDivElement | null>(null);
+  const guests = useSelector((state: any) => state.guests);
+  const dispatch = useDispatch();
+  console.log(guests);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
   const handleIncrement = (field: string) => {
-    if (field === 'adults') {
-      setAdults(adults + 1);
-    } else if (field === 'children') {
-      setChildren(children + 1);
-    } else if (field === 'rooms') {
-      setRooms(rooms + 1);
-    }
+    dispatch(incrementGuest(field));
   };
 
   const handleDecrement = (field: string) => {
-    if (field === 'adults' && adults > 1) {
-      setAdults(adults - 1);
-    } else if (field === 'children' && children > 0) {
-      setChildren(children - 1);
-    } else if (field === 'rooms' && rooms > 1) {
-      setRooms(rooms - 1);
-    }
+    dispatch(decrementGuest(field));
   };
 
   const handleClickOutside = (e: MouseEvent) => {
@@ -162,7 +153,7 @@ export const Guests = () => {
     <Block ref={blockRef}>
       <Input
         type="text"
-        value={adults === 1 ? `${adults} Adult` : `${adults} Adults`}
+        value={guests.adults === 1 ? `${guests.adults} Adult` : `${guests.adults} Adults`}
         onClick={toggleDropdown}
         readOnly
       />
@@ -172,9 +163,17 @@ export const Guests = () => {
             <Counter>
               <span>Adults</span>
               <Buttons>
-                <Button onClick={() => handleDecrement('adults')}>-</Button>
-                <Value>{adults}</Value>
-                <Button onClick={() => handleIncrement('adults')}>+</Button>
+                <Button 
+                  onClick={() => handleDecrement('adults')}
+                >
+                  -
+                </Button>
+                <Value>{guests.adults}</Value>
+                <Button 
+                  onClick={() => handleIncrement('adults')}
+                >
+                  +
+                </Button>
               </Buttons>
             </Counter>
           </Option>
@@ -182,9 +181,17 @@ export const Guests = () => {
             <Counter>
               <span>Children</span>
               <Buttons>
-                <Button onClick={() => handleDecrement('children')} disabled={children === 0}>-</Button>
-                <Value>{children}</Value>
-                <Button onClick={() => handleIncrement('children')}>+</Button>
+                <Button 
+                  onClick={() => handleDecrement('children')} disabled={guests.children === 0}
+                >
+                  -
+                </Button>
+                <Value>{guests.children}</Value>
+                <Button 
+                  onClick={() => handleIncrement('children')}
+                >
+                  +
+                </Button>
               </Buttons>
             </Counter>
           </Option>
@@ -192,9 +199,17 @@ export const Guests = () => {
             <Counter>
               <span>Rooms</span>
               <Buttons>
-                <Button onClick={() => handleDecrement('rooms')}>-</Button>
-                <Value>{rooms}</Value>
-                <Button onClick={() => handleIncrement('rooms')}>+</Button>
+                <Button 
+                  onClick={() => handleDecrement('rooms')}
+                >
+                    -
+                </Button>
+                <Value>{guests.rooms}</Value>
+                <Button 
+                  onClick={() => handleIncrement('rooms')}
+                >
+                  +
+                </Button>
               </Buttons>
             </Counter>
           </Option>

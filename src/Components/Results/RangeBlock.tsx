@@ -41,7 +41,7 @@ const StyledSlider = styledMui(Slider)<any>(() => ({
 }));
 
 export const RangeBlock = () => {
-  const [value, setValue] = React.useState<number[]>([0, 1000]);
+  const [value, setValue] = React.useState<number[]>([0, 2000]);
 
   const handleChange = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number[]);
@@ -75,7 +75,7 @@ export const RangeBlock = () => {
           onChange={handleChange}
           valueLabelDisplay="off"
           min={0}
-          max={1000}
+          max={2000}
           disableSwap
         />
       </Range>

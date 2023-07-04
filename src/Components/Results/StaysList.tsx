@@ -346,7 +346,118 @@ export const StaysList = () => {
           description: 'Cancellation Terms - Free cancellation up to 7 days before arrival - 50% refund for cancellations less than 7 days before arrival - No refund for cancellations within 48 hours of arrival Booking Modifications - Changes and modifications to reservations are subject to availability and may incur additional charges'
         }
       ]
+    },
+    {
+      name: 'Villa Paradiso',
+      city: 'Santorini',
+      country: 'Greece',
+      rating: 4.7,
+      reviews: 82,
+      street: 'Karterados',
+      images: [
+        villa1,
+        villa2,
+        villa3,
+        villa4,
+        villa5
+      ],
+      about: 'Villa Paradiso is a luxurious retreat situated in the enchanting island of Santorini, Greece. This elegant villa offers breathtaking views of the Aegean Sea and the iconic Santorini sunset. With its spacious and beautifully designed interiors, it provides a serene and indulgent getaway. The villa features four tastefully furnished bedrooms with en-suite bathrooms. The outdoor terrace with a private infinity pool is the perfect spot to relax and enjoy the stunning surroundings. Lorem ipsum dolor sit amet consectetur adipisicing elit...',
+      price: 1500,
+      amenities: [
+        {
+          name: 'Private Infinity Pool',
+          img: wifi
+        },
+        {
+          name: 'Outdoor Terrace',
+          img: wifi
+        },
+        {
+          name: 'Garden',
+          img: wifi
+        },
+        {
+          name: 'Barbecue',
+          img: wifi
+        },
+        {
+          name: 'Spa',
+          img: wifi
+        },
+        {
+          name: 'Fitness Center',
+          img: wifi
+        },
+        {
+          name: 'Wi-Fi',
+          img: wifi
+        },
+        {
+          name: 'Parking',
+          img: wifi
+        },
+        {
+          name: 'Air Conditioning',
+          img: wifi
+        }
+        // Добавьте дополнительные удобства здесь
+      ],
+      ratings: [
+        {
+          name: 'Cleanliness',
+          rating: 4.8,
+        },
+        {
+          name: 'Communication',
+          rating: 4.7,
+        },
+        {
+          name: 'Check-In',
+          rating: 4.6,
+        },
+        {
+          name: 'Accuracy',
+          rating: 4.8,
+        },
+        {
+          name: 'Location',
+          rating: 4.9,
+        },
+        {
+          name: 'Value',
+          rating: 4.7,
+        }
+      ],
+      reviewsList: [
+        {
+          author: 'Emma Wilson',
+          text: 'Villa Paradiso is truly a paradise on earth. The views are absolutely breathtaking, and the villa itself is a masterpiece. The attention to detail and the level of comfort provided exceeded our expectations. The staff was attentive and made our stay unforgettable. We highly recommend Villa Paradiso to anyone visiting Santorini!',
+          date: 'June 2023',
+          img: person,
+        },
+        {
+          author: 'James Thompson',
+          text: 'We had an incredible time at Villa Paradiso. The location is perfect, close to all the attractions and with easy access to beautiful beaches. The villa is luxurious and offers everything one could ask for. The infinity pool and the sunset views are simply magical. We will definitely be coming back!',
+          date: 'June 2023',
+          img: person,
+        }
+      ],
+      guidelines: [
+        {
+          name: 'House Rules',
+          description: 'Check-in and Check-out times - Check-in: after 3:00 PM - Check-out: before 11:00 AM Smoking Policy - Smoking is prohibited inside the villa - Smoking is allowed in designated outdoor areas Pet Policy - Pets are not allowed in the villa - Additional fees apply for pet-friendly accommodations',
+        },
+        {
+          name: 'Safety & Security',
+          description: 'Safety Measures - Please keep the doors and windows locked when leaving the villa - Store your valuables in the provided safe - Do not disclose any personal or confidential information about your stay Responsibility for Personal Belongings - Guests are fully responsible for their personal belongings and valuables - The villa owner is not liable for any loss or damage'
+        },
+        {
+          name: 'Cancellation Policy',
+          description: 'Cancellation Terms - Free cancellation up to 14 days before arrival - 50% refund for cancellations less than 14 days before arrival - No refund for cancellations within 48 hours of arrival Booking Modifications - Changes and modifications to reservations are subject to availability and may incur additional charges'
+        }
+      ]
     }
+    
   ];
 
   return (

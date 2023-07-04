@@ -46,7 +46,7 @@ export const ListHeader = () => {
       </div>
       <Buttons>
         <ButtonOutlined>
-          Grid view
+          Map
         </ButtonOutlined>
         <ButtonOutlined>
           <ButtonBlock>
