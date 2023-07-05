@@ -101,17 +101,36 @@ export const Filters: React.FC <Props> = ({ stays }) => {
   //   'All inclusive',
   // ];
 
-  // const amenities = [
-  //   'Airport shuttle included',
-  //   'Pool',
-  //   'Ocean view',
-  //   'Parking',
-  //   'Air conditioned',
-  //   'Free parking',
-  //   'Swimming pool',
-  //   'Sleeps Up to 3 adults',
-  //   'Balcony/Terrace',
-  // ];
+  const amenities = [
+    {
+      name: 'Swimming pool',
+      value: 'Swimming pool'
+    },
+    {
+      name: 'Ocean view',
+      value: 'Ocean view'
+    },
+    {
+      name: 'Wi-Fi',
+      value: 'Wi-Fi'
+    },
+    {
+      name: 'Parking',
+      value: 'Parking'
+    },
+    {
+      name: 'Fitness center',
+      value: 'Fitness center'
+    },
+    {
+      name: 'Spa',
+      value: 'Spa'
+    },
+    {
+      name: 'Restaurants & Bars',
+      value: 'Restaurants & Bars'
+    }
+  ];
 
   // const accesibility = [
   //   'In-room accessibility',
@@ -197,11 +216,13 @@ export const Filters: React.FC <Props> = ({ stays }) => {
           options={mealPlans}
         /> */}
         <SeparatorHorizontal />
-        {/* <Filter 
+        <Filter 
           name="Amenities"
           options={amenities}
           seeMore={true}
-        /> */}
+          stays={stays}
+          keyName="amenities"
+        />
         <SeparatorHorizontal />
         {/* <Filter 
           name="Accessibility"

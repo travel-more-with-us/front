@@ -25,7 +25,7 @@ import person from '../../images/person.png';
 import { useSelector } from 'react-redux';
 import { useGetCoefficient } from '../../hooksAndHelpers/useGetCoefficient';
 import { StateInterface } from '../../types/reduxTypes';
-import { FilterOptionInterface, FilterPriceOptionInterface, StayInterface } from '../../types';
+import { useSortedAndFilteredStays } from '../../hooksAndHelpers/useSortedAndFilteredStays';
 
 const StyledResults = styled.main`
 padding: 32px 0 80px;
@@ -179,8 +179,11 @@ export const stays = [
       {
         name: '24/7 Security',
         img: wifi
+      },
+      {
+        name: 'Ocean view',
+        img: wifi
       }
-      // Add additional amenities here
     ],
     ratings: [
       {
@@ -401,7 +404,7 @@ export const stays = [
         img: wifi
       },
       {
-        name: 'Fitness Center',
+        name: 'Fitness center',
         img: wifi
       }
     ],
@@ -484,11 +487,11 @@ export const stays = [
         img: wifi
       },
       {
-        name: 'Swimming Pools',
+        name: 'Swimming Pool',
         img: wifi
       },
       {
-        name: 'Spa & Wellness Center',
+        name: 'Spa',
         img: wifi
       },
       {
@@ -973,62 +976,8 @@ export const ResultsMain = () => {
   const goBack = () => {
     navigate(-1);
   };
-  console.log(filters);
-  const sortAndFilterStays = React.useCallback(() => {
-    let copyOfStays = [...stays];
-    if (Object.keys(filters).length === 0) {
-      console.log('key length 0');
-      return copyOfStays;
-    }
 
-    if (filters.hasOwnProperty('priceRange')) {
-      if (filters.priceCheckboxFilters.length !== 0) {
-        const sortedCheckboxFilters = filters.priceCheckboxFilters.sort((a: FilterPriceOptionInterface, b: FilterPriceOptionInterface) => a.min - b.min);
-        copyOfStays = copyOfStays.filter((stay: StayInterface) => stay.price * coefficient > sortedCheckboxFilters[0].min && stay.price * coefficient <= sortedCheckboxFilters[sortedCheckboxFilters.length - 1].max);
-      } else {
-        copyOfStays = copyOfStays.filter((stay: StayInterface) => stay.price * coefficient > filters.priceRange.min && stay.price * coefficient <= filters.priceRange.max);
-        console.log(copyOfStays);
-      }
-    }
-
-    if (filters.propertyType.length !== 0) {
-      console.log('has property type');
-      copyOfStays = copyOfStays.filter((stay: StayInterface) => filters.propertyType.some((filter: FilterOptionInterface) => filter.value === stay.propertyType));
-    }
-
-    if (filters.rating.length !== 0) {
-      copyOfStays = copyOfStays.filter((stay: StayInterface) => filters.rating.some((filter: FilterOptionInterface) => filter.value === Math.round(stay.rating)));
-    }
-
-    switch(sortBy) {
-    case 'Rating from 1 to 5':
-      copyOfStays.sort((a, b) => a.rating - b.rating);
-      break;
-    case 'Rating from 5 to 1':
-      copyOfStays.sort((a, b) => b.rating - a.rating);
-      break;
-    case 'Name A-Z':
-      copyOfStays.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
-      break;
-    case 'Name Z-A':
-      copyOfStays.sort((a, b) => b.name.toLowerCase().localeCompare(a.name.toLowerCase()));
-      break;
-    case 'Price: high to low':
-      copyOfStays.sort((a, b) => b.price - a.price);
-      break;
-    case 'Price: low to high':
-      copyOfStays.sort((a, b) => a.price - b.price);
-      break;
-    default:
-      copyOfStays.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
-    }
-
-    return copyOfStays;
-  }, [filters, sortBy]);
-
-  const sortedAndFilteredStays = React.useMemo(() => {
-    return sortAndFilterStays();
-  }, [filters, stays, sortBy]);
+  const sortedAndFilteredStays = useSortedAndFilteredStays(stays, filters, sortBy, coefficient);
 
   return (
     <StyledResults>

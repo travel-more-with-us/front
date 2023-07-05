@@ -3,7 +3,7 @@ export interface StateInterface {
   dates: DatesState;
   departure: DepartureState;
   sort: SortState;
-  filters: any;
+  filters: any
 }
 
 export interface GuestsState {

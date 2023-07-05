@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
 import { updateFilters } from '../../store/actions';
-import { FilterOptionInterface, StayInterface } from '../../types';
+import { AmenityInterface, FilterOptionInterface, StayInterface } from '../../types';
 
 const StyledFilter = styled.div`
 padding: 24px;
@@ -88,11 +88,6 @@ line-height: 150%;
 }
 `;
 
-// interface OptionInterface {
-//   name: string;
-//   value: string | number;
-// }
-
 interface Props {
   name: string;
   options: FilterOptionInterface[];
@@ -159,6 +154,14 @@ export const Filter: React.FC <Props> = ({ name, options, seeMore, stays, keyNam
               {stays.filter((stay: StayInterface) => {
                 if (keyName === 'rating' && typeof(option.value) === 'number') {
                   return Math.round(stay[keyName]) === option.value;
+                }
+
+                if (keyName === 'amenities') {
+                  if (stay.amenities.some((amenity: AmenityInterface) => {
+                    return amenity.name === option.value;
+                  })) {
+                    return stay;
+                  }
                 }
 
                 return stay[keyName] === option.value;
