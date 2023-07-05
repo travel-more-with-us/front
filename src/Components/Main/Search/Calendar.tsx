@@ -105,8 +105,14 @@ const CalendarInput = styled.div`
   }
 `;
 
-export const Calendar: React.FC <any> = ({ setDate, date, disableBefore }) => {
-  const handleDateChange = (date: Date | null) => {
+interface Props {
+  date: Date | null;
+  disableBefore: Date;
+  setDate: (date: Date) => void;
+}
+
+export const Calendar: React.FC <Props> = ({ setDate, date, disableBefore }) => {
+  const handleDateChange = (date: Date) => {
     setDate(date);
   };
 

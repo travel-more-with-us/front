@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import styled from 'styled-components';
 import { StayLink } from '../UI/StayLink';
@@ -5,10 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
 import { updateFilters } from '../../store/actions';
-import { StayInterface } from '../../types';
+import { FilterOptionInterface, StayInterface } from '../../types';
 
 const StyledFilter = styled.div`
 padding: 24px;
+
+@media screen and (max-width: 1024px) {
+  padding: 8px;
 `;
 
 const FilterName = styled.h5`
@@ -46,6 +50,11 @@ const CheckBox = styled.input`
   outline: none;
   cursor: pointer;
 
+  @media screen and (max-width: 1024px) {
+    width: 18px;
+    height: 18px;
+  }
+
   &:checked {
     background: ${props => props.theme.primaryColor};
     border: none;
@@ -73,16 +82,20 @@ const Option = styled.label`
 font-size: 16px;
 font-family: Nunito;
 line-height: 150%;
+
+@media screen and (max-width: 1024px) {
+  font-size: 14px;
+}
 `;
 
-interface OptionInterface {
-  name: string;
-  value: string | number;
-}
+// interface OptionInterface {
+//   name: string;
+//   value: string | number;
+// }
 
 interface Props {
   name: string;
-  options: OptionInterface[];
+  options: FilterOptionInterface[];
   seeMore?: boolean;
   stays: StayInterface[];
   keyName: string;
@@ -90,7 +103,7 @@ interface Props {
 
 export const Filter: React.FC <Props> = ({ name, options, seeMore, stays, keyName }) => {
   const [open, setOpen] = React.useState(false);
-  const [selectedFilters, setSelectedFilters] = React.useState<any>([]);
+  const [selectedFilters, setSelectedFilters] = React.useState<FilterOptionInterface[]>([]);
   const dispatch = useDispatch();
 
   const appliedOptions = React.useMemo(() => {
@@ -106,11 +119,11 @@ export const Filter: React.FC <Props> = ({ name, options, seeMore, stays, keyNam
     setOpen(!open);
   }
 
-  function selectFilter(elem: any) {
-    if (selectedFilters.some((filter: any) => filter.name === elem.name)) {
-      setSelectedFilters((prev: any) => [...prev].filter((filter: any) => filter.name !== elem.name));
+  function selectFilter(elem: FilterOptionInterface) {
+    if (selectedFilters.some((filter: FilterOptionInterface) => filter.name === elem.name)) {
+      setSelectedFilters((prev: FilterOptionInterface[]) => [...prev].filter((filter: FilterOptionInterface) => filter.name !== elem.name));
     } else {
-      setSelectedFilters((prev: any) => [...prev, elem]);
+      setSelectedFilters((prev: FilterOptionInterface[]) => [...prev, elem]);
     }
   }
 
@@ -127,7 +140,7 @@ export const Filter: React.FC <Props> = ({ name, options, seeMore, stays, keyNam
         {name}
       </FilterName>
       <FiltersBlock>
-        {appliedOptions.map((option: OptionInterface) => (
+        {appliedOptions.map((option: FilterOptionInterface) => (
           <FilterBlock key={option.name}>
             <CheckboxBlock>
               <CheckBox 

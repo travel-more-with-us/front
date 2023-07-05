@@ -10,6 +10,12 @@ const StyledPayment = styled.form`
 padding: 56px 0;
 display: flex;
 gap: 24px;
+
+@media screen and (max-width: 768px) {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 `;
 
 const Column = styled.div`
@@ -17,6 +23,10 @@ const Column = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const H3 = styled.h3`

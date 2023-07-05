@@ -25,12 +25,13 @@ justify-content: space-between;
 const Text = styled.p`
 margin: 0;
 position: relative;
+padding: 0 40px 0 0;
 
 &:before {
   position: absolute;
   content: '';
   top: 0;
-  right: -30px;
+  right: 0;
   background-image: url(${down});
   transform: rotate(180deg);
   width: 24px;

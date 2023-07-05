@@ -7,6 +7,7 @@ import { StayInterface } from '../../types';
 import { useSelector } from 'react-redux';
 import { useGetDuration } from '../../hooksAndHelpers/useGetDuration';
 import { useGetCoefficient } from '../../hooksAndHelpers/useGetCoefficient';
+import { StateInterface } from '../../types/reduxTypes';
 
 const PriceContainer = styled.div`
 border: 1px solid ${props => props.theme.disabledColor};
@@ -98,7 +99,7 @@ interface Props {
 }
 
 export const PriceBlock: React.FC <Props> = ({ stay }) => {
-  const dates = useSelector((state: any) => state.dates);
+  const dates = useSelector((state: StateInterface) => state.dates);
   const duration = useGetDuration(dates.startDate, dates.endDate);
   const coefficient = useGetCoefficient();
   return (

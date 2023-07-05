@@ -23,6 +23,10 @@ width: 100%;
 height: 100%;
 border-radius: 8px;
 
+@media screen and (max-width: 1024px) {
+  height: unset;
+}
+
 @media screen and (max-width: 768px) {
   max-width: unset;
 }

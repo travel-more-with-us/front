@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { ChangeEvent, useEffect } from 'react';
 import styled from 'styled-components';
 import Slider from '@mui/material/Slider';

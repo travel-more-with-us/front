@@ -5,6 +5,7 @@ import { Stay } from './Stay';
 import { StayInterface } from '../../types';
 import { useSelector } from 'react-redux';
 import { useGetDuration } from '../../hooksAndHelpers/useGetDuration';
+import { StateInterface } from '../../types/reduxTypes';
 
 const List = styled.div`
 padding: 10px;
@@ -39,9 +40,9 @@ interface Props {
 }
 
 export const StaysList: React.FC <Props> = ({ stays }) => {
-  const dates = useSelector((state: any) => state.dates);
+  const dates = useSelector((state: StateInterface) => state.dates);
   const duration = useGetDuration(dates.startDate, dates.endDate);
-  const adults = useSelector((state: any) => state.guests.adults);
+  const adults = useSelector((state: StateInterface) => state.guests.adults);
 
   return (
     <List>
@@ -53,7 +54,7 @@ export const StaysList: React.FC <Props> = ({ stays }) => {
           <Stay 
             stay={stay}
             key={stay.city}
-            duration={duration}
+            duration={duration || 2}
             adults={adults}
           />
         ))}

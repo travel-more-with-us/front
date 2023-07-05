@@ -8,6 +8,7 @@ export interface Place {
 
 export interface StayInterface {
   name: string;
+  id: number;
   city: string;
   country: string;
   rating: number;
@@ -48,5 +49,16 @@ export interface Guideline {
 export interface SearchOption {
   city: string;
   country: string;
+}
+
+export interface FilterPriceOptionInterface {
+  name: string;
+  min: number;
+  max: number;
+}
+
+export interface FilterOptionInterface {
+  name: string;
+  value: string | number;
 }
 

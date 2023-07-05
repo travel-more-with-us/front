@@ -1,12 +1,12 @@
 import React from 'react';
 
-export const useGetDuration = (startDate: any, endDate: any) => {
+export const useGetDuration = (startDate: Date | null, endDate: Date | null) => {
 
   const duration = React.useMemo(() => {
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    const timeDifference = end.getTime() - start.getTime();
-    const daysDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
+    const start = startDate && new Date(startDate);
+    const end = endDate && new Date(endDate);
+    const timeDifference = end && start && end.getTime() - start.getTime();
+    const daysDifference = timeDifference && Math.ceil(timeDifference / (1000 * 3600 * 24));
     return daysDifference;
   }, [startDate, endDate]);
 

@@ -8,6 +8,10 @@ import { StayInterface } from '../../types';
 const StyledInfoBlock = styled.div`
  margin: 0;
  width: 50%;
+
+ @media screen and (max-width: 768px) {
+  width: 100%;
+}
 `;
 
 interface Props {

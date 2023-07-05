@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { ButtonOutlined } from '../UI/ButtonOutlined';
 import { useSelector } from 'react-redux';
 import { SortSelect } from './SortSelect';
+import { StateInterface } from '../../types/reduxTypes';
 
 const CityAndCountry = styled.p`
 font-size: 18px;
@@ -34,7 +35,7 @@ interface Props {
 }
 
 export const ListHeader: React.FC <Props> = ({ count }) => {
-  const departure = useSelector((state: any) => state.departure);
+  const departure = useSelector((state: StateInterface) => state.departure);
   return (
     <Header>
       <div>

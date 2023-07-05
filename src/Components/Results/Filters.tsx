@@ -35,16 +35,16 @@ interface Props {
 }
 
 export const Filters: React.FC <Props> = ({ stays }) => {
-  const popularFiltersOptions = [
-    'Hotels',
-    'Breakfast included',
-    '5 stars',
-    'Hostels',
-    'Beachfront',
-    'Twin beds',
-    'Bed and breakfasts',
-    'Split Old Town',
-  ];
+  // const popularFiltersOptions = [
+  //   'Hotels',
+  //   'Breakfast included',
+  //   '5 stars',
+  //   'Hostels',
+  //   'Beachfront',
+  //   'Twin beds',
+  //   'Bed and breakfasts',
+  //   'Split Old Town',
+  // ];
 
   const propertyTypes = [
     {
@@ -88,40 +88,40 @@ export const Filters: React.FC <Props> = ({ stays }) => {
     }
   ];
 
-  const distanceFromCenter = [
-    'less than 1km',
-    'less than 3km',
-    'less than 5km'
-  ];
+  // const distanceFromCenter = [
+  //   'less than 1km',
+  //   'less than 3km',
+  //   'less than 5km'
+  // ];
 
-  const mealPlans = [
-    'Breakfast included',
-    'Lunch included',
-    'Dinner included',
-    'All inclusive',
-  ];
+  // const mealPlans = [
+  //   'Breakfast included',
+  //   'Lunch included',
+  //   'Dinner included',
+  //   'All inclusive',
+  // ];
 
-  const amenities = [
-    'Airport shuttle included',
-    'Pool',
-    'Ocean view',
-    'Parking',
-    'Air conditioned',
-    'Free parking',
-    'Swimming pool',
-    'Sleeps Up to 3 adults',
-    'Balcony/Terrace',
-  ];
+  // const amenities = [
+  //   'Airport shuttle included',
+  //   'Pool',
+  //   'Ocean view',
+  //   'Parking',
+  //   'Air conditioned',
+  //   'Free parking',
+  //   'Swimming pool',
+  //   'Sleeps Up to 3 adults',
+  //   'Balcony/Terrace',
+  // ];
 
-  const accesibility = [
-    'In-room accessibility',
-    'Roll-in shower',
-    'Service animals',
-    'Accessible bathroom',
-    'Wi-Fi',
-    'Cannabis in bedroom',
-    'Girls for relaxing',
-  ];
+  // const accesibility = [
+  //   'In-room accessibility',
+  //   'Roll-in shower',
+  //   'Service animals',
+  //   'Accessible bathroom',
+  //   'Wi-Fi',
+  //   'Cannabis in bedroom',
+  //   'Girls for relaxing',
+  // ];
 
   const prices = [
     {
@@ -188,7 +188,7 @@ export const Filters: React.FC <Props> = ({ stays }) => {
         />
         <SeparatorHorizontal />
         {/* <Filter 
-          name="Distance from center of Split"
+          name="Distance from center"
           options={distanceFromCenter}
         /> */}
         <SeparatorHorizontal />

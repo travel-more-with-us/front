@@ -1,16 +1,20 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import styled from 'styled-components';
 import { StayLink } from '../UI/StayLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { RangeBlock } from './RangeBlock';
-import { StayInterface } from '../../types';
+import { FilterPriceOptionInterface, StayInterface } from '../../types';
 import { useGetCoefficient } from '../../hooksAndHelpers/useGetCoefficient';
 import { useDispatch } from 'react-redux';
 import { updateFilters } from '../../store/actions';
 
 const StyledFilter = styled.div`
 padding: 24px;
+
+@media screen and (max-width: 1024px) {
+  padding: 8px;
 `;
 
 const FilterName = styled.h5`
@@ -48,6 +52,11 @@ const CheckBox = styled.input`
   outline: none;
   cursor: pointer;
 
+  @media screen and (max-width: 1024px) {
+    width: 18px;
+    height: 18px;
+  }
+
   &:checked {
     background: ${props => props.theme.primaryColor};
     border: none;
@@ -75,24 +84,22 @@ const Option = styled.label`
 font-size: 16px;
 font-family: Nunito;
 line-height: 150%;
-`;
 
-interface OptionInterface {
-  name: string;
-  min: number;
-  max: number;
+@media screen and (max-width: 1024px) {
+  font-size: 14px;
 }
+`;
 
 interface Props {
   name: string;
-  options: OptionInterface[];
+  options: FilterPriceOptionInterface[];
   seeMore?: boolean;
   stays: StayInterface[];
 }
 
 export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore, stays }) => {
   const [open, setOpen] = React.useState(false);
-  const [selectedFilters, setSelectedFilters] = React.useState<any>([]);
+  const [selectedFilters, setSelectedFilters] = React.useState<FilterPriceOptionInterface[]>([]);
   const coefficient = useGetCoefficient();
   const dispatch = useDispatch();
 
@@ -109,15 +116,15 @@ export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore, stay
     setOpen(!open);
   }
 
-  const sortedStays: any = React.useMemo(() => {
+  const sortedStays: StayInterface[] = React.useMemo(() => {
     return [...stays].sort((stay1, stay2) => stay1.price - stay2.price);
   }, [stays]);
 
-  function selectFilter(elem: any) {
-    if (selectedFilters.some((filter: any) => filter.name === elem.name)) {
-      setSelectedFilters((prev: any) => [...prev].filter((filter: any) => filter.name !== elem.name));
+  function selectFilter(elem: FilterPriceOptionInterface) {
+    if (selectedFilters.some((filter: FilterPriceOptionInterface) => filter.name === elem.name)) {
+      setSelectedFilters((prev: FilterPriceOptionInterface[]) => [...prev].filter((filter: FilterPriceOptionInterface) => filter.name !== elem.name));
     } else {
-      setSelectedFilters((prev: any) => [...prev, elem]);
+      setSelectedFilters((prev: FilterPriceOptionInterface[]) => [...prev, elem]);
     }
   }
 
@@ -140,7 +147,7 @@ export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore, stay
         max={sortedStays[sortedStays.length - 1].price * coefficient || 2000}
       />
       <FiltersBlock>
-        {appliedOptions.map((option: OptionInterface) => (
+        {appliedOptions.map((option: FilterPriceOptionInterface) => (
           <FilterBlock key={option.name}>
             <CheckboxBlock>
               <CheckBox 

@@ -13,7 +13,6 @@ border-radius: 16px;
 margin: 0 auto 72px;
 transform: translateY(-50%);
 width: 95%;
-height: 184px;
 padding: 24px;
 box-sizing: border-box;
 position: relative;

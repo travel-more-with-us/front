@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import styled from 'styled-components';
 import { Container } from '../Layout/Container';
@@ -23,6 +24,8 @@ import wifi from '../../images/wifi.svg';
 import person from '../../images/person.png';
 import { useSelector } from 'react-redux';
 import { useGetCoefficient } from '../../hooksAndHelpers/useGetCoefficient';
+import { StateInterface } from '../../types/reduxTypes';
+import { FilterOptionInterface, FilterPriceOptionInterface, StayInterface } from '../../types';
 
 const StyledResults = styled.main`
 padding: 32px 0 80px;
@@ -961,9 +964,9 @@ export const ResultsMain = () => {
     },
   ];
 
-  const filters = useSelector((state: any) => state.filters);
+  const filters = useSelector((state: StateInterface) => state.filters);
   const coefficient = useGetCoefficient();
-  const sortBy = useSelector((state: any) => state.sort);
+  const sortBy = useSelector((state: StateInterface) => state.sort);
   console.log(sortBy);
   const navigate = useNavigate();
 
@@ -980,21 +983,21 @@ export const ResultsMain = () => {
 
     if (filters.hasOwnProperty('priceRange')) {
       if (filters.priceCheckboxFilters.length !== 0) {
-        const sortedCheckboxFilters = filters.priceCheckboxFilters.sort((a: any, b: any) => a.min - b.min);
-        copyOfStays = copyOfStays.filter((stay: any) => stay.price * coefficient > sortedCheckboxFilters[0].min && stay.price * coefficient <= sortedCheckboxFilters[sortedCheckboxFilters.length - 1].max);
+        const sortedCheckboxFilters = filters.priceCheckboxFilters.sort((a: FilterPriceOptionInterface, b: FilterPriceOptionInterface) => a.min - b.min);
+        copyOfStays = copyOfStays.filter((stay: StayInterface) => stay.price * coefficient > sortedCheckboxFilters[0].min && stay.price * coefficient <= sortedCheckboxFilters[sortedCheckboxFilters.length - 1].max);
       } else {
-        copyOfStays = copyOfStays.filter((stay: any) => stay.price * coefficient > filters.priceRange.min && stay.price * coefficient <= filters.priceRange.max);
+        copyOfStays = copyOfStays.filter((stay: StayInterface) => stay.price * coefficient > filters.priceRange.min && stay.price * coefficient <= filters.priceRange.max);
         console.log(copyOfStays);
       }
     }
 
     if (filters.propertyType.length !== 0) {
       console.log('has property type');
-      copyOfStays = copyOfStays.filter((stay: any) => filters.propertyType.some((filter: any) => filter.value === stay.propertyType));
+      copyOfStays = copyOfStays.filter((stay: StayInterface) => filters.propertyType.some((filter: FilterOptionInterface) => filter.value === stay.propertyType));
     }
 
     if (filters.rating.length !== 0) {
-      copyOfStays = copyOfStays.filter((stay: any) => filters.rating.some((filter: any) => filter.value === Math.round(stay.rating)));
+      copyOfStays = copyOfStays.filter((stay: StayInterface) => filters.rating.some((filter: FilterOptionInterface) => filter.value === Math.round(stay.rating)));
     }
 
     switch(sortBy) {

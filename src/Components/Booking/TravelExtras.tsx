@@ -8,6 +8,12 @@ padding: 56px 0;
 display: flex;
 justify-content: space-between;
 gap: 24px;
+
+@media screen and (max-width: 768px) {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 `;
 
 const ExtrasBlock = styled.div`
@@ -36,10 +42,18 @@ justify-content: space-between;
 
 const InfoBlock = styled.div`
 width: calc((100% - 50px) / 2);
+
+@media screen and (max-width: 768px) {
+  width: 100%;
+}
 `;
 
 const Offers = styled.div`
 width: calc((100% - 50px) / 2);
+
+@media screen and (max-width: 768px) {
+  width: 100%;
+}
 `;
 
 const OptionHeader = styled.p`

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import guests from '../../../images/guests.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { decrementGuest, incrementGuest } from '../../../store/actions';
+import { StateInterface } from '../../../types/reduxTypes';
 
 const Block = styled.div`
 max-width: 184px;
@@ -115,7 +116,7 @@ const Value = styled.span`
 export const Guests = () => {
   const [isOpen, setIsOpen] = useState(false);
   const blockRef = React.useRef<HTMLDivElement | null>(null);
-  const guests = useSelector((state: any) => state.guests);
+  const guests = useSelector((state: StateInterface) => state.guests);
   const dispatch = useDispatch();
 
   const toggleDropdown = () => {

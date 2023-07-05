@@ -8,6 +8,7 @@ import { Place } from '../../../types';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateDates } from '../../../store/actions';
+import { StateInterface } from '../../../types/reduxTypes';
 
 const InputsContainer = styled.div`
 display: flex;
@@ -24,7 +25,7 @@ justify-content: space-between;
 }
 `;
 
-const Button = styled.div<any>`
+const Button = styled.div`
   max-width: 80px;
   width: 10%;
   height: 64px;
@@ -69,15 +70,15 @@ interface Props {
 
 export const Inputs: React.FC <Props> = ({ places }) => {
   const dispatch = useDispatch();
-  const dateStart = useSelector((state: any) => state.dates.startDate);
-  const dateEnd = useSelector((state: any) => state.dates.endDate);
-  const departure = useSelector((state: any) => state.departure);
+  const dateStart = useSelector((state: StateInterface) => state.dates.startDate);
+  const dateEnd = useSelector((state: StateInterface) => state.dates.endDate);
+  const departure = useSelector((state: StateInterface) => state.departure);
   
-  function setDateStart(date: any) {
+  function setDateStart(date: Date) {
     if (dateEnd === null) {
       const updatedDates = {
         startDate: date,
-        endDate: new Date(date.getTime() + 24 * 60 * 60 * 1000),
+        endDate: date && new Date(date.getTime() + 24 * 60 * 60 * 1000),
       };
       dispatch(updateDates(updatedDates));
     } else {
@@ -89,7 +90,7 @@ export const Inputs: React.FC <Props> = ({ places }) => {
     
   }
   
-  function setDateEnd(date: any) {
+  function setDateEnd(date: Date) {
     const updatedDates = {
       endDate: date,
     };
@@ -113,7 +114,7 @@ export const Inputs: React.FC <Props> = ({ places }) => {
         disableBefore={dateStart ? new Date(dateStart.getTime() + 24 * 60 * 60 * 1000) : new Date()}
       />
       <Guests />
-      {departure.ctiy === '' || departure.country === '' ? (
+      {departure.city === '' || departure.country === '' ? (
         <Button>
           <img src={search} alt="search" />
         </Button>

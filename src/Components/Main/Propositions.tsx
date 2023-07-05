@@ -28,6 +28,10 @@ const Block = styled.div`
 display: flex;
 gap: 24px;
 flex-wrap: wrap;
+
+@media screen and (max-width: 1024px) {
+  justify-content: center;
+}
 `;
 
 interface Props {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { StateInterface } from '../../types/reduxTypes';
 
 const CheckDatesContainer = styled.div`
 display: flex;
@@ -38,8 +39,8 @@ color: ${props => props.theme.txtColor};
 `;
 
 export const CheckDates = () => {
-  const dates = useSelector((state: any) => state.dates);
-  const guests = useSelector((state: any) => state.guests);
+  const dates = useSelector((state: StateInterface) => state.dates);
+  const guests = useSelector((state: StateInterface) => state.guests);
   console.log(dates);
   return (
     <CheckDatesContainer>
@@ -48,7 +49,7 @@ export const CheckDates = () => {
           Check in
         </DateTxt>
         <DateValue>
-          {dates.startDate.toLocaleDateString()}
+          {dates.startDate && dates.startDate.toLocaleDateString()}
         </DateValue>
       </Date>
       <Date>
@@ -56,7 +57,7 @@ export const CheckDates = () => {
           Check out
         </DateTxt>
         <DateValue>
-          {dates.endDate.toLocaleDateString()}
+          {dates.endDate && dates.endDate.toLocaleDateString()}
         </DateValue>
       </Date>
       <Date>

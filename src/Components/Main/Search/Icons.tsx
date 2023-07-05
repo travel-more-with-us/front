@@ -12,6 +12,10 @@ display: flex;
 flex-wrap: wrap;
 width: 100%;
 gap: 20px;
+
+@media screen and (max-width: 768px) {
+  justify-content: center;
+}
 `;
 
 const Icon = styled.div<IconProps>`

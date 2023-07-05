@@ -1,3 +1,6 @@
+import { Reducer } from 'redux';
+import { DatesAction, DatesState, DepartureAction, DepartureState, FiltersAction, GuestsAction, GuestsState, SortAction, SortState } from '../types/reduxTypes';
+
 const today = new Date();
 const tomorrow = new Date();
 tomorrow.setDate(today.getDate() + 1);
@@ -20,7 +23,7 @@ const initialState = {
   sort: '',
 };
 
-const guestsReducer = (state = initialState.guests as any, action: any) => {
+const guestsReducer: Reducer<GuestsState, GuestsAction> = (state = initialState.guests as GuestsState, action: GuestsAction) => {
   switch (action.type) {
   case 'INCREMENT_GUEST':
     if (action.payload === 'rooms' && state.rooms < 4 && state.rooms === state.adults) {
@@ -69,7 +72,7 @@ const guestsReducer = (state = initialState.guests as any, action: any) => {
   }
 };
 
-const departureReducer = (state = initialState.departure, action: any) => {
+const departureReducer: Reducer<DepartureState, DepartureAction> = (state = initialState.departure, action: DepartureAction) => {
   switch (action.type) {
   case 'UPDATE_DEPARTURE':
     return action.payload;
@@ -78,7 +81,7 @@ const departureReducer = (state = initialState.departure, action: any) => {
   }
 };
 
-const datesReducer = (state = initialState.dates, action: any) => {
+const datesReducer: Reducer<DatesState, DatesAction> = (state = initialState.dates, action: DatesAction) => {
   switch (action.type) {
   case 'UPDATE_DATES':
     return { ...state, ...action.payload };
@@ -87,7 +90,7 @@ const datesReducer = (state = initialState.dates, action: any) => {
   }
 };
 
-const filtersReducer = (state = initialState.filters, action: any) => {
+const filtersReducer: Reducer<any, FiltersAction> = (state = initialState.filters, action: FiltersAction) => {
   switch (action.type) {
   case 'UPDATE_FILTERS':
     return { ...state, ...action.payload };
@@ -96,7 +99,7 @@ const filtersReducer = (state = initialState.filters, action: any) => {
   }
 };
 
-const sortReducer = (state = initialState.sort, action: any) => {
+const sortReducer: Reducer<SortState, SortAction> = (state = initialState.sort, action: SortAction) => {
   switch (action.type) {
   case 'UPDATE_SORT':
     return action.payload;

@@ -12,11 +12,21 @@ display: flex;
 align-items: center;
 flex-wrap: wrap;
 gap: 40px;
+
+@media screen and (max-width: 768px) {
+  flex-direction: column;
+}
 `;
 
 const Languages = styled.div`
 display: flex;
 align-items: center;
+`;
+
+const Buttons = styled.div`
+display: flex;
+gap: 24px;
+flex-wrap: wrap;
 `;
 
 interface PopupContextProps {
@@ -57,15 +67,17 @@ export const Auth = () => {
             arrow={false}
           />
         </Languages>
-        <p>
+        {/* <p>
           List your property
-        </p>
-        <MyButtonMedium onClick={openPopupSignIn}>
-          Sign in
-        </MyButtonMedium>
-        <MyButtonMedium onClick={openPopupSignUp}>
-          Sign up
-        </MyButtonMedium>
+        </p> */}
+        <Buttons>
+          <MyButtonMedium onClick={openPopupSignIn}>
+            Sign in
+          </MyButtonMedium>
+          <MyButtonMedium onClick={openPopupSignUp}>
+            Sign up
+          </MyButtonMedium>
+        </Buttons>
         {isOpenSignUp && (
           <PopupSignUp />
         )}
