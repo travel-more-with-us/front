@@ -16,11 +16,11 @@ export const AppRouter = () => {
       element: <Results />,
     },
     {
-      path: '/booking',
+      path: '/booking/:stayId',
       element: <Booking />
     },
     {
-      path: '/stay',
+      path: '/stay/:stayId',
       element: <Stay />,
     }
   ];

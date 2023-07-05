@@ -1,5 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { StayInterface } from '../../types';
+import { useSelector } from 'react-redux';
+import { useGetDuration } from '../../hooksAndHelpers/useGetDuration';
+import { useGetCoefficient } from '../../hooksAndHelpers/useGetCoefficient';
 
 const StyledAboutPrice = styled.div`
 padding: 12px 0;
@@ -63,7 +67,14 @@ font-weight: 700;
 line-height: 120%;
 `;
 
-export const AboutPrice = () => {
+interface Props {
+  stay: StayInterface;
+}
+
+export const AboutPrice: React.FC <Props> = ({ stay }) => {
+  const dates = useSelector((state: any) => state.dates);
+  const duration = useGetDuration(dates.startDate, dates.endDate);
+  const coefficient = useGetCoefficient();
   return (
     <StyledAboutPrice>
       <PriceDetails>
@@ -72,10 +83,10 @@ export const AboutPrice = () => {
 
       <PriceBlock>
         <PerNightTxt>
-          Price per night
+          {(duration === 1 || duration === 0) ? 'Price per night' : `Price per ${duration} nights`}
         </PerNightTxt>
         <PricePerNight>
-          € 600
+          € {stay.price * coefficient}
         </PricePerNight>
       </PriceBlock>
 
@@ -84,7 +95,7 @@ export const AboutPrice = () => {
           Taxes and fees
         </TaxesAndFees>
         <TaxesPrice>
-          € 11.86
+          € {(stay.price * 0.02).toFixed(2)}
         </TaxesPrice>
       </PriceBlock>
 
@@ -93,7 +104,7 @@ export const AboutPrice = () => {
           Total cost
         </TotalCostTxt>
         <TotalCost>
-          € 612.86
+        € {(stay.price * coefficient) + (+(stay.price * 0.02).toFixed(2))}
         </TotalCost>
       </PriceBlock>
     </StyledAboutPrice>

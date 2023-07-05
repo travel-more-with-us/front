@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import { MyButtonMedium } from '../UI/MyButtonMedium';
 import { CheckDates } from './CheckDates';
 import { Link } from 'react-router-dom';
+import { StayInterface } from '../../types';
+import { useSelector } from 'react-redux';
+import { useGetDuration } from '../../hooksAndHelpers/useGetDuration';
+import { useGetCoefficient } from '../../hooksAndHelpers/useGetCoefficient';
 
 const PriceContainer = styled.div`
 border: 1px solid ${props => props.theme.disabledColor};
@@ -89,16 +93,23 @@ const StyledLink = styled(Link)`
 text-decoration: none;
 `;
 
-export const PriceBlock = () => {
+interface Props {
+  stay: StayInterface;
+}
+
+export const PriceBlock: React.FC <Props> = ({ stay }) => {
+  const dates = useSelector((state: any) => state.dates);
+  const duration = useGetDuration(dates.startDate, dates.endDate);
+  const coefficient = useGetCoefficient();
   return (
     <PriceContainer>
       <CheckDates />
       <Price>
         <PriceTxtNormal>
-          Price per night
+          Price per {duration === 1 || duration === 0 ? 'night' : `${duration} nights`}
         </PriceTxtNormal>
         <PriceCurrencyNormal>
-          € 600
+          € {stay.price * coefficient}
         </PriceCurrencyNormal>
       </Price>
       <Price>
@@ -106,7 +117,7 @@ export const PriceBlock = () => {
           Taxes and fees
         </PriceTxtGray>
         <PriceCurrencyGray>
-          € 11.86
+          € {(stay.price * 0.02).toFixed(2)}
         </PriceCurrencyGray>
       </Price>
       <Price>
@@ -114,11 +125,11 @@ export const PriceBlock = () => {
           Total cost
         </PriceTxtBold>
         <PriceCurrencyBold>
-          € 612
+          € {(stay.price * coefficient) + (+(stay.price * 0.02).toFixed(2))}
         </PriceCurrencyBold>
       </Price>
       <ButtonContainer>
-        <StyledLink to="/booking">
+        <StyledLink to={`/booking/${stay.id}`}>
           <MyButtonMedium onClick={() => {}}>
             Reserve
           </MyButtonMedium>

@@ -9,6 +9,9 @@ import { StayInterface } from '../../types';
 
 const InfoBlock = styled.div`
 width: calc((100% - 24px) - ((100% - 24px) / 3));
+display: flex;
+flex-direction: column;
+justify-content: space-between;
 
 @media screen and (max-width: 768px) {
   width: 100%;
@@ -57,9 +60,11 @@ margin: 0 8px 0 0;
 
 interface Props {
   stay: StayInterface;
+  duration: number;
+  adults: number;
 }
 
-export const StayInfoBlock: React.FC <Props> = ({ stay }) => {
+export const StayInfoBlock: React.FC <Props> = ({ stay, duration, adults }) => {
   return (
     <InfoBlock>
       <NameBlock>
@@ -94,6 +99,9 @@ export const StayInfoBlock: React.FC <Props> = ({ stay }) => {
       </LocationBlock>
       <StayPriceBlock
         price={stay.price}
+        duration={duration}
+        adults={adults}
+        stayId={stay.id}
       />
     </InfoBlock>
   );

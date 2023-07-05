@@ -1,7 +1,9 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useEffect } from 'react';
 import styled from 'styled-components';
 import Slider from '@mui/material/Slider';
 import { styled as styledMui } from '@mui/material/styles';
+import { useDispatch } from 'react-redux';
+import { updateFilters } from '../../store/actions';
 
 const StyledRangeBlock = styled.div`
   margin: 0 0 24px 0;
@@ -40,8 +42,13 @@ const StyledSlider = styledMui(Slider)<any>(() => ({
   },
 }));
 
-export const RangeBlock = () => {
-  const [value, setValue] = React.useState<number[]>([0, 2000]);
+interface Props {
+  min: number;
+  max: number;
+}
+
+export const RangeBlock: React.FC <Props> = ({ min, max }) => {
+  const [value, setValue] = React.useState<number[]>([min, max]);
 
   const handleChange = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number[]);
@@ -62,6 +69,17 @@ export const RangeBlock = () => {
       return prevState;
     });
   };
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const obj = {
+      priceRange: {
+        min: value[0],
+        max: value[1]
+      }
+    };
+    dispatch(updateFilters(obj));
+  }, [value]);
   
   return (
     <StyledRangeBlock>
@@ -75,7 +93,7 @@ export const RangeBlock = () => {
           onChange={handleChange}
           valueLabelDisplay="off"
           min={0}
-          max={2000}
+          max={max}
           disableSwap
         />
       </Range>

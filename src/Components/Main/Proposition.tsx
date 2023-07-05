@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Evaluation } from './Evaluation';
 import { Place as PlaceType } from '../../types';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { updateDeparture } from '../../store/actions';
 
 const Place = styled.div`
   width: 288px;
@@ -38,12 +40,33 @@ interface Props {
 }
 
 export const Proposition: React.FC <Props> = ({ place }) => {
+  const dispatch = useDispatch();
+
+  function selectTheLocation(place: PlaceType) {
+    const departure = {
+      country: place.country,
+      city: place.city,
+    };
+
+    dispatch(updateDeparture(departure));
+  }
+
   return (
     <Place>
-      <Link to="/results">
+      <Link 
+        to="/results" 
+        onClick={(e) => {
+          selectTheLocation(place);
+        }}
+      >
         <Image src={place.img} />
       </Link>
-      <City to="/results">
+      <City 
+        to="/results"
+        onClick={(e) => {
+          selectTheLocation(place);
+        }}
+      >
         {place.city}
       </City>
       <Country>

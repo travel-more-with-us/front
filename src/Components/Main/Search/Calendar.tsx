@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import styled from 'styled-components';
@@ -89,7 +89,8 @@ const CalendarInput = styled.div`
         border: 2px solid ${props => props.theme.disabledColor};
         border-radius: 8px;
         background: #FFFFFF url(${calendar}) no-repeat left 5px center;
-        padding: 0 0 0 40px;
+        background-position: 16px center;
+        padding: 0 0 0 56px;
   
         &:focus-visible {
           outline: 3px solid ${props => props.theme.primaryColor};
@@ -104,20 +105,25 @@ const CalendarInput = styled.div`
   }
 `;
 
-export const Calendar = () => {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-
+export const Calendar: React.FC <any> = ({ setDate, date, disableBefore }) => {
   const handleDateChange = (date: Date | null) => {
-    setSelectedDate(date);
+    setDate(date);
+  };
+
+  const highlightToday: any = {
+    borderColor: '#00ff00',
+    borderWidth: '2px',
   };
 
   return (
     <CalendarInput>
       <DatePicker
-        selected={selectedDate}
+        selected={date ? date : null}
         onChange={handleDateChange}
         dateFormat="d MMMM"
         placeholderText="Select a date"
+        highlightDates={[highlightToday]}
+        minDate={disableBefore}
       />
     </CalendarInput>
   );

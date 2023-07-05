@@ -5,7 +5,7 @@ import earth from '../../images/earth.svg';
 import { MyButtonMedium } from '../UI/MyButtonMedium';
 import { PopupSignUp } from './PopupSignUp';
 import { PopupSignIn } from './PopupSignIn';
-import { usePopup } from '../../hooks/usePopup';
+import { usePopup } from '../../hooksAndHelpers/usePopup';
 
 const StyledAuth = styled.div`
 display: flex;

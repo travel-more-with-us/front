@@ -20,6 +20,7 @@ export interface StayInterface {
   ratings: RatingInterface[];
   reviewsList: ReviewListItemInterface[];
   guidelines: Guideline[];
+  [key: string]: any;
 }
 
 export interface AmenityInterface {

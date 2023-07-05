@@ -4,6 +4,10 @@ import { StayLink } from '../UI/StayLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { RangeBlock } from './RangeBlock';
+import { StayInterface } from '../../types';
+import { useGetCoefficient } from '../../hooksAndHelpers/useGetCoefficient';
+import { useDispatch } from 'react-redux';
+import { updateFilters } from '../../store/actions';
 
 const StyledFilter = styled.div`
 padding: 24px;
@@ -73,14 +77,24 @@ font-family: Nunito;
 line-height: 150%;
 `;
 
-interface Props {
+interface OptionInterface {
   name: string;
-  options: string[];
-  seeMore?: boolean;
+  min: number;
+  max: number;
 }
 
-export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore }) => {
+interface Props {
+  name: string;
+  options: OptionInterface[];
+  seeMore?: boolean;
+  stays: StayInterface[];
+}
+
+export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore, stays }) => {
   const [open, setOpen] = React.useState(false);
+  const [selectedFilters, setSelectedFilters] = React.useState<any>([]);
+  const coefficient = useGetCoefficient();
+  const dispatch = useDispatch();
 
   const appliedOptions = React.useMemo(() => {
     if (seeMore && open === false) {
@@ -95,24 +109,54 @@ export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore }) =>
     setOpen(!open);
   }
 
+  const sortedStays: any = React.useMemo(() => {
+    return [...stays].sort((stay1, stay2) => stay1.price - stay2.price);
+  }, [stays]);
+
+  function selectFilter(elem: any) {
+    if (selectedFilters.some((filter: any) => filter.name === elem.name)) {
+      setSelectedFilters((prev: any) => [...prev].filter((filter: any) => filter.name !== elem.name));
+    } else {
+      setSelectedFilters((prev: any) => [...prev, elem]);
+    }
+  }
+
+  console.log(selectedFilters);
+
+  React.useEffect(() => {
+    const obj = {
+      priceCheckboxFilters: selectedFilters,
+    };
+    dispatch(updateFilters(obj));
+  }, [selectedFilters]);
+
   return (
     <StyledFilter>
       <FilterName>
         {name}
       </FilterName>
-      <RangeBlock />
+      <RangeBlock 
+        min={0}
+        max={sortedStays[sortedStays.length - 1].price * coefficient || 2000}
+      />
       <FiltersBlock>
-        {appliedOptions.map((option: string) => (
-          <FilterBlock key={option}>
+        {appliedOptions.map((option: OptionInterface) => (
+          <FilterBlock key={option.name}>
             <CheckboxBlock>
-              <CheckBox type='checkbox' id={option}/>
+              <CheckBox 
+                type='checkbox' 
+                id={option.name}
+                onChange={() => {
+                  selectFilter(option);
+                }}
+              />
               <StyledCheckmarkIcon icon={faCheck} />
-              <Option htmlFor={option}>
-                {option}
+              <Option htmlFor={option.name}>
+                {option.name}
               </Option>
             </CheckboxBlock>
             <Count>
-              50
+              {stays.filter((stay: StayInterface) => stay.price * coefficient > option.min && stay.price * coefficient <= option.max).length}
             </Count>
           </FilterBlock>
         ))}

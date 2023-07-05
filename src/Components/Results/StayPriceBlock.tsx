@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { MyButtonSmall } from '../UI/MyButtonSmall';
 import { Link } from 'react-router-dom';
+import { useGetCoefficient } from '../../hooksAndHelpers/useGetCoefficient';
 
 const StyledVilla = styled.div`
 display: flex;
@@ -68,9 +69,14 @@ color: ${props => props.theme.txtColor};
 
 interface Props {
   price: number;
+  duration: number;
+  adults: number;
+  stayId: number;
 }
 
-export const StayPriceBlock: React.FC <Props> = ({ price }) => {
+export const StayPriceBlock: React.FC <Props> = ({ price, duration, adults, stayId }) => {
+  const coefficient = useGetCoefficient();
+
   return (
     <StyledVilla>
       <RoomBlock>
@@ -91,14 +97,14 @@ export const StayPriceBlock: React.FC <Props> = ({ price }) => {
       </RoomBlock>
       <PriceBlock>
         <Price>
-          € {price} 
+          € {price * coefficient} 
         </Price>
         <PerNight>
-          /Per night, 2 adults
+          {`/Per ${duration === 1 || duration === 0 ? 'night' : `${duration} nights`}, ${adults === 1 ? '1 Adult' : `${adults} Adults`}`}
         </PerNight>
         <div>
           <MyButtonSmall onClick={() => {}}>
-            <StyledLink to="/stay">
+            <StyledLink to={`/stay/${stayId.toString()}`}>
               View Deal
             </StyledLink>
           </MyButtonSmall>

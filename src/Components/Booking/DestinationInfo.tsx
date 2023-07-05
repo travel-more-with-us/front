@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Stars } from '../UI/Stars';
 import { StayInterface } from '../../types';
+import { useSelector } from 'react-redux';
 
 const Rewievs = styled.span`
 margin: 0 8px 0 8px;
@@ -49,26 +50,21 @@ interface Props {
 }
 
 export const DestinationInfo: React.FC <Props> = ({ stay }) => {
+  const dates = useSelector((state: any) => state.dates);
   return (
     <>
       <H1>
         Booking summary
       </H1>
       <BookingId>
-        Booking ID #1245609 from 06/20/2023
+        Booking ID #1245609 from {dates.startDate.toLocaleDateString()}
       </BookingId>
       <StayName>
         {stay.name}
       </StayName>
       <Address>
         <span>
-          {stay.street}
-        </span>
-        <span>
-          {stay.city}
-        </span>
-        <span>
-          {stay.country}
+          {`${stay.street}, ${stay.city}, ${stay.country}`}
         </span>
       </Address>
       <RatingBlock>

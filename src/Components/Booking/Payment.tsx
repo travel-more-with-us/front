@@ -4,7 +4,7 @@ import { Separator } from '../UI/Separator';
 import { MyInput } from '../UI/MyInput';
 import { MyButtonLarge } from '../UI/MyButtonLarge';
 import { FormSeparator } from '../UI/FormSeparator';
-import { useInput } from '../../hooks/useInput';
+import { useInput } from '../../hooksAndHelpers/useInput';
 
 const StyledPayment = styled.form`
 padding: 56px 0;

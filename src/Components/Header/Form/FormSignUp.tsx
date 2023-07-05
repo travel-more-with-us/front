@@ -7,7 +7,7 @@ import { MyButtonLarge } from '../../UI/MyButtonLarge';
 import { PrivacyPolice } from './PrivacyPolice';
 import { FormSeparator } from '../../UI/FormSeparator';
 import { ContinueWith } from './ContinueWith';
-import { useSignUp } from '../../../hooks/useSignUp';
+import { useSignUp } from '../../../hooksAndHelpers/useSignUp';
 
 const StyledForm = styled.form`
   display: flex;

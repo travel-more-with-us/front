@@ -1,15 +1,29 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import down from '../../images/down.svg';
+import { useDispatch } from 'react-redux';
+import { updateSort } from '../../store/actions';
+import change from '../../images/change.svg';
 
 const DropdownContainer = styled.div`
   position: relative;
-  width: 124px;
   font-size: 16px;
   font-weight: 600;
   line-height: 150%;
   display: flex;
   align-items: center;
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border: 2px solid ${props => props.theme.primaryColor};
+  font-family: Nunito;
+
+  &:hover {
+    border: 2px solid ${props => props.theme.focusedColor};
+    background: ${props => props.theme.hoverColor};
+  }
 `;
 
 const DropdownButton = styled.button<any>`
@@ -17,6 +31,7 @@ const DropdownButton = styled.button<any>`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 100%;
   border: none;
   background-color: transparent;
   color: ${props => props.theme.txtColor};
@@ -24,23 +39,26 @@ const DropdownButton = styled.button<any>`
   font-size: 16px;
   font-weight: 600;
   font-family: Nunito;
+  padding: 0 50px 0 20px;
 
   &:before {
     position: absolute;
     content: '';
-    top: 0;
+    top: 50%;
     right: 10px;
-    background-image: ${(props) => (props.arrow === true ? `url(${down})` : '')};
-
-    width: 24px;
-    height: 24px;
+    transform: translateY(-50%);
+    background-image: url(${change});
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 34px;
+    height: 34px;
   }
 `;
 
 const DropdownList = styled.ul`
   position: absolute;
   top: 100%;
-  left: -25%;
+  left: 0;
   width: 184px; 
   max-height: 250px;
   padding: 0;
@@ -77,16 +95,19 @@ interface OptionSelect {
   label: string;
 }
 
-export const MySelect: React.FC<Props> = ({ options, defaultField, arrow }) => {
+export const SortSelect: React.FC<Props> = ({ options, defaultField, arrow }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
+  const dispatch = useDispatch();
+
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
   const handleOptionSelect = (option: OptionSelect) => {
-    setSelectedOption(option.label.split(' ')[0]);
+    setSelectedOption(option.label);
+    dispatch(updateSort(option.label));
     setIsOpen(false);
   };
 
@@ -116,7 +137,6 @@ export const MySelect: React.FC<Props> = ({ options, defaultField, arrow }) => {
               key={option.label} 
               onClick={() => handleOptionSelect(option)}
             >
-              {option.icon && <img src={option.icon} alt=""/> }
               <OptionLabel>
                 {option.label}
               </OptionLabel>
@@ -127,4 +147,3 @@ export const MySelect: React.FC<Props> = ({ options, defaultField, arrow }) => {
     </DropdownContainer>
   );
 };
-

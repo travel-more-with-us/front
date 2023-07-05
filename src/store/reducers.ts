@@ -1,25 +1,46 @@
+const today = new Date();
+const tomorrow = new Date();
+tomorrow.setDate(today.getDate() + 1);
+
 const initialState = {
   guests: {
     adults: 2,
     children: 0,
     rooms: 1,
   },
-  departure: '',
-  dates: {
-    startDate: null,
-    endDate: null,
+  departure: {
+    city: '',
+    country: ''
   },
+  dates: {
+    startDate: today,
+    endDate: tomorrow
+  },
+  filters: {},
+  sort: '',
 };
 
 const guestsReducer = (state = initialState.guests as any, action: any) => {
   switch (action.type) {
   case 'INCREMENT_GUEST':
-    if (action.payload === 'rooms' && state.rooms < 4) {
+    if (action.payload === 'rooms' && state.rooms < 4 && state.rooms === state.adults) {
+      return {
+        ...state,
+        rooms: state.rooms + 1,
+        adults: state.adults + 1,
+      };
+    } else if (action.payload === 'rooms' && state.rooms < 4 && state.rooms < state.adults) {
       return {
         ...state,
         rooms: state.rooms + 1,
       };
-    } else if (action.payload !== 'rooms') {
+    }
+    else if (action.payload === 'children' && state.children < state.adults * 3) {
+      return {
+        ...state,
+        children: state.children + 1,
+      };
+    } else if (action.payload !== 'rooms' && action.payload !== 'children') {
       const totalGuests = state.adults + state.children;
       const maxGuests = state.rooms * 4;
       if (totalGuests < maxGuests) {
@@ -31,7 +52,12 @@ const guestsReducer = (state = initialState.guests as any, action: any) => {
     }
     return state;
   case 'DECREMENT_GUEST':
-    if (action.payload !== 'rooms' && state[action.payload] > 0) {
+    if (action.payload === 'children' && state.children > 0) {
+      return {
+        ...state,
+        children: state.children - 1,
+      };
+    } else if (state[action.payload] > 1) {
       return {
         ...state,
         [action.payload]: state[action.payload] - 1,
@@ -61,8 +87,28 @@ const datesReducer = (state = initialState.dates, action: any) => {
   }
 };
 
+const filtersReducer = (state = initialState.filters, action: any) => {
+  switch (action.type) {
+  case 'UPDATE_FILTERS':
+    return { ...state, ...action.payload };
+  default:
+    return state;
+  }
+};
+
+const sortReducer = (state = initialState.sort, action: any) => {
+  switch (action.type) {
+  case 'UPDATE_SORT':
+    return action.payload;
+  default:
+    return state;
+  }
+};
+
 export const reducers = {
-  date: datesReducer,
+  dates: datesReducer,
   departure: departureReducer,
-  guests: guestsReducer
+  guests: guestsReducer,
+  filters: filtersReducer,
+  sort: sortReducer,
 };

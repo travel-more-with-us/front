@@ -36,7 +36,9 @@ export const AboutAndPrice: React.FC <Props> = ({ stay }) => {
         <AboutBlock 
           stay={stay}
         />
-        <PriceBlock />
+        <PriceBlock 
+          stay={stay}
+        />
       </Block>
     </StyledAbout>
   );

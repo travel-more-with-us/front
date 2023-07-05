@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import location from '../../../images/location.svg';
 import locationGreen from '../../../images/location-green.svg';
 import { Place } from '../../../types';
-import { useSearch } from '../../../hooks/useSearch';
+import { useSearch } from '../../../hooksAndHelpers/useSearch';
 
 const Block = styled.div`
 max-width: 364px;

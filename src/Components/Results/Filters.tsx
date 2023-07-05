@@ -4,6 +4,7 @@ import { StayLink } from '../UI/StayLink';
 import { Filter } from './Filter';
 import { SeparatorHorizontal } from '../UI/SeparatorHorizontal';
 import { FilterWithRange } from './FilterWithRange';
+import { StayInterface } from '../../types';
 
 const StyledFilters = styled.div`
   max-width: 288px;
@@ -29,7 +30,11 @@ font-size: 24px;
 font-weight: 600;
 `;
 
-export const Filters = () => {
+interface Props {
+  stays: StayInterface[];
+}
+
+export const Filters: React.FC <Props> = ({ stays }) => {
   const popularFiltersOptions = [
     'Hotels',
     'Breakfast included',
@@ -42,19 +47,45 @@ export const Filters = () => {
   ];
 
   const propertyTypes = [
-    'Hotels',
-    'Apartment',
-    'Villa',
-    'House',
-    'Bed & breakfast',
+    {
+      name: 'Hotels',
+      value: 'hotel'
+    },
+    {
+      name: 'Apartment',
+      value: 'apartment'
+    },
+    {
+      name: 'Villa',
+      value: 'villa'
+    },
+    {
+      name: 'House',
+      value: 'house'
+    }
   ];
 
   const propertyRating = [
-    '2 stars',
-    '3 stars',
-    '4 stars',
-    '5 stars',
-    'Unrated',
+    {
+      name: '2 stars',
+      value: 2,
+    },
+    {
+      name: '3 stars',
+      value: 3,
+    },
+    {
+      name: '4 stars',
+      value: 4
+    },
+    {
+      name: '5 stars',
+      value: 5
+    },
+    {
+      name: 'Unrated',
+      value: 0
+    }
   ];
 
   const distanceFromCenter = [
@@ -93,11 +124,31 @@ export const Filters = () => {
   ];
 
   const prices = [
-    '0 - 50',
-    '50-100',
-    '100-150',
-    '150-200',
-    '200+',
+    {
+      name: '€ 0 - € 100',
+      min: 0,
+      max: 100,
+    },
+    {
+      name: '€ 100 - € 250',
+      min: 100,
+      max: 250,
+    },
+    {
+      name: '€ 250 - € 500',
+      min: 250,
+      max: 500,
+    },
+    {
+      name: '€ 500 - € 1000',
+      min: 500,
+      max: 1000,
+    },
+    {
+      name: '€ 1000+',
+      min: 1000,
+      max: 1000000,
+    },
   ];
 
   return (
@@ -115,43 +166,48 @@ export const Filters = () => {
         <FilterWithRange 
           name="Your budget"
           options={prices}
+          stays={stays}
         />
-        <Filter 
+        {/* <Filter 
           name="Popular filters"
           options={popularFiltersOptions}
-        />
+        /> */}
         <SeparatorHorizontal />
         <Filter 
           name="Property type"
           options={propertyTypes}
+          stays={stays}
+          keyName="propertyType"
         />
         <SeparatorHorizontal />
         <Filter 
           name="Property rating"
           options={propertyRating}
+          stays={stays}
+          keyName="rating"
         />
         <SeparatorHorizontal />
-        <Filter 
+        {/* <Filter 
           name="Distance from center of Split"
           options={distanceFromCenter}
-        />
+        /> */}
         <SeparatorHorizontal />
-        <Filter 
+        {/* <Filter 
           name="Meal plans available"
           options={mealPlans}
-        />
+        /> */}
         <SeparatorHorizontal />
-        <Filter 
+        {/* <Filter 
           name="Amenities"
           options={amenities}
           seeMore={true}
-        />
+        /> */}
         <SeparatorHorizontal />
-        <Filter 
+        {/* <Filter 
           name="Accessibility"
           options={accesibility}
           seeMore={true}
-        />
+        /> */}
         <SeparatorHorizontal />
       </div>
     </StyledFilters>

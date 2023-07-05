@@ -117,7 +117,6 @@ export const Guests = () => {
   const blockRef = React.useRef<HTMLDivElement | null>(null);
   const guests = useSelector((state: any) => state.guests);
   const dispatch = useDispatch();
-  console.log(guests);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);

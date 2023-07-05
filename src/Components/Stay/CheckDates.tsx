@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 const CheckDatesContainer = styled.div`
@@ -37,6 +38,9 @@ color: ${props => props.theme.txtColor};
 `;
 
 export const CheckDates = () => {
+  const dates = useSelector((state: any) => state.dates);
+  const guests = useSelector((state: any) => state.guests);
+  console.log(dates);
   return (
     <CheckDatesContainer>
       <Date>
@@ -44,7 +48,7 @@ export const CheckDates = () => {
           Check in
         </DateTxt>
         <DateValue>
-          21.06.2023
+          {dates.startDate.toLocaleDateString()}
         </DateValue>
       </Date>
       <Date>
@@ -52,7 +56,7 @@ export const CheckDates = () => {
           Check out
         </DateTxt>
         <DateValue>
-          23.06.2023
+          {dates.endDate.toLocaleDateString()}
         </DateValue>
       </Date>
       <Date>
@@ -60,7 +64,7 @@ export const CheckDates = () => {
           Guests
         </DateTxt>
         <DateValue>
-          2 guests
+          {guests.adults + guests.children} guests
         </DateValue>
       </Date>
     </CheckDatesContainer>

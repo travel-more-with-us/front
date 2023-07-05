@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ButtonOutlined } from '../UI/ButtonOutlined';
-import change from '../../images/change.svg';
+import { useSelector } from 'react-redux';
+import { SortSelect } from './SortSelect';
 
 const CityAndCountry = styled.p`
 font-size: 18px;
@@ -28,37 +29,50 @@ display: flex;
 gap: 24px;
 `;
 
-const ButtonBlock = styled.div`
-display: flex;
-align-items: center;
-`;
+interface Props {
+  count: number;
+}
 
-export const ListHeader = () => {
+export const ListHeader: React.FC <Props> = ({ count }) => {
+  const departure = useSelector((state: any) => state.departure);
   return (
     <Header>
       <div>
         <CityAndCountry>
-          Split, Croatia
+          {departure.city + ', ' + departure.country}
         </CityAndCountry>
         <CountOfVillas>
-          views 24 results
+          {`views ${count} results`}
         </CountOfVillas>
       </div>
       <Buttons>
         <ButtonOutlined>
           Map
         </ButtonOutlined>
-        <ButtonOutlined>
-          <ButtonBlock>
-            <span>
-              Sort by
-            </span>
-            <img 
-              src={change}
-              alt="change"
-            />
-          </ButtonBlock>
-        </ButtonOutlined>
+        <SortSelect 
+          options={[
+            {
+              label: 'Price: low to high',
+            },
+            {
+              label: 'Price: high to low'
+            },
+            {
+              label: 'Name A-Z'
+            },
+            {
+              label: 'Name Z-A'
+            },
+            {
+              label: 'Rating from 1 to 5'
+            },
+            {
+              label: 'Rating from 5 to 1'
+            }
+          ]}
+          defaultField="Sort by"
+          arrow={false}
+        />
       </Buttons>
     </Header>
   );

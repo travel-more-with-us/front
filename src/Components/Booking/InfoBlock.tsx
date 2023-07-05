@@ -21,7 +21,9 @@ export const InfoBlock: React.FC <Props> = ({ stay }) => {
         stay={stay}
       />
       <AboutGuests />
-      <AboutPrice />
+      <AboutPrice 
+        stay={stay}
+      />
     </StyledInfoBlock>
   );
 };

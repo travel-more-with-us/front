@@ -8,7 +8,7 @@ import { PrivacyPolice } from './PrivacyPolice';
 import { ForgotPassword } from './ForgotPassword';
 import { FormSeparator } from '../../UI/FormSeparator';
 import { ContinueWith } from './ContinueWith';
-import { useInput } from '../../../hooks/useInput';
+import { useInput } from '../../../hooksAndHelpers/useInput';
 
 const StyledForm = styled.form`
   display: flex;

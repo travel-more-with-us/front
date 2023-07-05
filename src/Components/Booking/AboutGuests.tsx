@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StayLink } from '../UI/StayLink';
+import { useSelector } from 'react-redux';
 
 const StyledAboutGuests = styled.div`
 border-top: 1px solid ${props => props.theme.disabledColor};
@@ -39,6 +40,8 @@ margin: 0;
 `;
 
 export const AboutGuests = () => {
+  const dates = useSelector((state: any) => state.dates);
+  const guests = useSelector((state: any) => state.guests);
   return (
     <StyledAboutGuests>
       <Block>
@@ -47,7 +50,7 @@ export const AboutGuests = () => {
             Dates
           </Title>
           <TxtValue>
-            June 20 - 21
+            {`${dates.startDate.toLocaleDateString()} - ${dates.endDate.toLocaleDateString()}`}
           </TxtValue>
         </TitleBlock>
         <StayLink click={() => {}}>
@@ -75,7 +78,7 @@ export const AboutGuests = () => {
             Guests
           </Title>
           <TxtValue>
-            2
+            {guests.adults + guests.children}
           </TxtValue>
         </TitleBlock>
         <StayLink click={() => {}}>

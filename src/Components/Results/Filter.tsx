@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { StayLink } from '../UI/StayLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
+import { updateFilters } from '../../store/actions';
+import { StayInterface } from '../../types';
 
 const StyledFilter = styled.div`
 padding: 24px;
@@ -72,14 +75,23 @@ font-family: Nunito;
 line-height: 150%;
 `;
 
-interface Props {
+interface OptionInterface {
   name: string;
-  options: string[];
-  seeMore?: boolean;
+  value: string | number;
 }
 
-export const Filter: React.FC <Props> = ({ name, options, seeMore }) => {
+interface Props {
+  name: string;
+  options: OptionInterface[];
+  seeMore?: boolean;
+  stays: StayInterface[];
+  keyName: string;
+}
+
+export const Filter: React.FC <Props> = ({ name, options, seeMore, stays, keyName }) => {
   const [open, setOpen] = React.useState(false);
+  const [selectedFilters, setSelectedFilters] = React.useState<any>([]);
+  const dispatch = useDispatch();
 
   const appliedOptions = React.useMemo(() => {
     if (seeMore && open === false) {
@@ -94,23 +106,51 @@ export const Filter: React.FC <Props> = ({ name, options, seeMore }) => {
     setOpen(!open);
   }
 
+  function selectFilter(elem: any) {
+    if (selectedFilters.some((filter: any) => filter.name === elem.name)) {
+      setSelectedFilters((prev: any) => [...prev].filter((filter: any) => filter.name !== elem.name));
+    } else {
+      setSelectedFilters((prev: any) => [...prev, elem]);
+    }
+  }
+
+  React.useEffect(() => {
+    const obj = {
+      [keyName]: selectedFilters,
+    };
+    dispatch(updateFilters(obj));
+  }, [selectedFilters]);
+
   return (
     <StyledFilter>
       <FilterName>
         {name}
       </FilterName>
       <FiltersBlock>
-        {appliedOptions.map((option: string) => (
-          <FilterBlock key={option}>
+        {appliedOptions.map((option: OptionInterface) => (
+          <FilterBlock key={option.name}>
             <CheckboxBlock>
-              <CheckBox type='checkbox' id={option}/>
+              <CheckBox 
+                type='checkbox' 
+                id={option.name}
+                onChange={() => {
+                  selectFilter(option);
+                }}
+              />
               <StyledCheckmarkIcon icon={faCheck} />
-              <Option htmlFor={option}>
-                {option}
+              <Option htmlFor={option.name}>
+                {option.name}
               </Option>
             </CheckboxBlock>
             <Count>
-              50
+              {stays.filter((stay: StayInterface) => {
+                if (keyName === 'rating' && typeof(option.value) === 'number') {
+                  return Math.round(stay[keyName]) === option.value;
+                }
+
+                return stay[keyName] === option.value;
+
+              }).length}
             </Count>
           </FilterBlock>
         ))}

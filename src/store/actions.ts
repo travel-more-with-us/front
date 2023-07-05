@@ -21,3 +21,22 @@ export const updateDates = (dates: any) => ({
   type: 'UPDATE_DATES',
   payload: dates,
 });
+
+export const updateFilters = (filters: any) => ({
+  type: 'UPDATE_FILTERS',
+  payload: filters,
+});
+
+export const updateSort = (sortBy: string) => ({
+  type: 'UPDATE_SORT',
+  payload: sortBy,
+});
+
+
+
+
+
+
+
+
+

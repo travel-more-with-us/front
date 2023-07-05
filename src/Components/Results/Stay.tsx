@@ -20,7 +20,7 @@ gap: 24px;
 const Image = styled.img`
 max-width: 288px;
 width: 100%;
-height: 330px;
+height: 100%;
 border-radius: 8px;
 
 @media screen and (max-width: 768px) {
@@ -39,9 +39,11 @@ width: calc((100% - 24px) / 3);
 
 interface Props {
   stay: StayInterface;
+  duration: number;
+  adults: number;
 }
 
-export const Stay: React.FC <Props> = ({ stay }) => {
+export const Stay: React.FC <Props> = ({ stay, duration, adults }) => {
   return (
     <StyledVilla>
       <ImageBlock>
@@ -52,6 +54,8 @@ export const Stay: React.FC <Props> = ({ stay }) => {
       </ImageBlock>
       <StayInfoBlock 
         stay={stay}
+        duration={duration}
+        adults={adults}
       />
     </StyledVilla>
   );
