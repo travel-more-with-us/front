@@ -98,7 +98,6 @@ export const Inputs: React.FC <Props> = ({ places }) => {
   }
 
   const currentDay = new Date();
-  console.log(departure, 'departure');
 
   return (
     <InputsContainer>

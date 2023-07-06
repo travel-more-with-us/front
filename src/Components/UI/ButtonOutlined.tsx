@@ -19,6 +19,7 @@ font-family: Nunito;
 
 interface Props {
   children: React.ReactNode;
+  onClick?: () => void;
 }
 
 export const ButtonOutlined: React.FC <Props> = ({ children, ...props }) => {

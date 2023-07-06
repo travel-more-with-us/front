@@ -128,8 +128,6 @@ export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore, stay
     }
   }
 
-  console.log(selectedFilters);
-
   React.useEffect(() => {
     const obj = {
       priceCheckboxFilters: selectedFilters,

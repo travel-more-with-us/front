@@ -3,7 +3,9 @@ export interface StateInterface {
   dates: DatesState;
   departure: DepartureState;
   sort: SortState;
-  filters: any
+  filters: any;
+  properties: any;
+  auth: boolean;
 }
 
 export interface GuestsState {
@@ -54,6 +56,11 @@ interface UpdateSortAction {
   payload: SortState;
 }
 
+interface UpdatePropertiesAction {
+  type: 'UPDATE_PROPERTIES';
+  payload: any;
+}
+
 export type GuestsAction =
   | IncrementGuestAction
   | DecrementGuestAction;
@@ -69,3 +76,6 @@ export type FiltersAction =
 
 export type SortAction =
   | UpdateSortAction;
+
+export type PropertiesAction =
+  | UpdatePropertiesAction;

@@ -6,7 +6,6 @@ export const useSortedAndFilteredStays = (stays: StayInterface[], filters: any, 
   const sortAndFilterStays = () => {
     let copyOfStays = [...stays];
     if (Object.keys(filters).length === 0) {
-      console.log('key length 0');
       return copyOfStays;
     }
 
@@ -16,12 +15,10 @@ export const useSortedAndFilteredStays = (stays: StayInterface[], filters: any, 
         copyOfStays = copyOfStays.filter((stay: StayInterface) => stay.price * coefficient > sortedCheckboxFilters[0].min && stay.price * coefficient <= sortedCheckboxFilters[sortedCheckboxFilters.length - 1].max);
       } else {
         copyOfStays = copyOfStays.filter((stay: StayInterface) => stay.price * coefficient > filters.priceRange.min && stay.price * coefficient <= filters.priceRange.max);
-        console.log(copyOfStays);
       }
     }
 
     if (filters.propertyType.length !== 0) {
-      console.log('has property type');
       copyOfStays = copyOfStays.filter((stay: StayInterface) => filters.propertyType.some((filter: FilterOptionInterface) => filter.value === stay.propertyType));
     }
 

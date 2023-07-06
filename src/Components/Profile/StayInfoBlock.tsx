@@ -1,14 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
-import { StayLink } from '../UI/StayLink';
-import { Stars } from '../UI/Stars';
-import like from '../../images/like.svg';
-import { Oval } from '../UI/Oval';
-import { StayPriceBlock } from './StayPriceBlock';
 import { StayInterface } from '../../types';
+import styled from 'styled-components';
+import { updateProperties } from '../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { StateInterface } from '../../types/reduxTypes';
-import { updateProperties } from '../../store/actions';
+import { Stars } from '../UI/Stars';
+import { StayLink } from '../UI/StayLink';
+import { Oval } from '../UI/Oval';
+import { StayPriceBlock } from './StayPriceBlock';
 
 const InfoBlock = styled.div`
 width: calc((100% - 24px) - ((100% - 24px) / 3));
@@ -70,18 +69,14 @@ cursor: pointer;
 
 interface Props {
   stay: StayInterface;
-  duration: number;
-  adults: number;
 }
 
-export const StayInfoBlock: React.FC <Props> = ({ stay, duration, adults }) => {
+export const StayInfoBlock: React.FC <Props> = ({ stay }) => {
   const dispatch = useDispatch();
   const properties = useSelector((state: StateInterface) => state.properties);
   const isPropertyLiked = properties.some((property: StayInterface) => property.id === stay.id);
 
   function likeOrDislikeThisProperty(stay: StayInterface) {
-    
-  
     let updatedProperties = [];
     if (isPropertyLiked) {
       updatedProperties = properties.filter((property: StayInterface) => property.id !== stay.id);
@@ -135,9 +130,6 @@ export const StayInfoBlock: React.FC <Props> = ({ stay, duration, adults }) => {
       </LocationBlock>
       <StayPriceBlock
         price={stay.price}
-        duration={duration}
-        adults={adults}
-        stayId={stay.id}
       />
     </InfoBlock>
   );

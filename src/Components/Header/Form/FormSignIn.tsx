@@ -9,6 +9,8 @@ import { ForgotPassword } from './ForgotPassword';
 import { FormSeparator } from '../../UI/FormSeparator';
 import { ContinueWith } from './ContinueWith';
 import { useInput } from '../../../hooksAndHelpers/useInput';
+import { useDispatch } from 'react-redux';
+import { updateAuth } from '../../../store/actions';
 
 const StyledForm = styled.form`
   display: flex;
@@ -65,7 +67,11 @@ const StyledMyInput = styled(MyInput)<MyInputProps>`
   border-width: 2px;
 `;
 
-export const FormSignIn = () => {
+interface Props {
+  closePopupSignIn: any;
+}
+
+export const FormSignIn: React.FC <Props> = ({ closePopupSignIn }) => {
   const [emailError, setEmailError] = React.useState('');
   const [passwordError, setPasswordError] = React.useState('');
   const [emailDirty, setEmailDirty] = React.useState(false);
@@ -74,6 +80,7 @@ export const FormSignIn = () => {
   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
   const email = useInput('');
   const password = useInput('');
+  const dispatch = useDispatch();
 
   const isValidEmail = (str: string) => {
     return emailRegex.test(str);
@@ -110,13 +117,15 @@ export const FormSignIn = () => {
   }
 
   function submitForm() {
-    console.log('submit form');
+    dispatch(updateAuth(true));
+    closePopupSignIn();
   }
 
   return (
     <StyledForm onSubmit={(e) => {
       e.preventDefault();
       submitForm();
+
     }}
     >
       <Welcome>

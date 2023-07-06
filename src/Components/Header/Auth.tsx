@@ -6,6 +6,11 @@ import { MyButtonMedium } from '../UI/MyButtonMedium';
 import { PopupSignUp } from './PopupSignUp';
 import { PopupSignIn } from './PopupSignIn';
 import { usePopup } from '../../hooksAndHelpers/usePopup';
+import { useDispatch, useSelector } from 'react-redux';
+import { StateInterface } from '../../types/reduxTypes';
+import { Link } from 'react-router-dom';
+import { ButtonOutlined } from '../UI/ButtonOutlined';
+import { updateAuth } from '../../store/actions';
 
 const StyledAuth = styled.div`
 display: flex;
@@ -16,6 +21,23 @@ gap: 40px;
 @media screen and (max-width: 768px) {
   flex-direction: column;
 }
+`;
+
+const StyledButton = styled(Link)`
+  background: #fff;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 12px 16px;
+  border: 2px solid ${props => props.theme.primaryColor};
+  font-family: Nunito;
+  text-decoration: none;
+
+  &:hover {
+    border: 2px solid ${props => props.theme.focusedColor};
+    background: ${props => props.theme.hoverColor};
+  }
 `;
 
 const Languages = styled.div`
@@ -55,6 +77,12 @@ export const Auth = () => {
   ];
   const {isOpenSignIn, isOpenSignUp, openPopupSignIn, openPopupSignUp, closePopupSignIn, closePopupSignUp } = usePopup();
   const popupConextValue = {isOpenSignIn, isOpenSignUp, openPopupSignIn, openPopupSignUp, closePopupSignIn, closePopupSignUp };
+  const isAuth = useSelector((state: StateInterface) => state.auth);
+  const dispatch = useDispatch();
+
+  function logOut() {
+    dispatch(updateAuth(false));
+  }
 
   return (
     <StyledAuth>
@@ -67,17 +95,30 @@ export const Auth = () => {
             arrow={false}
           />
         </Languages>
-        {/* <p>
-          List your property
-        </p> */}
-        <Buttons>
-          <MyButtonMedium onClick={openPopupSignIn}>
-            Sign in
-          </MyButtonMedium>
-          <MyButtonMedium onClick={openPopupSignUp}>
-            Sign up
-          </MyButtonMedium>
-        </Buttons>
+        {!isAuth && (
+          <Buttons>
+            <MyButtonMedium onClick={openPopupSignIn}>
+              Sign in
+            </MyButtonMedium>
+            <MyButtonMedium onClick={openPopupSignUp}>
+              Sign up
+            </MyButtonMedium>
+          </Buttons>
+        )}
+        {isAuth && (
+          <Buttons>
+            <StyledButton 
+              to="/profile"
+            >
+              My Profile
+            </StyledButton>
+            <ButtonOutlined 
+              onClick={logOut}
+            >
+              Log out
+            </ButtonOutlined>
+          </Buttons>
+        )}
         {isOpenSignUp && (
           <PopupSignUp />
         )}

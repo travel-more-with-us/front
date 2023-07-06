@@ -32,6 +32,16 @@ export const updateSort = (sortBy: string) => ({
   payload: sortBy,
 });
 
+export const updateProperties = (likedProperties: any) => ({
+  type: 'UPDATE_PROPERTIES',
+  payload: likedProperties,
+});
+
+export const updateAuth = (authValue: boolean) => ({
+  type: 'UPDATE_AUTH',
+  payload: authValue,
+});
+
 
 
 

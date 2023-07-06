@@ -87,7 +87,9 @@ export const PopupSignIn = () => {
             alt=""
           />
         </Close>
-        <FormSignIn />
+        <FormSignIn 
+          closePopupSignIn={closePopupSignIn}
+        />
       </StyledPopup>
     </>
   );

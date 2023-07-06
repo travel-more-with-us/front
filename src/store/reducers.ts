@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { DatesAction, DatesState, DepartureAction, DepartureState, FiltersAction, GuestsAction, GuestsState, SortAction, SortState } from '../types/reduxTypes';
+import { DatesAction, DatesState, DepartureAction, DepartureState, FiltersAction, GuestsAction, GuestsState, PropertiesAction, SortAction, SortState } from '../types/reduxTypes';
 
 const today = new Date();
 const tomorrow = new Date();
@@ -21,6 +21,8 @@ const initialState = {
   },
   filters: {},
   sort: '',
+  properties: [],
+  isAuth: false,
 };
 
 const guestsReducer: Reducer<GuestsState, GuestsAction> = (state = initialState.guests as GuestsState, action: GuestsAction) => {
@@ -108,10 +110,30 @@ const sortReducer: Reducer<SortState, SortAction> = (state = initialState.sort, 
   }
 };
 
+const propertiesReducer: Reducer<any, PropertiesAction> = (state = initialState.properties, action: PropertiesAction) => {
+  switch (action.type) {
+  case 'UPDATE_PROPERTIES':
+    return [...action.payload ];
+  default:
+    return state;
+  }
+};
+
+const authReducer = (state = initialState.isAuth, action: any) => {
+  switch (action.type) {
+  case 'UPDATE_AUTH':
+    return action.payload;
+  default:
+    return state;
+  }
+};
+
 export const reducers = {
   dates: datesReducer,
   departure: departureReducer,
   guests: guestsReducer,
   filters: filtersReducer,
   sort: sortReducer,
+  properties: propertiesReducer,
+  auth: authReducer,
 };

@@ -4,6 +4,7 @@ import { Results } from '../pages/Results';
 import { Booking } from '../pages/Booking';
 import { Stay } from '../pages/Stay';
 import { Route, Routes } from 'react-router-dom';
+import { ProfilePage } from '../pages/ProfilePage';
 
 export const AppRouter = () => {
   const routes = [
@@ -22,6 +23,10 @@ export const AppRouter = () => {
     {
       path: '/stay/:stayId',
       element: <Stay />,
+    },
+    {
+      path: '/profile',
+      element: <ProfilePage />
     }
   ];
   return (
