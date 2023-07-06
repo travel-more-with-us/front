@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/front/static/css/main.b4477ef3.css",
-    "main.js": "/front/static/js/main.df4bf6b8.js",
+    "main.js": "/front/static/js/main.b33d9f34.js",
     "static/media/video-travel-more.mp4": "/front/static/media/video-travel-more.f46fd6577cccfe628105.mp4",
     "static/media/villa4.png": "/front/static/media/villa4.1da341b70e9a2d1f7ece.png",
     "static/media/villa3.png": "/front/static/media/villa3.4cfe4f54f384311fb741.png",
@@ -34,7 +34,6 @@
     "static/media/facebook.svg": "/front/static/media/facebook.46962e6a8999ef359ae45bccc4f888e0.svg",
     "static/media/jorney.svg": "/front/static/media/jorney.a289762db1b6e2a3937cb03331ea4d21.svg",
     "static/media/flight.svg": "/front/static/media/flight.67a31e82e795251aabf481f23980e748.svg",
-    "static/media/like.svg": "/front/static/media/like.fc79ecded49ef3fe26ab4e29c2b341f0.svg",
     "static/media/location-green.svg": "/front/static/media/location-green.cb6c29a0d2e889de766814cef4621a0b.svg",
     "static/media/location.svg": "/front/static/media/location.057d752ae7bc7d42d8a5fb609cc4729c.svg",
     "index.html": "/front/index.html",
@@ -44,10 +43,10 @@
     "static/media/down.svg": "/front/static/media/down.7bb795f636304b7ffc445974a60c2766.svg",
     "static/media/backImg.svg": "/front/static/media/backImg.8db5eee5688040d60331f9b22f2653d7.svg",
     "main.b4477ef3.css.map": "/front/static/css/main.b4477ef3.css.map",
-    "main.df4bf6b8.js.map": "/front/static/js/main.df4bf6b8.js.map"
+    "main.b33d9f34.js.map": "/front/static/js/main.b33d9f34.js.map"
   },
   "entrypoints": [
     "static/css/main.b4477ef3.css",
-    "static/js/main.df4bf6b8.js"
+    "static/js/main.b33d9f34.js"
   ]
 }
