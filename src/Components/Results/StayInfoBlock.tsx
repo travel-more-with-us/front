@@ -80,8 +80,6 @@ export const StayInfoBlock: React.FC <Props> = ({ stay, duration, adults }) => {
   const isPropertyLiked = properties.some((property: StayInterface) => property.id === stay.id);
 
   function likeOrDislikeThisProperty(stay: StayInterface) {
-    
-  
     let updatedProperties = [];
     if (isPropertyLiked) {
       updatedProperties = properties.filter((property: StayInterface) => property.id !== stay.id);

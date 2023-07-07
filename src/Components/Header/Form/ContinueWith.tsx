@@ -8,6 +8,11 @@ import facebook from '../../../images/facebook.svg';
 const StyledBlock = styled.div`
 display: flex;
 justify-content: space-between;
+
+@media screen and (max-width: 768px) {
+  flex-direction: column;
+  gap: 10px;
+}
 `;
 
 const Button = styled.button`
@@ -24,6 +29,10 @@ justify-content: center;
 align-items: center;
 gap: 8px;
 cursor: pointer;
+
+@media screen and (max-width: 768px) {
+  width: 100%;
+}
 
 &:hover {
   border: 2px solid ${props => props.theme.primaryColor};

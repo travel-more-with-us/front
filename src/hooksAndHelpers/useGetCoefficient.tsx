@@ -11,7 +11,7 @@ export const useGetCoefficient = () => {
 
 
   const coef = React.useMemo(() => {
-    const totalGuests = guests.adults + guests.children;
+    const totalGuests = guests.adults;
     const additional = (totalGuests - (guests.rooms * 2)) * 0.15;
     const newCoefficient = daysDifference && (daysDifference * guests.rooms) + additional;
   

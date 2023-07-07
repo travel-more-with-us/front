@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MyButtonSmall } from '../UI/MyButtonSmall';
 import { Link } from 'react-router-dom';
 import { useGetCoefficient } from '../../hooksAndHelpers/useGetCoefficient';
 
@@ -65,6 +64,35 @@ margin: 0 0 16px 0;
 const StyledLink = styled(Link)`
 text-decoration: none;
 color: ${props => props.theme.txtColor};
+width: 100%;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+`;
+
+const StyledButton = styled.button`
+  background-color: ${props => props.theme.primaryColor};
+  color: ${props => props.theme.txtColor};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 132px;
+  height: 48px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: Nunito;
+
+  &:hover {
+  background-color: ${props => props.theme.hoverColor};
+  }
+
+  &:active {
+  background-color: ${props => props.theme.focusedColor};
+
+  }
 `;
 
 interface Props {
@@ -103,11 +131,11 @@ export const StayPriceBlock: React.FC <Props> = ({ price, duration, adults, stay
           {`/Per ${duration === 1 || duration === 0 ? 'night' : `${duration} nights`}, ${adults === 1 ? '1 Adult' : `${adults} Adults`}`}
         </PerNight>
         <div>
-          <MyButtonSmall onClick={() => {}}>
+          <StyledButton onClick={() => {}}>
             <StyledLink to={`/stay/${stayId.toString()}`}>
               View Deal
             </StyledLink>
-          </MyButtonSmall>
+          </StyledButton>
         </div>
       </PriceBlock>
     </StyledVilla>
