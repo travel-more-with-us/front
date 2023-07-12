@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/front/static/css/main.b4477ef3.css",
-    "main.js": "/front/static/js/main.b33d9f34.js",
+    "main.js": "/front/static/js/main.dc9f1a1a.js",
     "static/media/video-travel-more.mp4": "/front/static/media/video-travel-more.f46fd6577cccfe628105.mp4",
     "static/media/villa4.png": "/front/static/media/villa4.1da341b70e9a2d1f7ece.png",
     "static/media/villa3.png": "/front/static/media/villa3.4cfe4f54f384311fb741.png",
@@ -19,6 +19,7 @@
     "static/media/villa1.png": "/front/static/media/villa1.aa34146c54789a23d5ac.png",
     "static/media/offers.png": "/front/static/media/offers.99a9ea989b60ac299dd3.png",
     "static/media/logo.svg": "/front/static/media/logo.6e1b4bffc1b7f00095f61e202b050ddd.svg",
+    "static/media/qrcode.svg": "/front/static/media/qrcode.da2f10c61586ff8a7784ac4e5b1c453a.svg",
     "static/media/car.svg": "/front/static/media/car.fa2cd0df6f4fb9df5865c38ae3acf322.svg",
     "static/media/earth.svg": "/front/static/media/earth.249a8e730da509ecd18b5dbf7a34771c.svg",
     "static/media/star-empty.svg": "/front/static/media/star-empty.b485979867a53e2dbbbf48c1133e0bec.svg",
@@ -43,10 +44,10 @@
     "static/media/down.svg": "/front/static/media/down.7bb795f636304b7ffc445974a60c2766.svg",
     "static/media/backImg.svg": "/front/static/media/backImg.8db5eee5688040d60331f9b22f2653d7.svg",
     "main.b4477ef3.css.map": "/front/static/css/main.b4477ef3.css.map",
-    "main.b33d9f34.js.map": "/front/static/js/main.b33d9f34.js.map"
+    "main.dc9f1a1a.js.map": "/front/static/js/main.dc9f1a1a.js.map"
   },
   "entrypoints": [
     "static/css/main.b4477ef3.css",
-    "static/js/main.b33d9f34.js"
+    "static/js/main.dc9f1a1a.js"
   ]
 }
