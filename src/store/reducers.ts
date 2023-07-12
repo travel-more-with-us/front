@@ -96,6 +96,8 @@ const filtersReducer: Reducer<any, FiltersAction> = (state = initialState.filter
   switch (action.type) {
   case 'UPDATE_FILTERS':
     return { ...state, ...action.payload };
+  case 'CLEAR_FILTERS':
+    return {state: action.payload};
   default:
     return state;
   }

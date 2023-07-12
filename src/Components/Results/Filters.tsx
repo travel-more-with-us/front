@@ -5,6 +5,9 @@ import { Filter } from './Filter';
 import { SeparatorHorizontal } from '../UI/SeparatorHorizontal';
 import { FilterWithRange } from './FilterWithRange';
 import { StayInterface } from '../../types';
+import { useDispatch } from 'react-redux';
+import { clearFilters, updateFilters } from '../../store/actions';
+import { useGetCoefficient } from '../../hooksAndHelpers/useGetCoefficient';
 
 const StyledFilters = styled.div`
   max-width: 288px;
@@ -169,6 +172,30 @@ export const Filters: React.FC <Props> = ({ stays }) => {
       max: 1000000,
     },
   ];
+  const dispatch = useDispatch();
+  const coefficient = useGetCoefficient();
+
+  const handleResetFilters = () => {
+    const defaultFilters = {
+      priceRange: {
+        min: 0,
+        max: stays[stays.length - 1].price * coefficient || 2000
+      },
+      amenities: [],
+      priceCheckboxFilters: [],
+      propertyType: [],
+      rating: []
+    };
+  
+    dispatch(updateFilters(defaultFilters));
+    setResetFilters(true);
+  };
+
+  const [resetFilters, setResetFilters] = React.useState(false);
+
+  const handleResetComplete = () => {
+    setResetFilters(false);
+  };
 
   return (
     <StyledFilters>
@@ -176,7 +203,7 @@ export const Filters: React.FC <Props> = ({ stays }) => {
         <H3>
           Filters
         </H3>
-        <StayLink click={() => {}}>
+        <StayLink click={handleResetFilters}>
           Reset all
         </StayLink>
       </HeaderBlock>
@@ -186,6 +213,8 @@ export const Filters: React.FC <Props> = ({ stays }) => {
           name="Your budget"
           options={prices}
           stays={stays}
+          resetFilters={resetFilters} 
+          onResetComplete={handleResetComplete}
         />
         {/* <Filter 
           name="Popular filters"
@@ -197,6 +226,8 @@ export const Filters: React.FC <Props> = ({ stays }) => {
           options={propertyTypes}
           stays={stays}
           keyName="propertyType"
+          resetFilters={resetFilters} 
+          onResetComplete={handleResetComplete}
         />
         <SeparatorHorizontal />
         <Filter 
@@ -204,6 +235,8 @@ export const Filters: React.FC <Props> = ({ stays }) => {
           options={propertyRating}
           stays={stays}
           keyName="rating"
+          resetFilters={resetFilters} 
+          onResetComplete={handleResetComplete}
         />
         <SeparatorHorizontal />
         {/* <Filter 
@@ -222,6 +255,8 @@ export const Filters: React.FC <Props> = ({ stays }) => {
           seeMore={true}
           stays={stays}
           keyName="amenities"
+          resetFilters={resetFilters} 
+          onResetComplete={handleResetComplete}
         />
         <SeparatorHorizontal />
         {/* <Filter 

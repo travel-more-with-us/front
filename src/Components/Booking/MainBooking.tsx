@@ -50,7 +50,7 @@ transition: opacity 0.5s ease-in-out;
 
 export const MainBooking = () => {
   const navigate = useNavigate();
-  const [isBooked, setIsBooked] = React.useState(true);
+  const [isBooked, setIsBooked] = React.useState(false);
 
   const goBack = () => {
     navigate(-1);

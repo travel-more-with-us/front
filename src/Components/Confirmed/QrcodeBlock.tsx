@@ -6,6 +6,10 @@ import qrcode from '../../images/qrcode.svg';
 const QrcodeBlockStyled = styled.div`
   display: flex;
   gap: 24px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const Image = styled.img`

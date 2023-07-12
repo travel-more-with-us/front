@@ -4,6 +4,10 @@ import { StayPersonalDataItem } from './StayPersonalDataItem';
 
 const StyledOPersonalData = styled.div`
 width: calc((100% - 24px) / 2);
+
+@media screen and (max-width: 768px) {
+  width: 100%;
+}
 `;
 
 const H3 = styled.h3`
@@ -24,6 +28,11 @@ gap: 16px;
 const Block = styled.div`
 display: flex;
 gap: 16px;
+flex-wrap: wrap;
+
+@media screen and (max-width: 900px) {
+  flex-direction: column;
+}
 `;
 
 const Description = styled.div`

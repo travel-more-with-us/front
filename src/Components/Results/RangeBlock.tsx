@@ -3,7 +3,7 @@ import React, { ChangeEvent, useEffect } from 'react';
 import styled from 'styled-components';
 import Slider from '@mui/material/Slider';
 import { styled as styledMui } from '@mui/material/styles';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateFilters } from '../../store/actions';
 
 const StyledRangeBlock = styled.div`
@@ -50,6 +50,7 @@ interface Props {
 
 export const RangeBlock: React.FC <Props> = ({ min, max }) => {
   const [value, setValue] = React.useState<number[]>([min, max]);
+  const filters = useSelector((state: any) => state.filters);
 
   const handleChange = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number[]);
@@ -81,6 +82,17 @@ export const RangeBlock: React.FC <Props> = ({ min, max }) => {
     };
     dispatch(updateFilters(obj));
   }, [value]);
+
+  useEffect(() => {
+    if (value[0] !== filters.priceRange.min || value[1] !== filters.priceRange.max) {
+      const arr = [
+        filters.priceRange.min,
+        filters.priceRange.max,
+      ];
+
+      setValue(arr);
+    }
+  }, [filters.priceRange]);
   
   return (
     <StyledRangeBlock>

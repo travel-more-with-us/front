@@ -21,10 +21,18 @@ const Block = styled.div`
 display: flex;
 gap: 24px;
 padding: 40px 0;
+
+@media screen and (max-width: 768px) {
+  flex-direction: column;
+}
 `;
 
 const GuestInfo = styled.div`
 width: calc((100% - 24px) / 2);
+
+@media screen and (max-width: 768px) {
+  width: 100%;
+}
 `;
 
 const H2 = styled.h2`

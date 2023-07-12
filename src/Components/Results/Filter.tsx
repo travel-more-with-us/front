@@ -94,9 +94,11 @@ interface Props {
   seeMore?: boolean;
   stays: StayInterface[];
   keyName: string;
+  resetFilters: any;
+  onResetComplete: any;
 }
 
-export const Filter: React.FC <Props> = ({ name, options, seeMore, stays, keyName }) => {
+export const Filter: React.FC <Props> = ({ name, options, seeMore, stays, keyName, resetFilters, onResetComplete }) => {
   const [open, setOpen] = React.useState(false);
   const [selectedFilters, setSelectedFilters] = React.useState<FilterOptionInterface[]>([]);
   const dispatch = useDispatch();
@@ -129,6 +131,13 @@ export const Filter: React.FC <Props> = ({ name, options, seeMore, stays, keyNam
     dispatch(updateFilters(obj));
   }, [selectedFilters]);
 
+  React.useEffect(() => {
+    if (resetFilters) {
+      setSelectedFilters([]);
+      onResetComplete();
+    }
+  }, [resetFilters, onResetComplete]);
+
   return (
     <StyledFilter>
       <FilterName>
@@ -144,6 +153,7 @@ export const Filter: React.FC <Props> = ({ name, options, seeMore, stays, keyNam
                 onChange={() => {
                   selectFilter(option);
                 }}
+                checked={selectedFilters.some((fil: any) => fil.name === option.name)}
               />
               <StyledCheckmarkIcon icon={faCheck} />
               <Option htmlFor={option.name}>

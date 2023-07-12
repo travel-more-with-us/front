@@ -10,18 +10,20 @@ background: #FFFFFF;
 border: 1px solid ${props => props.theme.disabledColor};
 box-shadow: 2px 2px 6px rgba(209, 209, 209, 0.1);
 border-radius: 16px;
-margin: 0 auto 72px;
-transform: translateY(-50%);
-width: 95%;
+margin: 0;
 padding: 24px;
 box-sizing: border-box;
-position: relative;
+position: absolute;
 z-index: 2;
+bottom: 0;
+transform: translate(0, 50%);
 
 
 @media screen and (max-width: 768px) {
-  height: auto;
-  transform: translateY(-10%);
+  position: relative;
+  z-index: 2;
+  top: 0;
+  transform: translate(0, 0);
 }
 `;
 
@@ -29,6 +31,17 @@ const Block = styled.div`
 display: flex;
 flex-direction: column;
 gap: 24px;
+width: 100%;
+`;
+
+const Wrapper = styled.div`
+display: flex;
+justify-content: center;
+
+@media screen and (max-width: 768px) {
+  justify-content: flex-start;
+  flex-direction: column;
+}
 `;
 
 interface Props {
@@ -37,15 +50,17 @@ interface Props {
 
 export const Search: React.FC <Props> = ({ places }) => {
   return (
-    <Container>
+    <Wrapper>
       <StyledSearch>
-        <Block>
-          <Inputs 
-            places={places}
-          />
-          <Icons />
-        </Block>
+        <Container>
+          <Block>
+            <Inputs 
+              places={places}
+            />
+            <Icons />
+          </Block>
+        </Container>
       </StyledSearch>
-    </Container>
+    </Wrapper>
   );
 };

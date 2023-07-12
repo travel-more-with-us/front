@@ -14,10 +14,18 @@ margin: 0 0 32px 0;
 const GuestBlock = styled.div`
 display: flex;
 gap: 16px;
+
+@media screen and (max-width: 768px) {
+  flex-direction: column;
+}
 `;
 
 const GuestItem = styled.div`
 width: calc((100% - 16px) / 2);
+
+@media screen and (max-width: 768px) {
+  width: 100%;
+}
 `;
 
 const Title = styled.p`

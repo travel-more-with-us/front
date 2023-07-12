@@ -27,6 +27,11 @@ export const updateFilters = (filters: any) => ({
   payload: filters,
 });
 
+export const clearFilters = (filters: any) => ({
+  type: 'CLEAR_FILTERS',
+  payload: filters,
+});
+
 export const updateSort = (sortBy: string) => ({
   type: 'UPDATE_SORT',
   payload: sortBy,

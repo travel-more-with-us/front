@@ -49,6 +49,11 @@ const DropdownList = styled.ul`
   border-radius: 8px;
   border: 1px solid ${props => props.theme.disabledColor};
   background: #FCFCFC;
+  z-index: 2;
+
+  @media screen and (max-width: 768px) {
+    left: -35%;
+  }
 `;
 
 const DropdownListItem = styled.li`

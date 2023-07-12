@@ -15,7 +15,15 @@ const StyledMain = styled.div`
 padding: 0px 0 60px;
 
 @media screen and (max-width: 768px) {
-  padding: 100px 0 40px;
+  padding: 30px 0 60px;
+}
+`;
+
+const Wrapper = styled.div`
+display: none;
+
+@media screen and (max-width: 768px) {
+  display: block;
 }
 `;
 
@@ -88,9 +96,11 @@ export const PropositionsBlock = () => {
 
   return (
     <StyledMain>
-      <Search 
-        places={places}
-      />
+      <Wrapper>
+        <Search
+          places={places}
+        />
+      </Wrapper>
       <Propositions
         places={places}
         header="Looking for the perfect stay?"

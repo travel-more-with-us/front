@@ -51,6 +51,11 @@ interface UpdateFiltersAction {
   payload: any;
 }
 
+interface ClearFiltersAction {
+  type: 'CLEAR_FILTERS';
+  payload: any;
+}
+
 interface UpdateSortAction {
   type: 'UPDATE_SORT';
   payload: SortState;
@@ -72,7 +77,8 @@ export type DatesAction =
   | UpdateDatesAction;
 
 export type FiltersAction =
-  | UpdateFiltersAction;
+  | UpdateFiltersAction
+  | ClearFiltersAction;
 
 export type SortAction =
   | UpdateSortAction;

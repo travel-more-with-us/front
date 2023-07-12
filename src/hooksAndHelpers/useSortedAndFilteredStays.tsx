@@ -5,6 +5,9 @@ import { AmenityInterface, FilterOptionInterface, FilterPriceOptionInterface, St
 export const useSortedAndFilteredStays = (stays: StayInterface[], filters: any, sortBy: string, coefficient: number) => {
   const sortAndFilterStays = () => {
     let copyOfStays = [...stays];
+    if (filters === undefined) {
+      return copyOfStays;
+    }
     if (Object.keys(filters).length === 0) {
       return copyOfStays;
     }

@@ -6,6 +6,10 @@ import { Place } from '../../types';
 
 const StyledPropositions = styled.div`
   margin: 0 0 100px 0;
+
+  @media screen and (max-width: 768px) {
+    padding: 50px 0 20px 0;
+  }
 `;
 
 const Header = styled.h2`

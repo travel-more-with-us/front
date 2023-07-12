@@ -3,6 +3,10 @@ import styled from 'styled-components';
 
 const StayPersonalDataItemStyled = styled.div`
 width: calc((100% - 16px) / 2);
+
+@media screen and (max-width: 768px) {
+  width: 100%;
+}
 `;
 
 const Title = styled.p`
@@ -16,6 +20,12 @@ margin: 0;
 
 const ListItem = styled.p`
 margin: 0;
+
+@media screen and (max-width: 1050px) {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
 `;
 
 const ListItemTitle = styled.span`

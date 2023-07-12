@@ -95,9 +95,11 @@ interface Props {
   options: FilterPriceOptionInterface[];
   seeMore?: boolean;
   stays: StayInterface[];
+  resetFilters: any;
+  onResetComplete: any;
 }
 
-export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore, stays }) => {
+export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore, stays, resetFilters, onResetComplete}) => {
   const [open, setOpen] = React.useState(false);
   const [selectedFilters, setSelectedFilters] = React.useState<FilterPriceOptionInterface[]>([]);
   const coefficient = useGetCoefficient();
@@ -135,6 +137,13 @@ export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore, stay
     dispatch(updateFilters(obj));
   }, [selectedFilters]);
 
+  React.useEffect(() => {
+    if (resetFilters) {
+      setSelectedFilters([]);
+      onResetComplete();
+    }
+  }, [resetFilters, onResetComplete]);
+
   return (
     <StyledFilter>
       <FilterName>
@@ -154,6 +163,7 @@ export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore, stay
                 onChange={() => {
                   selectFilter(option);
                 }}
+                checked={selectedFilters.some((fil: any) => fil.name === option.name)}
               />
               <StyledCheckmarkIcon icon={faCheck} />
               <Option htmlFor={option.name}>
