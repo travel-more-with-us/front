@@ -9,6 +9,8 @@ import { TravelExtras } from './TravelExtras';
 import { Payment } from './Payment';
 import { stays } from '../Results/ResultsMain';
 import { StayInterface } from '../../types';
+import { BookingConfirmed } from '../Confirmed/BookingConfirmed';
+import { PaymentProvider } from '../../context/PaymentContext';
 
 const StyledBooking = styled.main`
   padding: 24px 0 56px;
@@ -34,10 +36,12 @@ width: calc((100% - 24px) / 2);
 }
 `;
 
-const Image = styled.img`
+const Image = styled.img<any>`
 width: 100%;
 border-radius: 8px;
 height: 100%;
+opacity: ${props => (props.loaded ? 1 : 0)};
+transition: opacity 0.5s ease-in-out;
 
 @media screen and (max-width: 1024px) {
   height: unset;
@@ -46,6 +50,7 @@ height: 100%;
 
 export const MainBooking = () => {
   const navigate = useNavigate();
+  const [isBooked, setIsBooked] = React.useState(true);
 
   const goBack = () => {
     navigate(-1);
@@ -53,29 +58,51 @@ export const MainBooking = () => {
   const { stayId }: any = useParams();
 
   const stay: any = stays.find((stay: StayInterface) => stay.id === +stayId);
+  const [loaded, setLoaded] = React.useState(false);
+
+  const handleImageLoad = () => {
+    setLoaded(true);
+  };
+
   return (
-    <StyledBooking>
-      <Container>
-        <Back 
-          goBack={goBack}
-          name={`Back to ${stay.name}`}
-        />
-        <MainBlock>
-          <ImgBlock>
-            <Image 
-              src={stay.images[0]}
-              alt="villa"
-            />
-          </ImgBlock>
-          <InfoBlock 
-            stay={stay}
-          />
-        </MainBlock>
-        <SeparatorHorizontal />
-        <TravelExtras />
-        <SeparatorHorizontal />
-        <Payment />
-      </Container>
-    </StyledBooking>
+    <PaymentProvider>
+      <StyledBooking>
+        <Container>
+          {isBooked ? (
+            <div>
+              <BookingConfirmed 
+                price={stay.price}
+              />
+            </div>
+          ) : (
+            <div>
+              <Back 
+                goBack={goBack}
+                name={`Back to ${stay.name}`}
+              />
+              <MainBlock>
+                <ImgBlock>
+                  <Image 
+                    src={stay.images[0]}
+                    alt="villa"
+                    loaded={loaded} 
+                    onLoad={handleImageLoad}
+                  />
+                </ImgBlock>
+                <InfoBlock 
+                  stay={stay}
+                />
+              </MainBlock>
+              <SeparatorHorizontal />
+              <TravelExtras />
+              <SeparatorHorizontal />
+              <Payment 
+                setIsBooked={setIsBooked}
+              />
+            </div>
+          )}
+        </Container>
+      </StyledBooking>
+    </PaymentProvider>
   );
 };

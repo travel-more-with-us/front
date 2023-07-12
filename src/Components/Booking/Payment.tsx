@@ -1,10 +1,11 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
 import { Separator } from '../UI/Separator';
 import { MyInput } from '../UI/MyInput';
 import { MyButtonLarge } from '../UI/MyButtonLarge';
 import { FormSeparator } from '../UI/FormSeparator';
-import { useInput } from '../../hooksAndHelpers/useInput';
+import { PaymentContext } from '../../context/PaymentContext';
 
 const StyledPayment = styled.form`
 padding: 56px 0;
@@ -41,7 +42,7 @@ display: flex;
 gap: 16px;
 `;
 
-const InlineInput = styled(MyInput)`
+const InlineInputContainer = styled.div`
 width: calc((100% - 16px) / 2);
 `;
 
@@ -62,17 +63,56 @@ const StyledSeparator = styled(FormSeparator)`
 margin: 0 0 24px 0;
 `;
 
-export const Payment = () => {
-  const fullname = useInput('');
-  const email = useInput('');
-  const phone = useInput('');
-  const street = useInput('');
-  const zip = useInput('');
-  const country = useInput('');
-  const cardHolderName = useInput('');
-  const cardNumber = useInput('');
-  const expiration = useInput('');
-  const cvv = useInput('');
+const ErrorMessage = styled.div`
+margin: 0 0 10px 0;
+color: ${props => props.theme.errorColor};
+`;
+
+interface Props {
+  setIsBooked: Dispatch<SetStateAction<boolean>>;
+}
+
+export const Payment: React.FC <Props> = ({ setIsBooked }) => {
+  const {
+    email,
+    fullname,
+    phone,
+    street,
+    country,
+    zip,
+    cardHolderName,
+    cardNumber,
+    expiration,
+    cvv,
+    emailError,
+    emailDirty,
+    fullnameDirty,
+    fullnameError,
+    cvvDirty,
+    cvvError,
+    streetDirty,
+    streetError,
+    countryDirty,
+    countryError,
+    cardHolderDirty,
+    cardHolderError,
+    cardNumberDirty,
+    cardNumberError,
+    expirationDirty,
+    expirationError,
+    zipDirty,
+    zipError,
+    phoneDirty,
+    phoneError,
+    blurHandler
+  } = React.useContext(PaymentContext);
+
+  function book(e: any) {
+    e.preventDefault();
+    if (!emailError && !phoneError && !fullnameError && !streetError && !zipError && !countryError && !cardHolderError && !cardNumberError && !expirationError && !cvvError) {
+      setIsBooked(true);
+    }
+  }
 
   return (
     <StyledPayment>
@@ -84,45 +124,85 @@ export const Payment = () => {
           value={fullname.value} 
           onChange={fullname.onChange} 
           placeholder='Enter fullname' 
-          onBlur={() => {}} 
+          onBlur={blurHandler} 
           type='text'
+          name="fullname"
         />
+        {fullnameDirty && fullnameError && (
+          <ErrorMessage>
+            {fullnameError}
+          </ErrorMessage>
+        )}
         <MyInput 
           value={email.value} 
           onChange={email.onChange} 
           placeholder='Enter email address' 
-          onBlur={() => {}}
-          type='email' 
+          onBlur={blurHandler}
+          type='email'
+          name="email"
         />
+        {emailDirty && emailError && (
+          <ErrorMessage>
+            {emailError}
+          </ErrorMessage>
+        )}
         <MyInput 
           value={phone.value} 
           onChange={phone.onChange} 
           placeholder='+380 000000000' 
-          onBlur={() => {}}
-          type='phone' 
+          onBlur={blurHandler}
+          type='number'
+          name="phone"
         />
+        {phoneDirty && phoneError && (
+          <ErrorMessage>
+            {phoneError}
+          </ErrorMessage>
+        )}
         <MyInput 
           value={street.value} 
           onChange={street.onChange} 
           placeholder='Enter street' 
-          onBlur={() => {}}
-          type='text' 
+          onBlur={blurHandler}
+          type='text'
+          name="street"
         />
+        {streetDirty && streetError && (
+          <ErrorMessage>
+            {streetError}
+          </ErrorMessage>
+        )}
         <InlineInputs>
-          <InlineInput 
-            value={zip.value} 
-            onChange={zip.onChange} 
-            placeholder='Enter ZIP' 
-            onBlur={() => {}}
-            type='number' 
-          />
-          <InlineInput 
-            value={country.value} 
-            onChange={country.onChange} 
-            placeholder='Enter Country' 
-            onBlur={() => {}}
-            type='text' 
-          />
+          <InlineInputContainer>
+            <MyInput 
+              value={zip.value} 
+              onChange={zip.onChange} 
+              placeholder='Enter ZIP' 
+              onBlur={blurHandler}
+              type='number'
+              name="zip"
+            />
+            {zipDirty && zipError && (
+              <ErrorMessage>
+                {zipError}
+              </ErrorMessage>
+            )}
+          </InlineInputContainer>
+          <InlineInputContainer>
+            <MyInput 
+              value={country.value} 
+              onChange={country.onChange} 
+              placeholder='Enter Country' 
+              onBlur={blurHandler}
+              type='text'
+              name="country" 
+            />
+            {countryDirty && countryError && (
+              <ErrorMessage>
+                {countryError}
+              </ErrorMessage>
+            )}
+          </InlineInputContainer>
         </InlineInputs>
         <StyledTextArea />
       </Column>
@@ -159,33 +239,61 @@ export const Payment = () => {
           value={cardHolderName.value} 
           onChange={cardHolderName.onChange} 
           placeholder='Cardholders name' 
-          onBlur={() => {}} 
+          onBlur={blurHandler}
           type='text'
+          name="cardholderName"
         />
+        {cardHolderDirty && cardHolderError && (
+          <ErrorMessage>
+            {cardHolderError}
+          </ErrorMessage>
+        )}
         <MyInput 
           value={cardNumber.value} 
           onChange={cardNumber.onChange} 
           placeholder='Card number' 
-          onBlur={() => {}}
-          type='number' 
+          onBlur={blurHandler}
+          type='number'
+          name="cardNumber"
         />
+        {cardNumberDirty && cardNumberError && (
+          <ErrorMessage>
+            {cardNumberError}
+          </ErrorMessage>
+        )}
         <InlineInputs>
-          <InlineInput 
-            value={expiration.value} 
-            onChange={expiration.onChange} 
-            placeholder='Expiration day' 
-            onBlur={() => {}}
-            type='text' 
-          />
-          <InlineInput 
-            value={cvv.value} 
-            onChange={cvv.onChange} 
-            placeholder='CVV' 
-            onBlur={() => {}}
-            type='text' 
-          />
+          <InlineInputContainer>
+            <MyInput 
+              value={expiration.value} 
+              onChange={expiration.onChange} 
+              placeholder='Expiration day' 
+              onBlur={blurHandler}
+              type='text' 
+              name="expiration"
+            />
+            {expirationDirty && expirationError && (
+              <ErrorMessage>
+                {expirationError}
+              </ErrorMessage>
+            )}
+          </InlineInputContainer>
+          <InlineInputContainer>
+            <MyInput 
+              value={cvv.value} 
+              onChange={cvv.onChange} 
+              placeholder='CVV' 
+              onBlur={blurHandler}
+              type='text'
+              name="cvv"
+            />
+            {cvvDirty && cvvError && (
+              <ErrorMessage>
+                {cvvError}
+              </ErrorMessage>
+            )}
+          </InlineInputContainer>
         </InlineInputs>
-        <MyButtonLarge onClick={()=> {}} disabled={false}>
+        <MyButtonLarge onClick={book} disabled={false}>
           Book
         </MyButtonLarge>
       </Column>

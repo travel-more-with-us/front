@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { StayLink } from '../UI/StayLink';
 import { Stars } from '../UI/Stars';
-import like from '../../images/like.svg';
 import { Oval } from '../UI/Oval';
 import { StayPriceBlock } from './StayPriceBlock';
 import { StayInterface } from '../../types';

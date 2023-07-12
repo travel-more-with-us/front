@@ -40,7 +40,7 @@ const guestsReducer: Reducer<GuestsState, GuestsAction> = (state = initialState.
         rooms: state.rooms + 1,
       };
     }
-    else if (action.payload === 'children' && state.children < state.adults * 3) {
+    else if (action.payload === 'children' && state.children < state.adults * 3 && (state.adults + state.children) < state.rooms * 4) {
       return {
         ...state,
         children: state.children + 1,

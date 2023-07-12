@@ -37,7 +37,7 @@ const StyledButton = styled.button<Props>`
 
 interface Props {
   children: ReactNode;
-  onClick: () => void;
+  onClick: (e: any) => void;
   outlined?: string;
   disabled: boolean;
 }

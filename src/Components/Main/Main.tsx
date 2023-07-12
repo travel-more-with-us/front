@@ -18,7 +18,7 @@ margin: 0 0 185px 0;
 }
 `;
 
-const VideoBackground = styled.video`
+const VideoBackground = styled.video<any>`
   position: absolute;
   top: 80px;
   left: 0;
@@ -26,6 +26,8 @@ const VideoBackground = styled.video`
   height: 60%;
   object-fit: cover;
   z-index: 0;
+  opacity: ${props => (props.loaded ? 1 : 0)};
+  transition: opacity 0.5s ease;
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -57,6 +59,12 @@ z-index: 2;
 `;
 
 export const Main = () => {
+  const [videoLoaded, setVideoLoaded] = React.useState(false);
+
+  const handleVideoLoad = () => {
+    setVideoLoaded(true);
+  };
+
   return (
     <>
       <StyledMain>
@@ -69,7 +77,13 @@ export const Main = () => {
             <br />
             all-in-one booking service.
           </Description>
-          <VideoBackground autoPlay loop muted>
+          <VideoBackground 
+            autoPlay 
+            loop 
+            muted
+            loaded={videoLoaded}
+            onLoadedMetadata={handleVideoLoad}
+          >
             <source src={videoSource} type="video/mp4" />
           </VideoBackground>
         </Container>

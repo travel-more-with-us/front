@@ -17,11 +17,13 @@ gap: 24px;
 }
 `;
 
-const Image = styled.img`
+const Image = styled.img<any>`
 max-width: 288px;
 width: 100%;
 height: 100%;
 border-radius: 8px;
+opacity: ${props => (props.loaded ? 1 : 0)};
+transition: opacity 0.5s ease-in-out;
 
 @media screen and (max-width: 1024px) {
   height: unset;
@@ -48,12 +50,19 @@ interface Props {
 }
 
 export const Stay: React.FC <Props> = ({ stay, duration, adults }) => {
+  const [loaded, setLoaded] = React.useState(false);
+
+  const handleImageLoad = () => {
+    setLoaded(true);
+  };
   return (
     <StyledVilla>
       <ImageBlock>
         <Image 
           src={stay.images[0]}
           alt="villa"
+          loaded={loaded} 
+          onLoad={handleImageLoad}
         />
       </ImageBlock>
       <StayInfoBlock 
