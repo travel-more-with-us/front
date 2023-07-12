@@ -84,13 +84,15 @@ export const RangeBlock: React.FC <Props> = ({ min, max }) => {
   }, [value]);
 
   useEffect(() => {
-    if (value[0] !== filters.priceRange.min || value[1] !== filters.priceRange.max) {
-      const arr = [
-        filters.priceRange.min,
-        filters.priceRange.max,
-      ];
-
-      setValue(arr);
+    if (filters.hasOwnProperty('priceRange')) {
+      if (value[0] !== filters.priceRange.min || value[1] !== filters.priceRange.max) {
+        const arr = [
+          filters.priceRange.min,
+          filters.priceRange.max,
+        ];
+  
+        setValue(arr);
+      }
     }
   }, [filters.priceRange]);
   

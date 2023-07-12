@@ -6,7 +6,7 @@ import { SeparatorHorizontal } from '../UI/SeparatorHorizontal';
 import { FilterWithRange } from './FilterWithRange';
 import { StayInterface } from '../../types';
 import { useDispatch } from 'react-redux';
-import { clearFilters, updateFilters } from '../../store/actions';
+import { updateFilters } from '../../store/actions';
 import { useGetCoefficient } from '../../hooksAndHelpers/useGetCoefficient';
 
 const StyledFilters = styled.div`
