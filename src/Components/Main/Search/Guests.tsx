@@ -51,6 +51,7 @@ const Dropdown = styled.div`
   padding: 26px 24px;
   box-sizing: border-box;
   border: 2px solid ${props => props.theme.disabledColor};
+  z-index: 2;
 
   @media screen and (max-width: 1024px) {
     right: 0;

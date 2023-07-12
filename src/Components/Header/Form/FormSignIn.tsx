@@ -29,7 +29,7 @@ font-weight: 700;
 font-size: 32px;
 line-height: 120%;
 color: #000000;
-margin: 0 0 24px 0;
+margin: 24px 0px 24px;
 text-align: center;
 `;
 
