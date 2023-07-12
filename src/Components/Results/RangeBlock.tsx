@@ -5,6 +5,7 @@ import Slider from '@mui/material/Slider';
 import { styled as styledMui } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateFilters } from '../../store/actions';
+import { StateInterface } from '../../types/reduxTypes';
 
 const StyledRangeBlock = styled.div`
   margin: 0 0 24px 0;
@@ -50,7 +51,7 @@ interface Props {
 
 export const RangeBlock: React.FC <Props> = ({ min, max }) => {
   const [value, setValue] = React.useState<number[]>([min, max]);
-  const filters = useSelector((state: any) => state.filters);
+  const filters = useSelector((state: StateInterface) => state.filters);
 
   const handleChange = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number[]);

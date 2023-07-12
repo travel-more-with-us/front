@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-console */
 import React from 'react';
@@ -68,7 +69,7 @@ const StyledMyInput = styled(MyInput)<MyInputProps>`
 `;
 
 interface Props {
-  closePopupSignIn: any;
+  closePopupSignIn: () => void;
 }
 
 export const FormSignIn: React.FC <Props> = ({ closePopupSignIn }) => {

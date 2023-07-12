@@ -971,7 +971,6 @@ export const ResultsMain = () => {
   const coefficient = useGetCoefficient();
   const sortBy = useSelector((state: StateInterface) => state.sort);
   const navigate = useNavigate();
-  console.log(filters);
 
   const goBack = () => {
     navigate(-1);

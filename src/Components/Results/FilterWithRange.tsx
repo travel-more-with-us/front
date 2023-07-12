@@ -95,8 +95,8 @@ interface Props {
   options: FilterPriceOptionInterface[];
   seeMore?: boolean;
   stays: StayInterface[];
-  resetFilters: any;
-  onResetComplete: any;
+  resetFilters: boolean;
+  onResetComplete: () => void;
 }
 
 export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore, stays, resetFilters, onResetComplete}) => {
@@ -163,7 +163,7 @@ export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore, stay
                 onChange={() => {
                   selectFilter(option);
                 }}
-                checked={selectedFilters.some((fil: any) => fil.name === option.name)}
+                checked={selectedFilters.some((fil: FilterPriceOptionInterface) => fil.name === option.name)}
               />
               <StyledCheckmarkIcon icon={faCheck} />
               <Option htmlFor={option.name}>

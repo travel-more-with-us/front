@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { PaymentContext } from '../../context/PaymentContext';
 import { useGetCoefficient } from '../../hooksAndHelpers/useGetCoefficient';
 import { useSelector } from 'react-redux';
+import { StateInterface } from '../../types/reduxTypes';
 
 const StyledGuestsBlock = styled.div`
 display: flex;
@@ -51,7 +52,8 @@ interface Props {
 
 export const GuestsBlock: React.FC <Props> = ({ price }) => {
   const { fullname, email, phone } = React.useContext(PaymentContext);
-  const { guests, dates } = useSelector((state: any) => state);
+  const guests: any = useSelector((state: StateInterface) => state.guests);
+  const dates: any = useSelector((state: StateInterface) => state.dates);
   const coefficient = useGetCoefficient();
 
   return (

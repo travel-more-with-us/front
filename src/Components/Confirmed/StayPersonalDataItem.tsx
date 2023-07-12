@@ -40,8 +40,13 @@ font-weight: 700;
 line-height: 150%;
 `;
 
+interface ArrayItem {
+  title: string;
+  value: string;
+}
+
 interface Props {
-  array: any;
+  array: ArrayItem[];
   title: string;
 }
 
@@ -52,8 +57,8 @@ export const StayPersonalDataItem: React.FC <Props> = ({ array, title}) => {
         {title}
       </Title>
       <div>
-        {array.map((item: any) => (
-          <ListItem>
+        {array.map((item: ArrayItem) => (
+          <ListItem key={item.title}>
             <ListItemTitle>
               {item.title}:
             </ListItemTitle>

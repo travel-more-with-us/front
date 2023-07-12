@@ -41,7 +41,7 @@ color: ${props => props.theme.txtColor};
 export const CheckDates = () => {
   const dates = useSelector((state: StateInterface) => state.dates);
   const guests = useSelector((state: StateInterface) => state.guests);
-  console.log(dates);
+
   return (
     <CheckDatesContainer>
       <Date>

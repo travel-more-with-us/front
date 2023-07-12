@@ -62,7 +62,6 @@ interface Props {
 }
 
 export const Reviews: React.FC <Props> = ({ stay }) => {
-  console.log(stay.ratings);
   return (
     <ReviewsContainer>
       <ReviewsBlock>

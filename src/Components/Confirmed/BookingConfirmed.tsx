@@ -8,6 +8,7 @@ import { Separator } from '../UI/Separator';
 import { GuestsBlock } from './GuestsBlock';
 import { QrcodeBlock } from './QrcodeBlock';
 import { StayPersonalData } from './StayPersonalData';
+import { StateInterface } from '../../types/reduxTypes';
 
 const H1 = styled.h1`
 color: ${props => props.theme.txtColor};
@@ -50,7 +51,7 @@ interface Props {
 
 export const BookingConfirmed: React.FC <Props> = ({ price }) => {
   const navigate = useNavigate();
-  const { departure } = useSelector((state: any) => state);
+  const departure = useSelector((state: StateInterface) => state.departure);
 
   const goBack = () => {
     navigate('/');

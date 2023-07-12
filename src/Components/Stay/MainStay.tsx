@@ -19,7 +19,7 @@ background: #fff;
 export const MainStay = () => {
   const navigate = useNavigate();
   const { stayId }: any = useParams();
-  console.log(stayId);
+
   const goBack = () => {
     navigate(-1);
   };

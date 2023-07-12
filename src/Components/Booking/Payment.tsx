@@ -107,7 +107,7 @@ export const Payment: React.FC <Props> = ({ setIsBooked }) => {
     blurHandler
   } = React.useContext(PaymentContext);
 
-  function book(e: any) {
+  function book(e: SubmitEvent) {
     e.preventDefault();
     if (!emailError && !phoneError && !fullnameError && !streetError && !zipError && !countryError && !cardHolderError && !cardNumberError && !expirationError && !cvvError) {
       setIsBooked(true);
@@ -151,7 +151,7 @@ export const Payment: React.FC <Props> = ({ setIsBooked }) => {
           onChange={phone.onChange} 
           placeholder='+380 000000000' 
           onBlur={blurHandler}
-          type='number'
+          type="tel"
           name="phone"
         />
         {phoneDirty && phoneError && (

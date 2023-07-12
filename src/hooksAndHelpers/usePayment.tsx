@@ -35,8 +35,29 @@ export const usePayment = () => {
   const [cvvDirty, setCvvDirty] = React.useState(false);
 
   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+  const phoneNumberRegex = /^(\+?3?8)?0\d{9}$/;
+  const cardNumberRegex = /^[0-9]{16}$/;
+  const expirationRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+  const cvvRegex = /^[0-9]{3,4}$/;
+
   const isValidEmail = (str: string) => {
     return emailRegex.test(str);
+  };
+
+  const isValidPhone = (str: string) => {
+    return phoneNumberRegex.test(str);
+  };
+
+  const isValidCardNumber = (str: string) => {
+    return cardNumberRegex.test(str);
+  };
+
+  const isValidExpiration = (str: string) => {
+    return expirationRegex.test(str);
+  };
+
+  const isValidCvv = (str: string) => {
+    return cvvRegex.test(str);
   };
 
   React.useEffect(() => {
@@ -58,8 +79,10 @@ export const usePayment = () => {
   }, [fullname.value]);
 
   React.useEffect(() => {
-    if (!phone.value) {
-      setPhoneError('Please, enter your phone number');
+    const isValid = isValidPhone(phone.value);
+
+    if (!isValid) {
+      setPhoneError('Phone is not valid, try again');
     } else {
       setPhoneError('');
     }
@@ -98,24 +121,27 @@ export const usePayment = () => {
   }, [cardHolderName.value]);
 
   React.useEffect(() => {
-    if (!cardNumber.value) {
-      setCardNumberError('Please, enter your card number');
+    const isValid = isValidCardNumber(cardNumber.value);
+    if (!isValid) {
+      setCardNumberError('Card number is not valid');
     } else {
       setCardNumberError('');
     }
   }, [cardNumber.value]);
 
   React.useEffect(() => {
-    if (!expiration.value) {
-      setExpirationError('Please, enter your expiration date');
+    const isValid = isValidExpiration(expiration.value);
+    if (!isValid) {
+      setExpirationError('Expiration date is not valid');
     } else {
       setExpirationError('');
     }
   }, [expiration.value]);
 
   React.useEffect(() => {
-    if (!cvv.value) {
-      setCvvError('Please, enter your cvv code');
+    const isValid = isValidCvv(cvv.value);
+    if (!isValid) {
+      setCvvError('Cvv is not valid');
     } else {
       setCvvError('');
     }

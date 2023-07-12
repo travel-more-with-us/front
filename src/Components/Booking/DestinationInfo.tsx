@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Stars } from '../UI/Stars';
 import { StayInterface } from '../../types';
 import { useSelector } from 'react-redux';
+import { StateInterface } from '../../types/reduxTypes';
 
 const Rewievs = styled.span`
 margin: 0 8px 0 8px;
@@ -50,7 +51,7 @@ interface Props {
 }
 
 export const DestinationInfo: React.FC <Props> = ({ stay }) => {
-  const dates = useSelector((state: any) => state.dates);
+  const dates: any = useSelector((state: StateInterface) => state.dates);
   return (
     <>
       <H1>

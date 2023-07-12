@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { StayLink } from '../UI/StayLink';
 import { useSelector } from 'react-redux';
+import { StateInterface } from '../../types/reduxTypes';
 
 const StyledAboutGuests = styled.div`
 border-top: 1px solid ${props => props.theme.disabledColor};
@@ -40,8 +41,8 @@ margin: 0;
 `;
 
 export const AboutGuests = () => {
-  const dates = useSelector((state: any) => state.dates);
-  const guests = useSelector((state: any) => state.guests);
+  const dates: any = useSelector((state: StateInterface) => state.dates);
+  const guests = useSelector((state: StateInterface) => state.guests);
   return (
     <StyledAboutGuests>
       <Block>
