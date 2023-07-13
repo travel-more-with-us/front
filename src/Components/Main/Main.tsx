@@ -23,11 +23,10 @@ height: 500px;
 box-sizing: border-box;
 
 @media screen and (max-width: 768px) {
-  padding: 10px 0 10px;
+  padding: 130px 0 140px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${mainBg});
   background-size: cover;
   background-repeat: no-repeat;
-  margin: 0 0 1px 0;
 }
 `;
 
@@ -37,20 +36,14 @@ const VideoBackground = styled.video<any>`
     left: 0px;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    opacity: ${props => (props.loaded ? 1 : 0)};
-    transition: opacity 0.5s ease;
+  object-fit: cover;
+  z-index: 0;
+  opacity: ${props => (props.loaded ? 1 : 0)};
+  transition: opacity 0.5s ease;
 
   @media screen and (max-width: 768px) {
     display: none;
   }
-`;
-
-const Wrapper = styled.div`
-@media screen and (max-width: 768px) {
-  display: none;
-}
 `;
 
 const Header = styled.h1`
@@ -153,11 +146,9 @@ export const Main = () => {
     <>
       <StyledMain>
         <Container>
-          <Wrapper>
-            <Search 
-              places={places}
-            />
-          </Wrapper>
+          <Search 
+            places={places}
+          />
           <Header>
             Discover. Compare. <br /> Travel More!
           </Header>
