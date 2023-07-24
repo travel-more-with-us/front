@@ -1,7 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
-import { StayLink } from '../UI/StayLink';
 import { AmenityInterface, StayInterface } from '../../types';
+import { baseUrl } from '../../api';
+import { Loading } from '../Loading/Loading';
+import { useFetching } from '../../hooksAndHelpers/useFetching';
 
 const AmenitiesContainer = styled.div`
 width: calc((100% - 16px) / 2);
@@ -52,29 +56,44 @@ interface Props {
 }
 
 export const Amenities: React.FC <Props> = ({ stay }) => {
+  const [amenities, amenititesLoading, amenitiesError] = useFetching(baseUrl + 'amenities');
+
+  const filteredAmenities = React.useMemo(() => {
+    if (!amenititesLoading && !amenitiesError) {
+      return amenities.filter((amenity: any) => {
+        if (stay.amenities.some((el: any) => el === amenity.id)) {
+          return amenity;
+        }
+  
+        return null;
+      });
+    }
+  }, [amenities, stay.amenities]);
+
   return (
     <AmenitiesContainer>
       <AmenitiesBlock>
         <H3>
           Top amenities
         </H3>
-        <StayLink click={() => {}}>
-          Show more
-        </StayLink>
       </AmenitiesBlock>
-      <List>
-        {stay.amenities.map((amenity: AmenityInterface) => (
-          <ListItem key={amenity.name}>
-            <img 
-              src={amenity.img}
-              alt={amenity.name}
-            />
-            <Name>
-              {amenity.name}
-            </Name>
-          </ListItem>
-        ))}
-      </List>
+      {amenititesLoading ? (
+        <Loading />
+      ) : (
+        <List>
+          {filteredAmenities.map((amenity: AmenityInterface) => (
+            <ListItem key={amenity.name}>
+              <img 
+                src={baseUrl + amenity.img}
+                alt={amenity.name}
+              />
+              <Name>
+                {amenity.name}
+              </Name>
+            </ListItem>
+          ))}
+        </List>
+      )}
     </AmenitiesContainer>
   );
 };

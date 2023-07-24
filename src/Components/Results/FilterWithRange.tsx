@@ -119,7 +119,11 @@ export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore, stay
   }
 
   const sortedStays: StayInterface[] = React.useMemo(() => {
-    return [...stays].sort((stay1, stay2) => stay1.price - stay2.price);
+    if (stays.length !== 0) {
+      return [...stays].sort((stay1, stay2) => stay1.price - stay2.price);
+    }
+
+    return [...stays];
   }, [stays]);
 
   function selectFilter(elem: FilterPriceOptionInterface) {
@@ -144,6 +148,10 @@ export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore, stay
     }
   }, [resetFilters, onResetComplete]);
 
+  if (!sortedStays || sortedStays.length === 0) {
+    return null;
+  }
+
   return (
     <StyledFilter>
       <FilterName>
@@ -151,7 +159,7 @@ export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore, stay
       </FilterName>
       <RangeBlock 
         min={0}
-        max={sortedStays[sortedStays.length - 1].price * coefficient || 2000}
+        max={sortedStays && (sortedStays[sortedStays.length - 1].price * coefficient || 2000)}
       />
       <FiltersBlock>
         {appliedOptions.map((option: FilterPriceOptionInterface) => (
@@ -171,7 +179,7 @@ export const FilterWithRange: React.FC <Props> = ({ name, options, seeMore, stay
               </Option>
             </CheckboxBlock>
             <Count>
-              {stays.filter((stay: StayInterface) => stay.price * coefficient > option.min && stay.price * coefficient <= option.max).length}
+              {stays && stays.filter((stay: StayInterface) => stay.price * coefficient > option.min && stay.price * coefficient <= option.max).length}
             </Count>
           </FilterBlock>
         ))}

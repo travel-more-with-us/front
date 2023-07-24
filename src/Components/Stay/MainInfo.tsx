@@ -1,8 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
 import { Stars } from '../UI/Stars';
 import { Oval } from '../UI/Oval';
 import { StayInterface } from '../../types';
+import { useSelector } from 'react-redux';
+import { useFetching } from '../../hooksAndHelpers/useFetching';
+import { baseUrl } from '../../api';
+import { Loading } from '../Loading/Loading';
 
 const Header = styled.h1`
 font-weight: 700;
@@ -56,6 +61,8 @@ interface Props {
 }
 
 export const MainInfo: React.FC <Props> = ({ stay }) => {
+  const departure = useSelector((state: any) => state.departure);
+  const [reviews, reviewsLoading, reviewsError] = useFetching(baseUrl + `reviews?${stay.id}`);
   return (
     <Info>
       <Header>
@@ -64,27 +71,25 @@ export const MainInfo: React.FC <Props> = ({ stay }) => {
       <Block>
         <BlockEvaluations>
           <Stars count={stay.rating} />
-          <Rewievs>
-            {`${stay.reviews} rewievs`}
-          </Rewievs>
+          {reviewsLoading ? (
+            <Loading />
+          ) : (
+            <Rewievs>
+              {`${reviews.length} rewievs`}
+            </Rewievs>
+          )}
           <Oval />
           <Street>
-            {`${stay.street}, `}
+            {`${stay.street} `}
           </Street>
           <City>
-            {`${stay.city}, `}
+            {`${departure.city || 'Split'}, `}
           </City>
           <span>
-            {`${stay.country}.`}
+            {`${departure.country || 'Croatia'}.`}
           </span>
         </BlockEvaluations>
         <div>
-          <span>
-            Share
-          </span>
-          <span>
-            Save
-          </span>
         </div>
       </Block>
     </Info>

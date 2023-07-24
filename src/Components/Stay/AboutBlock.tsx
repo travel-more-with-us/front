@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { StayLink } from '../UI/StayLink';
 import { StayInterface } from '../../types';
 
 const About = styled.div`
@@ -33,21 +32,14 @@ interface Props {
 }
 
 export const AboutBlock: React.FC <Props> = ({ stay }) => {
-  const [showAll, setShowAll] = React.useState(false);
-  function showMore() {
-    setShowAll(!showAll);
-  }
   return (
     <About>
       <Header>
         About this space
       </Header>
       <Text>
-        {showAll ? stay.about : stay.about.slice(0, 450) + ' ...'}
+        {stay.about}
       </Text>
-      <StayLink click={showMore} margin="8px 0 0 0">
-        {!showAll ? 'Show more' : 'Hide text'}
-      </StayLink>
     </About>
   );
 };

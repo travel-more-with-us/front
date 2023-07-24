@@ -55,10 +55,10 @@ export const Propositions: React.FC <Props> = ({ places, header, description }) 
           {description}
         </Description>
         <Block>
-          {places.map((place: Place) => (
+          {places.map((place: any) => (
             <Proposition
               place={place}
-              key={place.city}
+              key={place.id}
             />
           ))}
         </Block>

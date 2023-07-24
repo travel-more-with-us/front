@@ -1,7 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
 import { Comment } from './Comment';
 import { ReviewListItemInterface, StayInterface } from '../../types';
+import axios from 'axios';
+import { baseUrl } from '../../api';
+import { Loading } from '../Loading/Loading';
+import { useFetching } from '../../hooksAndHelpers/useFetching';
 
 const ReviewsPeopleBlock = styled.div`
 display: flex;
@@ -43,29 +48,37 @@ interface Props {
 }
 
 export const ReviewsPeople: React.FC <Props> = ({ stay }) => {
+  const [reviews, reviewsLoading, reviewsError] = useFetching(baseUrl + `reviews?${stay.id}`);
+
   return (
-    <ReviewsPeopleBlock>
-      {stay.reviewsList.map((listItem: ReviewListItemInterface) => (
-        <Person key={listItem.text}>
-          <PersonBlock>
-            <PersonImage 
-              src={listItem.img}
-              alt="person"
-            />
-            <div>
-              <Author>
-                {listItem.author}
-              </Author>
-              <Date>
-                {listItem.date}
-              </Date>
-            </div>
-          </PersonBlock>
-          <Comment 
-            listItem={listItem}
-          />
-        </Person>
-      ))}
-    </ReviewsPeopleBlock>
+    <>
+      {reviewsLoading ? (
+        <Loading />
+      ) : (
+        <ReviewsPeopleBlock>
+          {reviews.map((listItem: ReviewListItemInterface) => (
+            <Person key={listItem.text}>
+              <PersonBlock>
+                <PersonImage 
+                  src={baseUrl + listItem.img}
+                  alt="person"
+                />
+                <div>
+                  <Author>
+                    {listItem.author}
+                  </Author>
+                  <Date>
+                    {listItem.date}
+                  </Date>
+                </div>
+              </PersonBlock>
+              <Comment 
+                listItem={listItem}
+              />
+            </Person>
+          ))}
+        </ReviewsPeopleBlock>
+      )}
+    </>
   );
 };

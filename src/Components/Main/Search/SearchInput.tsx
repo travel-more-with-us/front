@@ -4,6 +4,7 @@ import location from '../../../images/location.svg';
 import locationGreen from '../../../images/location-green.svg';
 import { Place } from '../../../types';
 import { useSearch } from '../../../hooksAndHelpers/useSearch';
+import axios from 'axios';
 
 const Block = styled.div`
 max-width: 364px;
@@ -121,8 +122,8 @@ export const SearchInput: React.FC <Props> = ({ places }) => {
       />
       {dropdownVisible && (
         <DropdownList className="dropdown">
-          {searchedOptions.slice(0, optionsToShowInDropdown).map((option) => (
-            <DropdownItem key={option.city} onClick={() => handleItemClick(option)}>
+          {searchedOptions.slice(0, optionsToShowInDropdown).map((option: any) => (
+            <DropdownItem key={option.name} onClick={() => handleItemClick(option)}>
               <City>
                 {option.city}
               </City>

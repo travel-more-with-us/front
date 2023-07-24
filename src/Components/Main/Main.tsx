@@ -5,14 +5,8 @@ import mainBg from '../../images/main-bg.png';
 import { PropositionsBlock } from './PropositionsBlock';
 import videoSource from '../../images/video-travel-more.mp4';
 import { Search } from './Search/Search';
-import bali from '../../images/Bali.png';
-import warshaw from '../../images/Warsaw.png';
-import bangkok from '../../images/Bangkok.png';
-import berlin from '../../images/Berlin.png';
-import manchester from '../../images/Manchester.png';
-import dubrovnik from '../../images/Dubrovnik.png';
-import rio from '../../images/Rio de Janeiro.png';
-import antalya from '../../images/Antalya.png';
+import { baseUrl } from '../../api';
+import { useFetching } from '../../hooksAndHelpers/useFetching';
 
 const StyledMain = styled.main`
 padding: 135px 0 0;
@@ -72,71 +66,7 @@ z-index: 2;
 
 export const Main = () => {
   const [videoLoaded, setVideoLoaded] = React.useState(false);
-  const places = [
-    {
-      img: antalya,
-      country: 'Turkey',
-      city: 'Antalya',
-      rewievs: 184,
-      rating: 5,
-    },
-    {
-      img: bali,
-      country: 'Indonesia',
-      city: 'Bali',
-      rewievs: 205,
-      rating: 5,
-    },
-    {
-      img: bangkok,
-      country: 'Thailand',
-      city: 'Bangkok',
-      rewievs: 345,
-      rating: 5,
-    },
-    {
-      img: manchester,
-      country: 'United Kingdom',
-      city: 'Manchester',
-      rewievs: 124,
-      rating: 4,
-    },
-    {
-      img: warshaw,
-      country: 'Poland',
-      city: 'Warsaw',
-      rewievs: 65,
-      rating: 5,
-    },
-    {
-      img: berlin,
-      country: 'Germany',
-      city: 'Berlin',
-      rewievs: 104,
-      rating: 4,
-    },
-    {
-      img: dubrovnik,
-      country: 'Croatia',
-      city: 'Dubrovnik',
-      rewievs: 118,
-      rating: 5,
-    },
-    {
-      img: rio,
-      country: 'Brazil',
-      city: 'Rio de Janeiro',
-      rewievs: 143,
-      rating: 5,
-    },
-    {
-      img: rio,
-      country: 'Croatia',
-      city: 'Split',
-      rewievs: 143,
-      rating: 5,
-    },
-  ];
+  const [places, loading, error] = useFetching(baseUrl + 'destinations');
 
   const handleVideoLoad = () => {
     setVideoLoaded(true);
@@ -146,9 +76,11 @@ export const Main = () => {
     <>
       <StyledMain>
         <Container>
-          <Search 
-            places={places}
-          />
+          {!loading && (
+            <Search 
+              places={places}
+            />
+          )}
           <Header>
             Discover. Compare. <br /> Travel More!
           </Header>
@@ -168,7 +100,11 @@ export const Main = () => {
           </VideoBackground>
         </Container>
       </StyledMain>
-      <PropositionsBlock />
+      <PropositionsBlock 
+        places={places}
+        loading={loading}
+        error={error}
+      />
     </>
   );
 };

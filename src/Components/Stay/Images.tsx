@@ -1,7 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
 import { ButtonOutlined } from '../UI/ButtonOutlined';
 import { StayInterface } from '../../types';
+import axios from 'axios';
+import { baseUrl } from '../../api';
+import { Loading } from '../Loading/Loading';
+import { useFetching } from '../../hooksAndHelpers/useFetching';
+import { SliderPhotosModal } from './SliderPhotosModal';
 
 const StyledImages = styled.div`
 display: flex;
@@ -84,26 +90,42 @@ interface Props {
 }
 
 export const Images: React.FC <Props> = ({ stay }) => {
-  const map: string = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2893.861757794266!2d16.441164876070015!3d43.50521937110958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13355f87dba3aab3%3A0x4ad5decc918fac82!2sApartments%20Antica%20-%20Split!5e0!3m2!1suk!2sua!4v1687363745573!5m2!1suk!2sua"  height="408" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
-  
+  console.log(stay);
   const [loaded, setLoaded] = React.useState(false);
+  const [images, imagesLoading, imagesError] = useFetching(`${baseUrl}images?stayId=${stay.id.toString()}`);
+  const [popupOpen, setPopupOpen] = React.useState(false);
+
   
   const handleImageLoad = () => {
     setLoaded(true);
   };
 
+  console.log(images);
+
+  function openPopup() {
+    setPopupOpen(true);
+  }
+
+  function closePopup() {
+    setPopupOpen(false);
+  }
+
   return (
     <StyledImages>
       <div>
-        <MainImage 
-          src={stay.images[0]}
-          alt="stay room"
-          loaded={loaded} 
-          onLoad={handleImageLoad}
-        />
+        {imagesLoading ? (
+          <Loading />
+        ) : (
+          <MainImage 
+            src={baseUrl + images[0].url}
+            alt="stay room"
+            loaded={loaded} 
+            onLoad={handleImageLoad}
+          />
+        )}
         <MainButtons>
-          <ButtonOutlined>
-            See all 20 Photos
+          <ButtonOutlined onClick={openPopup}>
+            See all {images && images.length} Photos
           </ButtonOutlined>
           <ButtonOutlined>
             Video
@@ -112,20 +134,32 @@ export const Images: React.FC <Props> = ({ stay }) => {
             3D tour
           </ButtonOutlined>
         </MainButtons>
-      </div>
-      <SecondImages>
-        {stay.images.slice(1).map((image: string) => (
-          <SmallImageContainer key={image}>
-            <SmallImage 
-              src={image}
-              alt="villa some object"
-              loaded={loaded} 
-              onLoad={handleImageLoad}
+        {popupOpen && (
+          !imagesLoading && (
+            <SliderPhotosModal 
+              closePopup={closePopup}
+              images={images}
             />
-          </SmallImageContainer>
-        ))}
-      </SecondImages>
-      <MapContainer dangerouslySetInnerHTML={{ __html: map }} />
+          )
+        )}
+      </div>
+      {imagesLoading ? (
+        <Loading />
+      ) :  (
+        <SecondImages>
+          {images.slice(1, 5).map((image: any) => (
+            <SmallImageContainer key={image.id}>
+              <SmallImage 
+                src={baseUrl + image.url}
+                alt="villa some object"
+                loaded={loaded} 
+                onLoad={handleImageLoad}
+              />
+            </SmallImageContainer>
+          ))}
+        </SecondImages>
+      )}
+      <MapContainer dangerouslySetInnerHTML={{ __html: stay.onMap }} />
     </StyledImages>
   );
 };

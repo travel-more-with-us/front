@@ -1,12 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import axios from 'axios';
 
 export const useFetching = (url: string) => {
-  const [data, setData] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [data, setData] = React.useState<any>();
+  const [isLoading, setIsLoading] = React.useState(true);
   const [error, setError] = React.useState('');
 
-  function fetchDestinations() {
+  function fetchData() {
     setIsLoading(true);
     axios.get(url)
       .then(response => {
@@ -21,7 +22,7 @@ export const useFetching = (url: string) => {
   }
 
   React.useEffect(() => {
-    fetchDestinations();
+    fetchData();
   }, []);
 
   return [data, isLoading, error];
