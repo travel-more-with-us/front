@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StayLink } from '../UI/StayLink';
-import { Rating } from './Rating';
 import { ReviewsPeople } from './ReviewsPeople';
-import { RatingInterface, StayInterface } from '../../types';
+import { StayInterface } from '../../types';
+import { ListRating } from './ListRating';
 
 const ReviewsContainer = styled.div`
 width: calc((100% - 16px) / 2);
@@ -21,32 +21,6 @@ margin: 0 0 16px 0;
 @media screen and (max-width: 768px) {
   flex-wrap: wrap;
 }
-`;
-
-const ListRarings = styled.div`
-display: flex;
-flex-wrap: wrap;
-gap: 24px;
-`;
-
-const ListRaringItem = styled.div`
-width: calc((100% - 24px)/2);
-display: flex;
-align-items: center;
-
-@media screen and (max-width: 768px) {
-  flex-wrap: wrap;
-}
-`;
-
-const RatingName = styled.p`
-width: 130px;
-margin: 0;
-`;
-
-const RatingValue = styled.p`
-margin: 0;
-width: 20px;
 `;
 
 const H3 = styled.h3`
@@ -72,21 +46,9 @@ export const Reviews: React.FC <Props> = ({ stay }) => {
           Show more
         </StayLink>
       </ReviewsBlock>
-      <ListRarings>
-        {stay.ratings.map((rating: RatingInterface) => (
-          <ListRaringItem key={rating.name}>
-            <RatingName>
-              {rating.name}
-            </RatingName>
-            <Rating 
-              rating={rating.rating}
-            />
-            <RatingValue>
-              {rating.rating.toFixed(1)}
-            </RatingValue>
-          </ListRaringItem>
-        ))}
-      </ListRarings>
+      <ListRating 
+        stay={stay}
+      />
       <ReviewsPeople 
         stay={stay}
       />

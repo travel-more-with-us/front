@@ -4,7 +4,7 @@ import { Place, SearchOption } from '../types';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateDeparture } from '../store/actions';
 
-export const useSearch = (places: Place[], setDropdownVisible: any) => {
+export const useSearch = (places: any, setDropdownVisible: any) => {
   const [searchInput, setSearchInput] = React.useState('');
   const options = places;
   const [iconIsGreen, setIconIsGreen] = React.useState(false);
@@ -20,7 +20,7 @@ export const useSearch = (places: Place[], setDropdownVisible: any) => {
   }, []);
 
   React.useEffect(() => {
-    if (searchInput !== '' && places.some(place => searchInput.toLowerCase().includes(place.city.toLowerCase()) 
+    if (searchInput !== '' && places.some((place: any) => searchInput.toLowerCase().includes(place.city.toLowerCase()) 
     || searchInput.toLowerCase().includes(place.country.toLowerCase()) 
     || place.city.toLowerCase().includes(searchInput.toLowerCase()) 
     || place.country.toLowerCase().includes(searchInput.toLowerCase()))) {
@@ -35,7 +35,7 @@ export const useSearch = (places: Place[], setDropdownVisible: any) => {
       return [];
     }
 
-    const optionsFiltered = options.filter(option =>
+    const optionsFiltered = options.filter((option: any) =>
       option.city.toLowerCase().includes(searchInput.toLowerCase()) ||
       option.country.toLowerCase().includes(searchInput.toLowerCase()) ||
       searchInput.toLowerCase().includes(option.city.toLowerCase()) ||

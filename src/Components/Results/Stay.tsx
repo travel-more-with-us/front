@@ -1,7 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
 import { StayInfoBlock } from './StayInfoBlock';
 import { StayInterface } from '../../types';
+import axios from 'axios';
+import { baseUrl } from '../../api';
+import { Loading } from '../Loading/Loading';
+import { useFetching } from '../../hooksAndHelpers/useFetching';
 
 const StyledVilla = styled.div`
 border-radius: 16px;
@@ -17,12 +22,21 @@ gap: 24px;
 }
 `;
 
+const ImageBlock = styled.div`
+width: calc((100% - 24px) / 3);
+
+@media screen and (max-width: 768px) {
+  width: 100%;
+  max-width: unset;
+}
+`;
+
 const Image = styled.img<any>`
 max-width: 288px;
 width: 100%;
 height: 100%;
 border-radius: 8px;
-opacity: ${props => (props.loaded ? 1 : 0)};
+opacity: ${props => (props.loaded ? '1' : '0')};
 transition: opacity 0.5s ease-in-out;
 
 @media screen and (max-width: 1024px) {
@@ -30,15 +44,6 @@ transition: opacity 0.5s ease-in-out;
 }
 
 @media screen and (max-width: 768px) {
-  max-width: unset;
-}
-`;
-
-const ImageBlock = styled.div`
-width: calc((100% - 24px) / 3);
-
-@media screen and (max-width: 768px) {
-  width: 100%;
   max-width: unset;
 }
 `;
@@ -51,19 +56,28 @@ interface Props {
 
 export const Stay: React.FC <Props> = ({ stay, duration, adults }) => {
   const [loaded, setLoaded] = React.useState(false);
+  const [images, loadingImages, errorImages] = useFetching(baseUrl + `images?stayId=${stay.id}`);
 
+  console.log(images);
+
+  
   const handleImageLoad = () => {
     setLoaded(true);
   };
+
   return (
     <StyledVilla>
       <ImageBlock>
-        <Image 
-          src={stay.images[0]}
-          alt="villa"
-          loaded={loaded} 
-          onLoad={handleImageLoad}
-        />
+        {loadingImages ? (
+          <Loading />
+        ) : (
+          <Image 
+            src={`${baseUrl}${images[0].url}`}
+            alt="villa"
+            loaded={loaded} 
+            onLoad={handleImageLoad}
+          />
+        )}
       </ImageBlock>
       <StayInfoBlock 
         stay={stay}

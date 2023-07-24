@@ -38,17 +38,6 @@ interface Props {
 }
 
 export const Filters: React.FC <Props> = ({ stays }) => {
-  // const popularFiltersOptions = [
-  //   'Hotels',
-  //   'Breakfast included',
-  //   '5 stars',
-  //   'Hostels',
-  //   'Beachfront',
-  //   'Twin beds',
-  //   'Bed and breakfasts',
-  //   'Split Old Town',
-  // ];
-
   const propertyTypes = [
     {
       name: 'Hotels',
@@ -91,59 +80,48 @@ export const Filters: React.FC <Props> = ({ stays }) => {
     }
   ];
 
-  // const distanceFromCenter = [
-  //   'less than 1km',
-  //   'less than 3km',
-  //   'less than 5km'
-  // ];
-
-  // const mealPlans = [
-  //   'Breakfast included',
-  //   'Lunch included',
-  //   'Dinner included',
-  //   'All inclusive',
-  // ];
-
   const amenities = [
     {
       name: 'Swimming pool',
-      value: 'Swimming pool'
+      value: 4
     },
     {
-      name: 'Ocean view',
-      value: 'Ocean view'
+      name: 'Sleeps up to 3 adults',
+      value: 8
     },
     {
-      name: 'Wi-Fi',
-      value: 'Wi-Fi'
+      name: 'Free Internet Access',
+      value: 2
     },
     {
-      name: 'Parking',
-      value: 'Parking'
+      name: 'Free Parking',
+      value: 3
     },
     {
-      name: 'Fitness center',
-      value: 'Fitness center'
+      name: 'Fitness',
+      value: 5
     },
     {
-      name: 'Spa',
-      value: 'Spa'
+      name: 'Pets allowed',
+      value: 7
     },
     {
-      name: 'Restaurants & Bars',
-      value: 'Restaurants & Bars'
+      name: 'Restaurants',
+      value: 6
+    },
+    {
+      name: 'Balcony/Terrace',
+      value: 9
+    },
+    {
+      name: 'No smoking rooms',
+      value: 10
+    },
+    {
+      name: 'Beachfront',
+      value: 11
     }
   ];
-
-  // const accesibility = [
-  //   'In-room accessibility',
-  //   'Roll-in shower',
-  //   'Service animals',
-  //   'Accessible bathroom',
-  //   'Wi-Fi',
-  //   'Cannabis in bedroom',
-  //   'Girls for relaxing',
-  // ];
 
   const prices = [
     {
@@ -176,10 +154,11 @@ export const Filters: React.FC <Props> = ({ stays }) => {
   const coefficient = useGetCoefficient();
 
   const handleResetFilters = () => {
+    const staysSortedByPrice = stays.sort((a, b) => a.price - b.price);
     const defaultFilters = {
       priceRange: {
         min: 0,
-        max: stays[stays.length - 1].price * coefficient || 2000
+        max: staysSortedByPrice[staysSortedByPrice.length - 1].price * coefficient || 2000
       },
       amenities: [],
       priceCheckboxFilters: [],
@@ -216,10 +195,6 @@ export const Filters: React.FC <Props> = ({ stays }) => {
           resetFilters={resetFilters} 
           onResetComplete={handleResetComplete}
         />
-        {/* <Filter 
-          name="Popular filters"
-          options={popularFiltersOptions}
-        /> */}
         <SeparatorHorizontal />
         <Filter 
           name="Property type"
@@ -239,16 +214,6 @@ export const Filters: React.FC <Props> = ({ stays }) => {
           onResetComplete={handleResetComplete}
         />
         <SeparatorHorizontal />
-        {/* <Filter 
-          name="Distance from center"
-          options={distanceFromCenter}
-        /> */}
-        <SeparatorHorizontal />
-        {/* <Filter 
-          name="Meal plans available"
-          options={mealPlans}
-        /> */}
-        <SeparatorHorizontal />
         <Filter 
           name="Amenities"
           options={amenities}
@@ -258,12 +223,6 @@ export const Filters: React.FC <Props> = ({ stays }) => {
           resetFilters={resetFilters} 
           onResetComplete={handleResetComplete}
         />
-        <SeparatorHorizontal />
-        {/* <Filter 
-          name="Accessibility"
-          options={accesibility}
-          seeMore={true}
-        /> */}
         <SeparatorHorizontal />
       </div>
     </StyledFilters>

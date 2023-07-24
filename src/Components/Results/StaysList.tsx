@@ -53,7 +53,7 @@ export const StaysList: React.FC <Props> = ({ stays }) => {
         {stays.map(stay => (
           <Stay 
             stay={stay}
-            key={stay.city}
+            key={stay.id}
             duration={duration || 2}
             adults={adults}
           />

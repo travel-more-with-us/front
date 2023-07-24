@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
 import { Container } from '../Layout/Container';
@@ -7,10 +8,11 @@ import { InfoBlock } from './InfoBlock';
 import { SeparatorHorizontal } from '../UI/SeparatorHorizontal';
 import { TravelExtras } from './TravelExtras';
 import { Payment } from './Payment';
-import { stays } from '../Results/ResultsMain';
-import { StayInterface } from '../../types';
 import { BookingConfirmed } from '../Confirmed/BookingConfirmed';
 import { PaymentProvider } from '../../context/PaymentContext';
+import { baseUrl } from '../../api';
+import { useFetching } from '../../hooksAndHelpers/useFetching';
+import { Loading } from '../Loading/Loading';
 
 const StyledBooking = styled.main`
   padding: 24px 0 56px;
@@ -57,7 +59,9 @@ export const MainBooking = () => {
   };
   const { stayId }: any = useParams();
 
-  const stay: any = stays.find((stay: StayInterface) => stay.id === +stayId);
+  const [stay, stayLoading, stayError] = useFetching(baseUrl + `stays/${stayId}`);
+  const [images, imagesLoading, imagesError] = useFetching(baseUrl + `images?stayId=${stayId}`);
+
   const [loaded, setLoaded] = React.useState(false);
 
   const handleImageLoad = () => {
@@ -76,22 +80,32 @@ export const MainBooking = () => {
             </div>
           ) : (
             <div>
-              <Back 
-                goBack={goBack}
-                name={`Back to ${stay.name}`}
-              />
-              <MainBlock>
-                <ImgBlock>
-                  <Image 
-                    src={stay.images[0]}
-                    alt="villa"
-                    loaded={loaded} 
-                    onLoad={handleImageLoad}
-                  />
-                </ImgBlock>
-                <InfoBlock 
-                  stay={stay}
+              {!stayLoading && (
+                <Back 
+                  goBack={goBack}
+                  name={`Back to ${stay.name}`}
                 />
+              )}
+              <MainBlock>
+                {imagesLoading ? (
+                  <Loading />
+                ) : (
+                  <ImgBlock>
+                    <Image 
+                      src={baseUrl + images[0].url}
+                      alt="villa"
+                      loaded={loaded} 
+                      onLoad={handleImageLoad}
+                    />
+                  </ImgBlock>
+                )}
+                {stayLoading ? (
+                  <Loading />
+                ) : (
+                  <InfoBlock 
+                    stay={stay}
+                  />
+                )}
               </MainBlock>
               <SeparatorHorizontal />
               <TravelExtras />

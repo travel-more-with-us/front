@@ -22,7 +22,7 @@ export const Evaluation: React.FC <Props> = ({ place }) => {
   return (
     <StyledEvaluation>
       <Rewievs>
-        {`${place.rewievs} rewievs`}
+        {`${place.reviews} reviews`}
       </Rewievs>
       <div>
         <Stars

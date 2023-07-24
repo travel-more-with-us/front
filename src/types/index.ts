@@ -3,7 +3,7 @@ export interface Place {
   city: string,
   country: string,
   rating: number,
-  rewievs: number,
+  reviews: number,
 }
 
 export interface StayInterface {
@@ -17,10 +17,7 @@ export interface StayInterface {
   images: string[];
   about: string;
   price: number;
-  amenities: AmenityInterface[];
   ratings: RatingInterface[];
-  reviewsList: ReviewListItemInterface[];
-  guidelines: Guideline[];
   [key: string]: any;
 }
 

@@ -114,7 +114,7 @@ export const StayInfoBlock: React.FC <Props> = ({ stay, duration, adults }) => {
           count={stay.rating}
         />
         <StayLink click={() => {}}>
-          See all {stay.reviewsList.length} reviews
+          {/* See all {stay.reviewsList.length} reviews */}
         </StayLink>
       </EvaluationBlock>
       <LocationBlock>
