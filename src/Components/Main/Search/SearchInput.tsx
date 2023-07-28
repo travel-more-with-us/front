@@ -4,7 +4,6 @@ import location from '../../../images/location.svg';
 import locationGreen from '../../../images/location-green.svg';
 import { Place } from '../../../types';
 import { useSearch } from '../../../hooksAndHelpers/useSearch';
-import axios from 'axios';
 
 const Block = styled.div`
 max-width: 364px;

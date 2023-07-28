@@ -52,7 +52,7 @@ const DropdownList = styled.ul`
   z-index: 2;
 
   @media screen and (max-width: 768px) {
-    left: -35%;
+    left: -45%;
   }
 `;
 

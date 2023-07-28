@@ -29,17 +29,17 @@ const DropdownContainer = styled.div`
 const DropdownButton = styled.button<any>`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
+  justify-content: center;
   border: none;
   background-color: transparent;
   color: ${props => props.theme.txtColor};
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   font-family: Nunito;
-  padding: 0 50px 0 20px;
+  padding: 0px 40px 0px 5px;
+  width: 160px;
+  height: 75px;
 
   &:before {
     position: absolute;
@@ -50,8 +50,9 @@ const DropdownButton = styled.button<any>`
     background-image: url(${change});
     background-repeat: no-repeat;
     background-position: center;
-    width: 34px;
-    height: 34px;
+    width: 24px;
+    height: 24px;
+    background-size: contain;
   }
 `;
 
@@ -67,6 +68,10 @@ const DropdownList = styled.ul`
   border-radius: 8px;
   border: 1px solid ${props => props.theme.disabledColor};
   background: #FCFCFC;
+
+  @media screen and (max-width: 768px) {
+    left: -24px;
+  }
 `;
 
 const DropdownListItem = styled.li`

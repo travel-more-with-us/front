@@ -21,6 +21,7 @@ box-sizing: border-box;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${mainBg});
   background-size: cover;
   background-repeat: no-repeat;
+  margin: 0px 0px 55px;
 }
 `;
 
@@ -64,6 +65,14 @@ position: relative;
 z-index: 2;
 `;
 
+const SearchWrapper = styled.div`
+display: block;
+
+@media screen and (max-width: 768px) {
+  display: none;
+}
+`;
+
 export const Main = () => {
   const [videoLoaded, setVideoLoaded] = React.useState(false);
   const [places, loading, error] = useFetching(baseUrl + 'destinations');
@@ -77,9 +86,11 @@ export const Main = () => {
       <StyledMain>
         <Container>
           {!loading && (
-            <Search 
-              places={places}
-            />
+            <SearchWrapper>
+              <Search 
+                places={places}
+              />
+            </SearchWrapper>
           )}
           <Header>
             Discover. Compare. <br /> Travel More!

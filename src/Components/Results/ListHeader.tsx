@@ -47,9 +47,9 @@ export const ListHeader: React.FC <Props> = ({ count }) => {
         </CountOfVillas>
       </div>
       <Buttons>
-        <ButtonOutlined>
+        {/* <ButtonOutlined>
           Map
-        </ButtonOutlined>
+        </ButtonOutlined> */}
         <SortSelect 
           options={[
             {
