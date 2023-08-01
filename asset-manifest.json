@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/front/static/css/main.9435f081.css",
-    "main.js": "/front/static/js/main.23433a2c.js",
+    "main.js": "/front/static/js/main.a0d185ea.js",
     "static/media/video-travel-more.mp4": "/front/static/media/video-travel-more.f46fd6577cccfe628105.mp4",
     "static/media/main-bg.png": "/front/static/media/main-bg.2991e72b85ecaf2528dc.png",
     "static/media/offers.png": "/front/static/media/offers.99a9ea989b60ac299dd3.png",
@@ -34,10 +34,10 @@
     "static/media/down.svg": "/front/static/media/down.7bb795f636304b7ffc445974a60c2766.svg",
     "static/media/backImg.svg": "/front/static/media/backImg.8db5eee5688040d60331f9b22f2653d7.svg",
     "main.9435f081.css.map": "/front/static/css/main.9435f081.css.map",
-    "main.23433a2c.js.map": "/front/static/js/main.23433a2c.js.map"
+    "main.a0d185ea.js.map": "/front/static/js/main.a0d185ea.js.map"
   },
   "entrypoints": [
     "static/css/main.9435f081.css",
-    "static/js/main.23433a2c.js"
+    "static/js/main.a0d185ea.js"
   ]
 }
