@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ButtonOutlined } from '../UI/ButtonOutlined';
 import { useSelector } from 'react-redux';
 import { SortSelect } from './SortSelect';
 import { StateInterface } from '../../types/reduxTypes';

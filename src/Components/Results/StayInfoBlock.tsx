@@ -117,7 +117,7 @@ export const StayInfoBlock: React.FC <Props> = ({ stay, duration, adults }) => {
           {/* See all {stay.reviewsList.length} reviews */}
         </StayLink>
       </EvaluationBlock>
-      <LocationBlock>
+      {/* <LocationBlock>
         <ShowMap>
           show on map
         </ShowMap>
@@ -129,7 +129,7 @@ export const StayInfoBlock: React.FC <Props> = ({ stay, duration, adults }) => {
         <span>
           beach nearby
         </span>
-      </LocationBlock>
+      </LocationBlock> */}
       <StayPriceBlock
         price={stay.price}
         duration={duration}

@@ -4,6 +4,7 @@ export interface Place {
   country: string,
   rating: number,
   reviews: number,
+  id: number;
 }
 
 export interface StayInterface {
@@ -16,6 +17,14 @@ export interface StayInterface {
   street: string;
   images: string[];
   about: string;
+  accuracy: number;
+  amenities: number[];
+  ckeckIn: number;
+  cleanliness: number;
+  location: number;
+  onMap: string;
+  propertyType: string;
+  value: number;
   price: number;
   ratings: RatingInterface[];
   [key: string]: any;
@@ -24,6 +33,12 @@ export interface StayInterface {
 export interface AmenityInterface {
   name: string;
   img: string;
+  id: number;
+}
+
+export interface ImageInterface {
+  id: number;
+  url: string;
 }
 
 export interface RatingInterface {
@@ -57,5 +72,10 @@ export interface FilterPriceOptionInterface {
 export interface FilterOptionInterface {
   name: string;
   value: string | number;
+}
+
+export interface OptionInterface {
+  city: string;
+  country: string;
 }
 

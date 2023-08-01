@@ -2,8 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ButtonOutlined } from '../UI/ButtonOutlined';
-import { StayInterface } from '../../types';
-import axios from 'axios';
+import { ImageInterface, StayInterface } from '../../types';
 import { baseUrl } from '../../api';
 import { Loading } from '../Loading/Loading';
 import { useFetching } from '../../hooksAndHelpers/useFetching';
@@ -127,12 +126,12 @@ export const Images: React.FC <Props> = ({ stay }) => {
           <ButtonOutlined onClick={openPopup}>
             See all {images && images.length} Photos
           </ButtonOutlined>
-          <ButtonOutlined>
+          {/* <ButtonOutlined>
             Video
           </ButtonOutlined>
           <ButtonOutlined>
             3D tour
-          </ButtonOutlined>
+          </ButtonOutlined> */}
         </MainButtons>
         {popupOpen && (
           !imagesLoading && (
@@ -147,7 +146,7 @@ export const Images: React.FC <Props> = ({ stay }) => {
         <Loading />
       ) :  (
         <SecondImages>
-          {images.slice(1, 5).map((image: any) => (
+          {images.slice(1, 5).map((image: ImageInterface) => (
             <SmallImageContainer key={image.id}>
               <SmallImage 
                 src={baseUrl + image.url}

@@ -1,15 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react';
-import { Place, SearchOption } from '../types';
+import React, { Dispatch, SetStateAction } from 'react';
+import { OptionInterface, Place, SearchOption } from '../types';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateDeparture } from '../store/actions';
+import { StateInterface } from '../types/reduxTypes';
 
-export const useSearch = (places: any, setDropdownVisible: any) => {
+export const useSearch = (places: Place[], setDropdownVisible: Dispatch<SetStateAction<boolean>>) => {
   const [searchInput, setSearchInput] = React.useState('');
   const options = places;
   const [iconIsGreen, setIconIsGreen] = React.useState(false);
   const dispatch = useDispatch();
-  const departurePlace = useSelector((state: any) => state.departure);
+  const departurePlace = useSelector((state: StateInterface) => state.departure);
 
   React.useEffect(() => {
     if (departurePlace.city !== '') {
@@ -20,7 +21,7 @@ export const useSearch = (places: any, setDropdownVisible: any) => {
   }, []);
 
   React.useEffect(() => {
-    if (searchInput !== '' && places.some((place: any) => searchInput.toLowerCase().includes(place.city.toLowerCase()) 
+    if (searchInput !== '' && places.some((place: Place) => searchInput.toLowerCase().includes(place.city.toLowerCase()) 
     || searchInput.toLowerCase().includes(place.country.toLowerCase()) 
     || place.city.toLowerCase().includes(searchInput.toLowerCase()) 
     || place.country.toLowerCase().includes(searchInput.toLowerCase()))) {
@@ -35,7 +36,7 @@ export const useSearch = (places: any, setDropdownVisible: any) => {
       return [];
     }
 
-    const optionsFiltered = options.filter((option: any) =>
+    const optionsFiltered = options.filter((option: OptionInterface) =>
       option.city.toLowerCase().includes(searchInput.toLowerCase()) ||
       option.country.toLowerCase().includes(searchInput.toLowerCase()) ||
       searchInput.toLowerCase().includes(option.city.toLowerCase()) ||

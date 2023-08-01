@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import { FilterOptionInterface, FilterPriceOptionInterface, StayInterface } from '../types';
 
-export const useSortedAndFilteredStays = (stays: any[], filters: any, sortBy: string, coefficient: number) => {
+export const useSortedAndFilteredStays = (stays: StayInterface[], filters: any, sortBy: string, coefficient: number) => {
   console.log(stays);
   const sortAndFilterStays = () => {
     let copyOfStays = [...stays];
@@ -27,7 +27,7 @@ export const useSortedAndFilteredStays = (stays: any[], filters: any, sortBy: st
   
       if (filters.amenities.length !== 0) {
         copyOfStays = copyOfStays.filter((stay: StayInterface) => filters.amenities.some((filter: FilterOptionInterface) => {
-          if (stay.amenities.some((amenity: any) => {
+          if (stay.amenities.some((amenity: number) => {
             return amenity === filter.value;
           })) {
             return stay;

@@ -86,11 +86,17 @@ export const Main = () => {
       <StyledMain>
         <Container>
           {!loading && (
-            <SearchWrapper>
-              <Search 
-                places={places}
-              />
-            </SearchWrapper>
+            error ? (
+              <div>
+                {error}
+              </div>
+            ) : (
+              <SearchWrapper>
+                <Search 
+                  places={places}
+                />
+              </SearchWrapper>
+            )
           )}
           <Header>
             Discover. Compare. <br /> Travel More!

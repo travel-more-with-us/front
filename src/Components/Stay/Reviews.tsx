@@ -42,9 +42,9 @@ export const Reviews: React.FC <Props> = ({ stay }) => {
         <H3>
           Ratings&Reviews
         </H3>
-        <StayLink click={() => {}}>
+        {/* <StayLink click={() => {}}>
           Show more
-        </StayLink>
+        </StayLink> */}
       </ReviewsBlock>
       <ListRating 
         stay={stay}

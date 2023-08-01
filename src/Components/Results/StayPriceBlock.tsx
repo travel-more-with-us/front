@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useGetCoefficient } from '../../hooksAndHelpers/useGetCoefficient';
+import { useSelector } from 'react-redux';
 
 const StyledVilla = styled.div`
 display: flex;
@@ -104,22 +105,18 @@ interface Props {
 
 export const StayPriceBlock: React.FC <Props> = ({ price, duration, adults, stayId }) => {
   const coefficient = useGetCoefficient();
+  const guests = useSelector((state: any) => state.guests);
+
 
   return (
     <StyledVilla>
       <RoomBlock>
         <Room>
-          Deluxe Double or Twin Room
+          {guests.rooms === 1 ? `room ${guests.rooms}` : `rooms ${guests.rooms}`}
         </Room>
         <List>
           <li>
-          Sleeps 6
-          </li>
-          <li>
-          2 bedroom
-          </li>
-          <li>
-          2 bathroom
+            Sleeps {guests.adults + guests.children}
           </li>
         </List>
       </RoomBlock>

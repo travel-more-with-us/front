@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux';
 import { useFetching } from '../../hooksAndHelpers/useFetching';
 import { baseUrl } from '../../api';
 import { Loading } from '../Loading/Loading';
+import { StateInterface } from '../../types/reduxTypes';
+import { Error } from '../Error/Error';
 
 const Header = styled.h1`
 font-weight: 700;
@@ -61,7 +63,7 @@ interface Props {
 }
 
 export const MainInfo: React.FC <Props> = ({ stay }) => {
-  const departure = useSelector((state: any) => state.departure);
+  const departure = useSelector((state: StateInterface) => state.departure);
   const [reviews, reviewsLoading, reviewsError] = useFetching(baseUrl + `reviews?${stay.id}`);
   return (
     <Info>
@@ -71,12 +73,16 @@ export const MainInfo: React.FC <Props> = ({ stay }) => {
       <Block>
         <BlockEvaluations>
           <Stars count={stay.rating} />
-          {reviewsLoading ? (
-            <Loading />
-          ) : (
-            <Rewievs>
-              {`${reviews.length} rewievs`}
-            </Rewievs>
+          {!reviewsLoading && (
+            reviewsError ? (
+              <Error 
+                error={`Can not load reviews, ${reviewsError}`}
+              />
+            ) : (
+              <Rewievs>
+                {`${reviews.length} rewievs`}
+              </Rewievs>
+            )
           )}
           <Oval />
           <Street>

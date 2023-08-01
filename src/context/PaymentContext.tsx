@@ -4,7 +4,7 @@ import { usePayment } from '../hooksAndHelpers/usePayment';
 export const PaymentContext = React.createContext<any>({});
 
 interface Props {
-  children: any;
+  children: React.ReactNode;
 }
 
 export const PaymentProvider: React.FC <Props> = ({ children }) => {

@@ -82,9 +82,9 @@ export const GuestGuidlines = () => {
                 <Name>
                   {guide.name}
                 </Name>
-                <StayLink click={() => {}}>
+                {/* <StayLink click={() => {}}>
                   Show more
-                </StayLink>
+                </StayLink> */}
               </Header>
               <Description>
                 {guide.description}

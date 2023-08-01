@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Propositions } from './Propositions';
 import { Search } from './Search/Search';
 import { Loading } from '../Loading/Loading';
+import { Error } from '../Error/Error';
 
 const StyledMain = styled.div`
 padding: 0px 0 60px;
@@ -25,27 +26,39 @@ export const PropositionsBlock: React.FC <any> = ({ places, loading, error }) =>
     <StyledMain>
       <Wrapper>
         {!loading && (
-          <Search
-            places={places}
-          />
+          error ? (
+            <div>
+              {error}
+            </div>
+          ) : (
+            <Search
+              places={places}
+            />
+          )
         )}
       </Wrapper>
       {loading ? (
         <Loading />
 
       ) : (
-        <>
-          <Propositions
-            places={places.slice(0, 8)}
-            header="Looking for the perfect stay?"
-            description="Pick a vibe and explore the top destinations"
+        error ? (
+          <Error 
+            error={`Can not load destinations, ${error}`}
           />
-          <Propositions
-            places={places.slice(8, 16)}
-            header="Journey to the waves and palm trees"
-            description="Pick a vibe and explore the top destinations"
-          />
-        </>
+        ) : (
+          <>
+            <Propositions
+              places={places.slice(0, 8)}
+              header="Looking for the perfect stay?"
+              description="Pick a vibe and explore the top destinations"
+            />
+            <Propositions
+              places={places.slice(8, 16)}
+              header="Journey to the waves and palm trees"
+              description="Pick a vibe and explore the top destinations"
+            />
+          </>
+        )
       )}
     </StyledMain>
   );

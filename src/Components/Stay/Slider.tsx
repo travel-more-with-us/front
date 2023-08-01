@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { baseUrl } from '../../api';
 import styled from 'styled-components';
+import { ImageInterface } from '../../types';
 
 const StyledSlider = styled(Slider)`
 width: 90%;
@@ -62,7 +63,7 @@ export const SliderComponent: React.FC <any> = ({ images }) => {
   return (
     <StyledSlider>
       <Slider {...settings}>
-        {images.map((image: any) => (
+        {images.map((image: ImageInterface) => (
           <div key={image.id}>
             <Image src={baseUrl + image.url} alt="" />
           </div>

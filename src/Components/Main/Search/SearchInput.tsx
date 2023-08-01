@@ -2,7 +2,7 @@ import React, { ChangeEvent } from 'react';
 import styled from 'styled-components';
 import location from '../../../images/location.svg';
 import locationGreen from '../../../images/location-green.svg';
-import { Place } from '../../../types';
+import { OptionInterface, Place } from '../../../types';
 import { useSearch } from '../../../hooksAndHelpers/useSearch';
 
 const Block = styled.div`
@@ -121,8 +121,8 @@ export const SearchInput: React.FC <Props> = ({ places }) => {
       />
       {dropdownVisible && (
         <DropdownList className="dropdown">
-          {searchedOptions.slice(0, optionsToShowInDropdown).map((option: any) => (
-            <DropdownItem key={option.name} onClick={() => handleItemClick(option)}>
+          {searchedOptions.slice(0, optionsToShowInDropdown).map((option: OptionInterface) => (
+            <DropdownItem key={option.city} onClick={() => handleItemClick(option)}>
               <City>
                 {option.city}
               </City>

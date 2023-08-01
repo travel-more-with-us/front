@@ -17,6 +17,7 @@ import { baseUrl } from '../../api';
 import { StayInterface } from '../../types';
 import { Loading } from '../Loading/Loading';
 import { useFetching } from '../../hooksAndHelpers/useFetching';
+import { Error } from '../Error/Error';
 
 const StyledResults = styled.main`
 padding: 32px 0 80px;
@@ -44,6 +45,7 @@ export const ResultsMain = () => {
   
   const [stays, setStays] = React.useState<StayInterface[]>([]);
   const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState('');
   const [places, loadingPlaces, errorPlaces] = useFetching(baseUrl + 'destinations');
 
   function fetchStays() {
@@ -51,6 +53,9 @@ export const ResultsMain = () => {
     axios.get(baseUrl + 'stays')
       .then(response => {
         setStays(response.data);
+      })
+      .catch((e) => {
+        setError(e.message);
       })
       .finally(() => {
         setLoading(false);
@@ -66,6 +71,7 @@ export const ResultsMain = () => {
   };
 
   const sortedAndFilteredStays = useSortedAndFilteredStays(stays, filters, sortBy, coefficient);
+  console.log(stays);
 
   return (
     <StyledResults>
@@ -76,25 +82,36 @@ export const ResultsMain = () => {
           goBack={goBack}
         />
         <InputsContainer>
-          {loadingPlaces ? (
-            <Loading />
-          ) : (
-            <Inputs 
-              places={places}
+          { errorPlaces ? (
+            <Error
+              error={`Can not load places, ${errorPlaces}`}
             />
-          )}
+          ) : (
+            !loadingPlaces && (
+              <Inputs 
+                places={places}
+              />
+            )
+          )
+          }
         </InputsContainer>
         {loading ? (
           <Loading />
         ) : (
-          <Block>
-            <Filters 
-              stays={stays}
+          error ? (
+            <Error 
+              error={`Can not load stays, ${error}`}
             />
-            <StaysList 
-              stays={sortedAndFilteredStays}
-            />
-          </Block>
+          ) : (
+            <Block>
+              <Filters 
+                stays={stays}
+              />
+              <StaysList 
+                stays={sortedAndFilteredStays}
+              />
+            </Block>
+          )
         )}
       </Container>
     </StyledResults>

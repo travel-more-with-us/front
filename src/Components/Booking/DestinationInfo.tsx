@@ -55,7 +55,7 @@ interface Props {
 
 export const DestinationInfo: React.FC <Props> = ({ stay }) => {
   const dates: any = useSelector((state: StateInterface) => state.dates);
-  const departure = useSelector((state: any) => state.departure);
+  const departure = useSelector((state: StateInterface) => state.departure);
   const [reviews, reviewsLoading, reviewsError] = useFetching(baseUrl + `reviews?${stay.id}`);
   return (
     <>

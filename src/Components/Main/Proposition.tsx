@@ -46,7 +46,7 @@ export const Proposition: React.FC <Props> = ({ place }) => {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = React.useState(false);
 
-  function selectTheLocation(place: any) {
+  function selectTheLocation(place: PlaceType) {
     const departure = {
       country: place.country,
       city: place.city,

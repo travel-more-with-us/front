@@ -12,6 +12,7 @@ import { Back } from '../UI/Back';
 import { baseUrl } from '../../api';
 import { Loading } from '../Loading/Loading';
 import { useFetching } from '../../hooksAndHelpers/useFetching';
+import { Error } from '../Error/Error';
 
 const StyledMain = styled.main`
 padding: 32px 0 80px;
@@ -38,21 +39,27 @@ export const MainStay = () => {
         {stayLoading ? (
           <Loading />
         ) : (
-          <>
-            <MainInfo 
-              stay={stay}
+          stayError ? (
+            <Error
+              error={`Can not load stay, ${stayError}`}
             />
-            <Images 
-              stay={stay} 
-            />
-            <AboutAndPrice 
-              stay={stay}
-            />
-            <AmenitiesAndRewievs 
-              stay={stay}
-            />
-            <GuestGuidlines />
-          </>
+          ) : (
+            <>
+              <MainInfo 
+                stay={stay}
+              />
+              <Images 
+                stay={stay} 
+              />
+              <AboutAndPrice 
+                stay={stay}
+              />
+              <AmenitiesAndRewievs 
+                stay={stay}
+              />
+              <GuestGuidlines />
+            </>
+          )
         )}
       </Container>
     </StyledMain>

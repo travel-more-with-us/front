@@ -60,8 +60,8 @@ export const Amenities: React.FC <Props> = ({ stay }) => {
 
   const filteredAmenities = React.useMemo(() => {
     if (!amenititesLoading && !amenitiesError) {
-      return amenities.filter((amenity: any) => {
-        if (stay.amenities.some((el: any) => el === amenity.id)) {
+      return amenities.filter((amenity: AmenityInterface) => {
+        if (stay.amenities.some((el: number) => el === amenity.id)) {
           return amenity;
         }
   

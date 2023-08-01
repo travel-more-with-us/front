@@ -92,7 +92,7 @@ interface Props {
   name: string;
   options: FilterOptionInterface[];
   seeMore?: boolean;
-  stays: any[];
+  stays: StayInterface[];
   keyName: string;
   resetFilters: boolean;
   onResetComplete: () => void;
@@ -167,7 +167,7 @@ export const Filter: React.FC <Props> = ({ name, options, seeMore, stays, keyNam
                 }
 
                 if (keyName === 'amenities') {
-                  if (stay.amenities.some((amenity: any) => {
+                  if (stay.amenities.some((amenity: number) => {
                     return amenity === option.value;
                   })) {
                     return stay;
