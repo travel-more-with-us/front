@@ -1,5 +1,5 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
 import { App } from './App';
 import './index.css';
@@ -20,12 +20,16 @@ const theme = {
 };
 
 const rootElement = document.getElementById('root');
-const root = createRoot(rootElement as HTMLElement);
 
-root.render(
-  <>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
-  </>
+ReactDOM.render(
+  <ThemeProvider theme={theme}>
+    <App />
+  </ThemeProvider>,
+  rootElement
 );
+
+
+
+
+
+

@@ -57,6 +57,7 @@ interface Props {
 
 export const Amenities: React.FC <Props> = ({ stay }) => {
   const [amenities, amenititesLoading, amenitiesError] = useFetching(baseUrl + 'amenities');
+  console.log(amenities);
 
   const filteredAmenities = React.useMemo(() => {
     if (!amenititesLoading && !amenitiesError) {
@@ -68,7 +69,8 @@ export const Amenities: React.FC <Props> = ({ stay }) => {
         return null;
       });
     }
-  }, [amenities, stay.amenities]);
+  }, [amenities, stay.amenities, amenititesLoading]);
+  console.log(filteredAmenities);
 
   return (
     <AmenitiesContainer>
@@ -81,7 +83,7 @@ export const Amenities: React.FC <Props> = ({ stay }) => {
         <Loading />
       ) : (
         <List>
-          {filteredAmenities.map((amenity: AmenityInterface) => (
+          {filteredAmenities && filteredAmenities.map((amenity: AmenityInterface) => (
             <ListItem key={amenity.name}>
               <img 
                 src={baseUrl + amenity.img}

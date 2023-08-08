@@ -97,6 +97,30 @@ export const FormSignIn: React.FC <Props> = ({ closePopupSignIn }) => {
     }
   }, [email.value]);
 
+  function validatePassword(str: string) {
+    const minLength = 6;
+    const maxLength = 20;
+    const hasUppercase = /[A-Z]/.test(str);
+    const hasLowercase = /[a-z]/.test(str);
+    const hasNumber = /[0-9]/.test(str);
+    const hasSpecialChar = /[!@#$%^&*()]/.test(str);
+    const forbiddenValues = ['password', '123456', 'qwerty'];
+
+    if (str.length < minLength || str.length > maxLength) {
+      return 'Password must be between 6 and 20 characters long';
+    }
+
+    if (!hasUppercase || !hasLowercase || !hasNumber || !hasSpecialChar) {
+      return 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character';
+    }
+
+    if (forbiddenValues.includes(str)) {
+      return 'Password is not allowed, because is too easy';
+    }
+
+    return '';
+  }
+
   React.useEffect(() => {
     if (emailDirty && emailError) {
       setButtonAvailable(false);
@@ -118,8 +142,15 @@ export const FormSignIn: React.FC <Props> = ({ closePopupSignIn }) => {
   }
 
   function submitForm() {
-    dispatch(updateAuth(true));
-    closePopupSignIn();
+    const passwordError = validatePassword(password.value);
+
+    if (!passwordError) {
+      dispatch(updateAuth(true));
+      closePopupSignIn();
+    } else {
+      setPasswordError(passwordError);
+    }
+    
   }
 
   return (

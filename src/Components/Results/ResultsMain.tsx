@@ -18,10 +18,13 @@ import { StayInterface } from '../../types';
 import { Loading } from '../Loading/Loading';
 import { useFetching } from '../../hooksAndHelpers/useFetching';
 import { Error } from '../Error/Error';
+import { MyButtonMedium } from '../UI/MyButtonMedium';
+import { UpButton } from '../UI/UpButton';
 
 const StyledResults = styled.main`
 padding: 32px 0 80px;
 background: #fff;
+scroll-behaviour: smooth;
 `;
 
 const Block = styled.div`
@@ -37,6 +40,11 @@ const InputsContainer = styled.div`
 margin: 0 0 24px 0;
 `;
 
+const LoadMoreContainer = styled.div`
+display: flex;
+justify-content: center;
+`;
+
 export const ResultsMain = () => {
   const filters = useSelector((state: StateInterface) => state.filters);
   const coefficient = useGetCoefficient();
@@ -46,13 +54,24 @@ export const ResultsMain = () => {
   const [stays, setStays] = React.useState<StayInterface[]>([]);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState('');
+  const [page, setPage] = React.useState(1);
   const [places, loadingPlaces, errorPlaces] = useFetching(baseUrl + 'destinations');
+  const [totalCount, setTotalCount] = React.useState(0);
+  const [currentPage, setCurrentPage] = React.useState(1);
 
   function fetchStays() {
     setLoading(true);
-    axios.get(baseUrl + 'stays')
+    axios.get(baseUrl + `stays?page=${page}&limit=10`)
       .then(response => {
-        setStays(response.data);
+        if (response.data.hasOwnProperty('countOfElements')) {
+          setTotalCount(response.data.countOfElements);
+          if (response.data.currentPage !== 1) {
+            setStays((prev: any) => [...prev, ...response.data.data]);
+            setCurrentPage(response.data.currentPage);
+          }
+        } else {
+          setStays(response.data);
+        }
       })
       .catch((e) => {
         setError(e.message);
@@ -64,14 +83,19 @@ export const ResultsMain = () => {
 
   React.useEffect(() => {
     fetchStays();
-  }, []);
+  }, [page]);
 
   const goBack = () => {
     navigate(-1);
   };
 
   const sortedAndFilteredStays = useSortedAndFilteredStays(stays, filters, sortBy, coefficient);
-  console.log(stays);
+
+  function loadmore() {
+    setPage(prev => prev + 1);
+  }
+
+  const lastPage = Math.ceil(totalCount / 10);
 
   return (
     <StyledResults>
@@ -95,7 +119,7 @@ export const ResultsMain = () => {
           )
           }
         </InputsContainer>
-        {loading ? (
+        {loading && currentPage === 1 ? (
           <Loading />
         ) : (
           error ? (
@@ -109,10 +133,25 @@ export const ResultsMain = () => {
               />
               <StaysList 
                 stays={sortedAndFilteredStays}
+                totalCount={totalCount}
               />
             </Block>
           )
         )}
+        {lastPage !== page && (
+          loading ? (
+            <Loading />
+          ) : (
+            <LoadMoreContainer>
+              <MyButtonMedium onClick={() => {
+                loadmore();
+              }}>
+                Load more
+              </MyButtonMedium>
+            </LoadMoreContainer>
+          )
+        )}
+        <UpButton />
       </Container>
     </StyledResults>
   );

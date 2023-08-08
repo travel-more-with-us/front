@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from '@mui/material';
+import { Container } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { StateInterface } from '../../types/reduxTypes';
 import { StayInterface } from '../../types';

@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StayLink } from '../UI/StayLink';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import CheckIcon from '@material-ui/icons/Check';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
 import { updateFilters } from '../../store/actions';
@@ -68,7 +68,7 @@ gap: 8px;
 position: relative;
 `;
 
-const StyledCheckmarkIcon = styled(FontAwesomeIcon)`
+const StyledCheckmarkIcon = styled<any>(CheckIcon)`
   font-size: 16px;
   position: absolute;
   left: 9px;

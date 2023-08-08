@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { StayLink } from '../UI/StayLink';
 import { Stars } from '../UI/Stars';
-import { Oval } from '../UI/Oval';
 import { StayPriceBlock } from './StayPriceBlock';
 import { StayInterface } from '../../types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,25 +38,6 @@ margin: 0 0 8px 0;
 @media screen and (max-width: 768px) {
   justify-content: space-between;
 }
-`;
-
-const LocationBlock = styled.div`
-display: flex;
-align-items: center;
-margin: 0 0 70px 0;
-`;
-
-const ShowMap = styled.span`
-font-size: 16px;
-font-family: Nunito;
-text-decoration-line: underline;
-margin: 0 8px 0 0;
-`;
-
-const Miles = styled.span`
-font-size: 16px;
-line-height: 150%;
-margin: 0 8px 0 0;
 `;
 
 const Like = styled.button`
@@ -117,19 +97,6 @@ export const StayInfoBlock: React.FC <Props> = ({ stay, duration, adults }) => {
           {/* See all {stay.reviewsList.length} reviews */}
         </StayLink>
       </EvaluationBlock>
-      {/* <LocationBlock>
-        <ShowMap>
-          show on map
-        </ShowMap>
-        <Oval />
-        <Miles>
-          3 miles from center
-        </Miles>
-        <Oval />
-        <span>
-          beach nearby
-        </span>
-      </LocationBlock> */}
       <StayPriceBlock
         price={stay.price}
         duration={duration}

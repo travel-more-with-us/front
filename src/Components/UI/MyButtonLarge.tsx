@@ -39,7 +39,7 @@ interface Props {
   children: ReactNode;
   onClick: (e: any) => void;
   outlined?: string;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export const MyButtonLarge: React.FC <Props> = ({

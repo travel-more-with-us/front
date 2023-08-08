@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { FilterOptionInterface, FilterPriceOptionInterface, StayInterface } from '../types';
 
 export const useSortedAndFilteredStays = (stays: StayInterface[], filters: any, sortBy: string, coefficient: number) => {
+  console.log(filters);
   console.log(stays);
   const sortAndFilterStays = () => {
     let copyOfStays = [...stays];

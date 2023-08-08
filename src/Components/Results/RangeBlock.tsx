@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { ChangeEvent, useEffect } from 'react';
 import styled from 'styled-components';
-import Slider from '@mui/material/Slider';
-import { styled as styledMui } from '@mui/material/styles';
+import Slider from '@material-ui/core/Slider';
+import { styled as styledMui } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateFilters } from '../../store/actions';
 import { StateInterface } from '../../types/reduxTypes';
@@ -32,7 +32,7 @@ const Range = styled.div`
   display: flex;
 `;
 
-const StyledSlider = styledMui(Slider)<any>(() => ({
+const StyledSlider: any = styledMui(Slider)(() => ({
   color: '#29E3AB',
   '& .MuiSlider-thumb': {
     '&:hover': {
@@ -52,37 +52,54 @@ interface Props {
 export const RangeBlock: React.FC <Props> = ({ min, max }) => {
   const [value, setValue] = React.useState<number[]>([min, max]);
   const filters = useSelector((state: StateInterface) => state.filters);
+  const dispatch = useDispatch();
 
-  const handleChange = (event: Event, newValue: number | number[]) => {
-    setValue(newValue as number[]);
+  const handleChange = (event: Event, newValue: number[]) => {
+    if (!Array.isArray(newValue) || newValue[0] !== value[0] || newValue[1] !== value[1]) {
+      setValue(newValue as number[]);
+      const obj = {
+        priceRange: {
+          min: newValue[0],
+          max: newValue[1],
+        },
+      };
+      dispatch(updateFilters(obj));
+    }
   };
   
   const handleMinInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const min = parseFloat(event.target.value);
-    setValue((prevState) => {
-      prevState[0] = min;
-      return prevState;
-    });
+    setValue((prevState) => [min, prevState[1]]);
+    const obj = {
+      priceRange: {
+        min: min,
+        max: value[1],
+      },
+    };
+    dispatch(updateFilters(obj));
   };
   
   const handleMaxInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const max = parseFloat(event.target.value);
-    setValue((prevState) => {
-      prevState[1] = max;
-      return prevState;
-    });
+    setValue((prevState) => [prevState[0], max]);
+    const obj = {
+      priceRange: {
+        min: value[0],
+        max,
+      },
+    };
+    dispatch(updateFilters(obj));
   };
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const obj = {
       priceRange: {
         min: value[0],
-        max: value[1]
-      }
+        max: value[1],
+      },
     };
     dispatch(updateFilters(obj));
-  }, [value]);
+  }, []);
 
   useEffect(() => {
     if (filters.hasOwnProperty('priceRange')) {

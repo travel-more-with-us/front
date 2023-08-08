@@ -37,6 +37,7 @@ padding: 50px 0;
 
 interface Props {
   stays: StayInterface[];
+  totalCount: number;
 }
 
 export const StaysList: React.FC <Props> = ({ stays }) => {

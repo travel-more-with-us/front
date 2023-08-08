@@ -57,9 +57,6 @@ interface Props {
 export const Stay: React.FC <Props> = ({ stay, duration, adults }) => {
   const [loaded, setLoaded] = React.useState(false);
   const [images, loadingImages, errorImages] = useFetching(baseUrl + `images?stayId=${stay.id}`);
-
-  console.log(images);
-
   
   const handleImageLoad = () => {
     setLoaded(true);
@@ -71,12 +68,16 @@ export const Stay: React.FC <Props> = ({ stay, duration, adults }) => {
         {loadingImages ? (
           <Loading />
         ) : (
-          <Image 
-            src={`${baseUrl}${images[0].url}`}
-            alt="villa"
-            loaded={loaded} 
-            onLoad={handleImageLoad}
-          />
+          errorImages ? (
+            <Image />
+          ) : (
+            <Image 
+              src={`${baseUrl}${images[0].url}`}
+              alt="villa"
+              loaded={loaded} 
+              onLoad={handleImageLoad}
+            />
+          )
         )}
       </ImageBlock>
       <StayInfoBlock 
